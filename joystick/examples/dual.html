@@ -1,0 +1,37 @@
+<html><body>
+<script src="../virtualjoystick.js"></script>
+<script>
+	console.log("touchscreen is", VirtualJoystick.touchScreenAvailable() ? "available" : "not available");
+
+	// 
+	var joystickLeft	= new VirtualJoystick({
+		container	: document.body,
+		strokeStyle	: 'cyan',
+		mouseSupport	: true,
+		limitStickTravel: true,
+		stickRadius	: 100		
+	});
+	joystickLeft.addEventListener('touchStartValidation', function(event){
+		var touch	= event.changedTouches[0];
+		if( touch.pageX < window.innerWidth/2 )	return false;
+		return true
+	});
+
+	// one on the right of the screen
+	var joystickRight	= new VirtualJoystick({
+		container	: document.body,
+		mouseSupport	: true,
+		strokeStyle	: 'orange',
+		limitStickTravel: true,
+		stickRadius	: 0		
+	});
+	joystickRight.addEventListener('touchStartValidation', function(event){
+		var touch	= event.changedTouches[0];
+		if( touch.pageX >= window.innerWidth/2 )	return false;
+		return true
+	});
+	joystickRight.addEventListener('touchStart', function(){
+		console.log('fire')
+	})
+</script></body>
+</html>

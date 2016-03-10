@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+        <title>Roomba Control</title>
+
+    </head>
+    
+    <body>
+
+        <div class="app">
+
+        <div id="developer">
+        <div id="developerTool" class="button">
+        Dev Tools
+        </div>
+        <div id="leftVShow" class="button">
+        none
+        </div>
+        <div id="rightVShow" class="button">
+        none
+        </div>
+        <div id="geoLocation" class="button" >
+        Location
+        </div>
+
+        </div>
+
+        <!-- Loading UI -->
+        <div <div id="loadingPanel">
+
+        <h1 id="loadingTitle" style = "color:#FFF; font-weight:lighter" >The Plant</h1>
+
+        <div id="loadingBoxTop" class="loading">
+        </div>
+        <div id="loadingBox" class="loading">
+        </div>
+        <div id="loadingBox2" class="loading">
+        </div>
+        <div id="loadingBoxBottom" class="loading">
+        </div>
+        <div id="loadingBoxBase" class="loading">
+        </div>
+
+        <div id = "loadingStatus"> CONNECTING... </div>
+
+        </div>
+        <!-- Loading UI -->
+
+        </div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="libs/evothings/evothings.js"></script>
+        <script src="libs/evothings/easyble/easyble.js"></script>
+        <script src="libs/jquery/jquery.js"></script>
+        <script src="libs/socket.io.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/dom.js"></script>
+        <script src="js/uiAnimation.js"></script>
+        <script src="js/socket.js"></script>
+    </body>
+</html>
