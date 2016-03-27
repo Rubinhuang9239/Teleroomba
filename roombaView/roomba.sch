@@ -4055,6 +4055,7 @@ Mors, distributor Buerklin, 11G702</description>
 <part name="JP1" library="adafruit" deviceset="PINHD-1X1" device=""/>
 <part name="R1" library="adafruit" deviceset="R-US_" device="0207/7"/>
 <part name="JP2" library="adafruit" deviceset="PINHD-1X1" device=""/>
+<part name="S2" library="switch" deviceset="M251" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4092,9 +4093,10 @@ Mors, distributor Buerklin, 11G702</description>
 <instance part="D4" gate="1" x="48.26" y="22.86" rot="R180"/>
 <instance part="S1" gate="1" x="17.78" y="10.16" rot="R90"/>
 <instance part="LED1" gate="G$1" x="7.62" y="15.24" rot="R270"/>
-<instance part="JP1" gate="G$1" x="43.18" y="7.62"/>
+<instance part="JP1" gate="G$1" x="5.08" y="-7.62"/>
 <instance part="R1" gate="G$1" x="30.48" y="22.86"/>
 <instance part="JP2" gate="G$1" x="17.78" y="33.02"/>
+<instance part="S2" gate="1" x="17.78" y="-12.7" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -4210,9 +4212,9 @@ Mors, distributor Buerklin, 11G702</description>
 <segment>
 <pinref part="D1" gate="1" pin="C"/>
 <wire x1="38.1" y1="17.78" x2="33.02" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="17.78" x2="33.02" y2="7.62" width="0.1524" layer="91"/>
-<pinref part="JP1" gate="G$1" pin="1"/>
-<wire x1="33.02" y1="7.62" x2="40.64" y2="7.62" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="17.78" x2="33.02" y2="-10.16" width="0.1524" layer="91"/>
+<pinref part="S2" gate="1" pin="P"/>
+<wire x1="22.86" y1="-10.16" x2="33.02" y2="-10.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$15" class="0">
@@ -4229,6 +4231,13 @@ Mors, distributor Buerklin, 11G702</description>
 <wire x1="5.08" y1="20.32" x2="2.54" y2="20.32" width="0.1524" layer="91"/>
 <pinref part="LED1" gate="G$1" pin="C"/>
 <wire x1="2.54" y1="20.32" x2="2.54" y2="15.24" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
+<pinref part="S2" gate="1" pin="S"/>
+<wire x1="12.7" y1="-7.62" x2="2.54" y2="-7.62" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="G$1" pin="1"/>
 </segment>
 </net>
 </nets>
