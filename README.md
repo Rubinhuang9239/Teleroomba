@@ -7,3 +7,6 @@ https://docs.google.com/presentation/d/1esRmssKKQKUmZPN4M6qO2HnMcj071nKUZhuvG29G
 
 <h3>Offical iRobot® Create® 2 Open Interface (OI):</h3>
 http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_600_Open_Interface_Spec.pdf?la=en
+
+<h3>More related projects:</h3>
+http://www.irobot.com/About-iRobot/STEM/Create-2/Projects.aspx
