@@ -8,5 +8,19 @@ https://docs.google.com/presentation/d/1esRmssKKQKUmZPN4M6qO2HnMcj071nKUZhuvG29G
 <h3>Offical iRobot® Create® 2 Open Interface (OI):</h3>
 http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_600_Open_Interface_Spec.pdf?la=en
 
+<h3>Circuit build:</h3>
+
+
+<h3>Web Server:</h3>
+
+
 <h3>More related projects:</h3>
+
+From iRobot.com
 http://www.irobot.com/About-iRobot/STEM/Create-2/Projects.aspx
+
+From ramdon hackers:
+
+Johnny Chung Lee's DIY Telepresence Robot(2011)
+with source code and intruductions
+http://procrastineering.blogspot.com/2011/02/low-cost-video-chat-robot.html
