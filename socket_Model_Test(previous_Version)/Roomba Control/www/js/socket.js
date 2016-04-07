@@ -10,7 +10,7 @@ var latestrightV = 0;
 socket.on("cmdToRobot",function(cmd){
 
 	//console.log(cmd.leftV + "  " + cmd.rightV);
-	currentleftV = cmd.leftV+50;
+	currentleftV = cmd.leftV + 50;
 	currentrightV = cmd.rightV + 160;
 	//app.sendData([0x00+cmd.leftV]);
 

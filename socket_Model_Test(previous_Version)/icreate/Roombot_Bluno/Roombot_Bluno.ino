@@ -38,18 +38,18 @@ void loop() {
       }
 
       
-    delay(10);
+    //delay(10);
     
-//    signed int lv = leftV+50;
-//    signed int rv = rightV+50;
-//    byte buffer[5] = {0xAD,
-//                      (byte)(lv),
-//                      (byte)(lv >> 8),
-//                      (byte)(rv),
-//                      (byte)(rv >> 8),
-//                     };
-//    Serial.write(buffer, sizeof(buffer));
-//    delay(10);
+    signed int lv = leftV+50;
+    signed int rv = rightV+50;
+    byte buffer[5] = {0xAD,
+                      (byte)(lv),
+                      (byte)(lv >> 8),
+                      (byte)(rv),
+                      (byte)(rv >> 8),
+                     };
+    Serial.write(buffer, sizeof(buffer));
+    delay(50);
 }
 
 void drive(signed int leftV, signed int rightV){
