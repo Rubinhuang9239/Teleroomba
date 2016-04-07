@@ -16,10 +16,10 @@ http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_6
 
 <h3>More related projects:</h3>
 
-From iRobot.com
+<h5>From iRobot.com</h5>
 http://www.irobot.com/About-iRobot/STEM/Create-2/Projects.aspx
 
-From ramdon hackers:
+<h5>From ramdon hackers:</h5>
 
 Johnny Chung Lee's DIY Telepresence Robot(2011)
 with source code and intruductions
