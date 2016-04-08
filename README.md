@@ -1,4 +1,6 @@
 # iCreate-Telepresence
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="128" width="128" />
+
 A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai campus
 
 <h3>Hacking documentation in google slides:</h3>
