@@ -1,5 +1,5 @@
 # iCreate-Telepresence
-A telepresent researching project that build for NYU NYC/Abu Dhabi/Shanghai campus
+A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai campus
 
 <h3>Hacking documentation in google slides:</h3>
 
