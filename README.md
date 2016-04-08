@@ -13,6 +13,19 @@ http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_6
 
 <h3>Web Server:</h3>
 
+<h3>Andorid Version:</h3>
+
+<h3>Cordova Version:</h3>
+
+<h3>CrossWalk Version:</h3>
+
+<h3>Credits + Thanks:</h3>
+Early contributor:
+Rubin Huang
+
+Advising:
+Dan O'sullivan
+Shwan Van Every
 
 <h3>More related projects:</h3>
 
