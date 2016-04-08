@@ -21,7 +21,8 @@ http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_6
 
 <h3>Credits + Thanks:</h3>
 Early contributor:<br />
-Rubin Huang
+Rubin Huang<br />
+Marc Abby
 
 Advising:<br />
 Dan O'sullivan<br />
