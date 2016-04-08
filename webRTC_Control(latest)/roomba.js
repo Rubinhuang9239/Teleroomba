@@ -6,14 +6,10 @@ var app = express();
 var http = require('http').Server(app);
 var servicePort = 8000;
 
-app.use(express.static('teleroomba/www'));
+app.use(express.static('teleroomba_Android/www'));
 
 app.get('/', function(req, res){
-  res.sendfile('index.html');
-});
-
-app.get('/app', function(req, res){
-  res.sendfile('index_app.html');
+  res.sendfile('index_web.html');
 });
 
 http.listen(servicePort, function(){

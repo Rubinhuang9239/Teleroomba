@@ -121,8 +121,6 @@
     #BLEStatus{
       height: 32px;
       width: 32px;
-      background-color: #888;
-      /*background-color: #05D060;*/
       position: relative;
       top: 2%;
       left:2px;
@@ -168,6 +166,27 @@
       z-index: 179;
     }
 
+
+    .BLEOn{
+      background-color: #05D060;
+    }
+
+    .BLEOff{
+      background-color: #888;
+    }
+
+    .BLEBlinking{
+      animation-name: BLEBlink;
+      animation-duration: 1.6s;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes BLEBlink {
+    0%   {background-color: #888;}
+    50%  {background-color: #05D060;}
+    100% {background-color: #888;}
+    }
+
     </style>
   </head>
 
@@ -203,7 +222,7 @@
       <div id = "foldSwitch">
       </div>
 
-      <div id = "BLEStatus">
+      <div id = "BLEStatus" class = "BLEOff">
       </div>
 
     </div>

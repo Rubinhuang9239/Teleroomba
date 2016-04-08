@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   // PeerJS server location
-  var SERVER_IP = '192.168.19.13';
+  var SERVER_IP = '172.16.246.128';
   var SERVER_PORT = 8888;
 
   // DOM elements manipulated as user interacts with the app
@@ -181,11 +181,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     connection.on('open', function() {
       connected = true;
+      WebRTCDataMethold.connected = true;
     });
 
     connection.on('data', function(data) {
+
       console.log("connection " + data);
       logMessage(data.type, data.text);
+
     });
 
 
@@ -276,10 +279,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var logMessage = function (tag, text) {
 
-    if( identity.role == "roomba"){
+    if( identity.role == "roomba" ){
 
       WebRTCDataMethold.FeedBack(tag, text);
 
+    }
+    else if( identity.role == "control" ){
+      if(tag == "BLE" && text == "RB: -- Done BLE Connectinng --" ){
+        alert("-- Your teleRoomba BLE is Connected! --");
+
+          var BLEStatus = document.getElementById("BLEStatus");
+          BLEStatus.attributes.class.value = "BLEOn";
+
+      }
     }
 
     var tagGroup={

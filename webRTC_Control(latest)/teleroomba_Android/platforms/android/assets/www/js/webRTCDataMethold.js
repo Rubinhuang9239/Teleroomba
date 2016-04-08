@@ -14,10 +14,14 @@ WebRTCDataMethold.caching = function(data){
  if(data.type == 'DR'){
 	WebRTCDataMethold.cache = data;
  }
- else{
- 	//CHARGE//TONE//HELP//B_RATE
- 	autoBLE.singleCom(data.macro);
+ else if(data.type == 'BLE'){
+ 	if(data.text = "conn"){
+ 		var bleScan = document.getElementById("bleScan");
+ 		bleScan.click();
+ 	}
+ 	//autoBLE.singleCom(data.macro);
  }
+ //CHARGE//TONE//HELP//B_RATE
 
 }
 
@@ -32,7 +36,7 @@ WebRTCDataMethold.FeedBack = function(tag, text){
 
 }
 
-
+WebRTCDataMethold.connected = false;
 
 var autoBLE = {};
 

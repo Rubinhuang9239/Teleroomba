@@ -105,10 +105,7 @@ app.connectTo = function(address)
 
 	$('#loadingView').css('display', 'table');
 
-	app.setLoadingLabel('CONNECTING EMBERACE' +
-						'<br /><span style="font-size:0.75em; color: rgb(75,155,255);"> ' + 
-						device.name +
-						'/ MINI</span>'
+	app.setLoadingLabel('Connecting Roomba BLE: ' + device.name
 						);
 
 	function onConnectSuccess(device)
@@ -120,7 +117,7 @@ app.connectTo = function(address)
 			app.device = device;
 
 			app.setLoadingLabel('Connected to ' + device.name);
-			app.setLoadingLabel('[BLE] -- Done BLE Connectinng --');
+			app.setLoadingLabel('-- Done BLE Connectinng --');
 			Reconnecting = false;
 		//setTimeout(function(){
 		//if(app.connected == true && app.device.name == 'Bluno'){
@@ -238,13 +235,6 @@ app.autoReconnect = function(){
 	setTimeout(function(){
 		app.startScan();
 	},3000);
-
-}
-
-app.disconMode = function(){
-
-alert('Embrace will not be able to detect your falling or injury. \n However you can still request a video call and share location.');
-//loadingPanel("discon");
 
 }
 

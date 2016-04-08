@@ -5,6 +5,27 @@ animate.init = function(){
 	foldSwitch.addEventListener("click",function(){
 		animate.changeDropDownStatus();
 	});
+
+	BLEStatus = document.getElementById("BLEStatus");
+	BLEStatus.addEventListener("click",function(){
+
+		if(WebRTCDataMethold.connected){
+			logMessage("BLE", "Start BLE Scan");
+			this.attributes.class.value = "BLEBlinking";
+
+			var BLEMacro = {
+				type : "BLE",
+				message : "conn"
+			}
+
+			WebRTCDataMethold.sendData( BLEMacro );
+		}else{
+
+			logMessage("Error", "Can't Start BLE Scan before WebRTC is ready!");
+
+		}
+
+	});
 }
 
 animate.dropDownStatus = "hide"
