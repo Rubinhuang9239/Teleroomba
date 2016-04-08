@@ -27,6 +27,9 @@ Advising:<br />
 Dan O'sullivan<br />
 Shwan Van Every<br />
 
+<h3>Current API:</h3>
+coming soon....
+
 <h3>More related projects:</h3>
 
 <h5>From iRobot.com</h5>
