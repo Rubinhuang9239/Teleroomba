@@ -20,12 +20,12 @@ http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_6
 <h3>CrossWalk Version:</h3>
 
 <h3>Credits + Thanks:</h3>
-Early contributor:
+Early contributor:<br />
 Rubin Huang
 
-Advising:
-Dan O'sullivan
-Shwan Van Every
+Advising:<br />
+Dan O'sullivan<br />
+Shwan Van Every<br />
 
 <h3>More related projects:</h3>
 
