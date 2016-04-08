@@ -36,7 +36,7 @@ coming soon....
 <h5>From iRobot.com</h5>
 http://www.irobot.com/About-iRobot/STEM/Create-2/Projects.aspx
 
-<h5>From ramdon hackers:</h5>
+<h5>From random hackers:</h5>
 
 Johnny Chung Lee's DIY Telepresence Robot(2011)
 with source code and intruductions
