@@ -3,6 +3,10 @@
 
 A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai campus
 
+<h5>Demo Video</h5>
+<iframe src="https://player.vimeo.com/video/162164013" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/162164013">teleroomba_doc</a> from <a href="https://vimeo.com/user23013425">Rubin Huang</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
 <h3>Hacking documentation in google slides:</h3>
 
 https://docs.google.com/presentation/d/1esRmssKKQKUmZPN4M6qO2HnMcj071nKUZhuvG29GHJI/edit?usp=sharing
