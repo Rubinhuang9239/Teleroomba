@@ -27,7 +27,8 @@ We assume you have "otherMill", the laptop CNC matchine.
 You want to get "otherPlan" softerware to Print out your circuit, it's free, you can download it here.<br />
 https://othermachine.co/othermill/otherplan/
 <br />
-A very handy video for how to use it<br />
+A very handy video for how to use it
+<br /><br />
 
 <iframe width="480" height="290" src="https://www.youtube.com/embed/SuPlmSrdD6I" frameborder="0" allowfullscreen></iframe>
 
