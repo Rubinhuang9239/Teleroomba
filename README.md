@@ -8,10 +8,28 @@ A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai cam
 https://docs.google.com/presentation/d/1esRmssKKQKUmZPN4M6qO2HnMcj071nKUZhuvG29GHJI/edit?usp=sharing
 
 <h3>Offical iRobot® Create® 2 Open Interface (OI):</h3>
+
 http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_600_Open_Interface_Spec.pdf?la=en
 
 <h3>Circuit build:</h3>
 
+<h5>[PCB Software]Eagle</h5>
+Eago is a popular softeware for PCB editing.<br />
+It's free to use it for its basic functions.<br />
+
+http://www.cadsoftusa.com/download-eagle/
+
+
+<h5>[CNC]OtherMill</h5>
+We assume you have "otherMill", the laptop CNC matchine.
+
+<h5>[Software]OtherPlan</h5>
+You want to get "otherPlan" softerware to Print out your circuit, it's free, you can download it here.<br />
+https://othermachine.co/othermill/otherplan/
+<br />
+A very handy video for how to use it<br />
+
+<iframe width="480" height="290" src="https://www.youtube.com/embed/SuPlmSrdD6I" frameborder="0" allowfullscreen></iframe>
 
 <h3>Web Server:</h3>
 
