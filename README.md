@@ -62,6 +62,10 @@ sudo npm install
 <h5>Following SDK/Framework are needed.</h5>
 
 `Andorid`
+
+<br />
+Android tutorial from Shwan Van Every's "Always on always connected syllabus"<br /> https://itp.nyu.edu/~sve204/alwaysonalwaysconnected_spring16/
+
 `Cordova`
 `CrossWalk`
 
