@@ -63,7 +63,11 @@ sudo npm install
 
 `Andorid`
 
-<br />
+<br/><br/>
+<b>SDK</b><br />
+http://developer.android.com/sdk/index.html
+
+<br /><br />
 Android tutorial from Shwan Van Every's "Always on always connected syllabus"<br /> https://itp.nyu.edu/~sve204/alwaysonalwaysconnected_spring16/
 
 `Cordova`
