@@ -44,7 +44,7 @@ https://nodejs.org/en/
 <h5>As you have installed NODE.JS and NPM(Node package manager)</h5>
 
 NPM website:<br />
-https://www.npmjs.com/
+https://www.npmjs.com/<br><br>
 Install node package by run following commend in `terminal` or `commend line`. 
 
 ```
