@@ -78,7 +78,7 @@ https://cordova.apache.org/
 Phonegap:
 http://phonegap.com/
 
-`CrossWalk`
+<b>`CrossWalk`</b>
 
 Provide a powerful webview with the support for almost any web APIs
 https://crosswalk-project.org/
