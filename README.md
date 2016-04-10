@@ -55,12 +55,10 @@ sudo npm install
 
 <h5>Following SDK/Framework needed.</h5><br/>
 
-```
-Andorid
-Cordova
-CrossWalk
+`Andorid`
+`Cordova`
+`CrossWalk`
 
-```
 
 <h3>Credits + Thanks:</h3>
 Early contributor:<br />
