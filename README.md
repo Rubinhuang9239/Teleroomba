@@ -64,7 +64,7 @@ sudo npm install
 
 <b>`Andorid`</b>
 
-<b>SDK</b><br />
+SDK<br />
 http://developer.android.com/sdk/index.html
 
 Android tutorial from Shwan Van Every's "Always on always connected syllabus"<br /> https://itp.nyu.edu/~sve204/alwaysonalwaysconnected_spring16/<br />
