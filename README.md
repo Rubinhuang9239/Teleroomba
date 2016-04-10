@@ -69,8 +69,19 @@ http://developer.android.com/sdk/index.html
 
 Android tutorial from Shwan Van Every's "Always on always connected syllabus"<br /> https://itp.nyu.edu/~sve204/alwaysonalwaysconnected_spring16/<br />
 
-`Cordova`
+<b>`Cordova`, `Phonegap` </b>
+
+Cordova:
+Apache Cordova is an open-source mobile development framework. It allows you to use standard web technologies<br />
+https://cordova.apache.org/
+
+Phonegap:
+http://phonegap.com/
+
 `CrossWalk`
+
+Provide a powerful webview with the support for almost any web APIs
+https://crosswalk-project.org/
 
 <br /><br />
 <h2>Other + Resource</h2>
