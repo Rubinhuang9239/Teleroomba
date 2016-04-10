@@ -77,11 +77,11 @@ Android tutorial from Shwan Van Every's "Always on always connected syllabus"<br
 
 <b>`Cordova`, `Phonegap` </b>
 
-Cordova:
+Cordova:<br/>
 Apache Cordova is an open-source mobile development framework. It allows you to use standard web technologies<br />
 https://cordova.apache.org/
 
-Phonegap:
+Phonegap:<br/>
 http://phonegap.com/
 
 <b>`CrossWalk`</b>
