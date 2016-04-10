@@ -62,7 +62,7 @@ sudo npm install
 
 <h5>Following SDK/Framework are needed.</h5>
 
-<h5>`Andorid`</h5>
+<b>`Andorid`</b>
 
 <b>SDK</b><br />
 http://developer.android.com/sdk/index.html
