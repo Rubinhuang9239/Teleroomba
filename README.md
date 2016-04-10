@@ -25,7 +25,7 @@ http://www.cadsoftusa.com/download-eagle/
 
 
 <h5>[CNC]OtherMill</h5>
-We assume you have "otherMill", the laptop CNC matchine.
+We assume you have "otherMill", the laptop CNC machine.
 
 <h5>[Software]OtherPlan</h5>
 You want to get "otherPlan" softerware to Print out your circuit, it's free, you can download it here.<br />
