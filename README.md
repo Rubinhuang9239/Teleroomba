@@ -57,6 +57,12 @@ Install node package by run following commend in `terminal` or `commend line`.
 sudo npm install
 ```
 
+Run `roomba.js` with `node commend` in local or host it on your server with <b>`https`</b>
+
+```
+node roomba.js
+```
+
 <h3>Mobile App (Currently Android Only)</h3>
 
 
