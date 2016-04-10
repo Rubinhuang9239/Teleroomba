@@ -37,6 +37,20 @@ https://www.youtube.com/embed/SuPlmSrdD6I
 
 <h3>Web Server:</h3>
 
+<h5>For hosting the Server for peer connection, please make sure you are running the latest version of NODE.JS</h5>
+<br />
+https://nodejs.org/en/
+
+<h5>As you have installed NODE.JS and NPM(Node package manager)</h5>
+
+NPM website:<br />
+https://www.npmjs.com/
+Install node package by run following commend in `terminal` or `commend line`. 
+
+```
+sudo npm install
+```
+
 <h3>Andorid Version:</h3>
 
 <h3>Cordova Version:</h3>
