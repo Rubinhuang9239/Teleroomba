@@ -7,6 +7,8 @@ A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai cam
 <iframe src="https://player.vimeo.com/video/162164013" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <p><a href="https://vimeo.com/162164013">teleroomba_doc</a> from <a href="https://vimeo.com/user23013425">Rubin Huang</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
+<h2>Hacking</h2>
+
 <h3>Hacking documentation in google slides:</h3>
 
 https://docs.google.com/presentation/d/1esRmssKKQKUmZPN4M6qO2HnMcj071nKUZhuvG29GHJI/edit?usp=sharing
@@ -14,6 +16,8 @@ https://docs.google.com/presentation/d/1esRmssKKQKUmZPN4M6qO2HnMcj071nKUZhuvG29G
 <h3>Offical iRobot® Create® 2 Open Interface (OI):</h3>
 
 http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_600_Open_Interface_Spec.pdf?la=en
+
+<h2>Build</h2>
 
 <h3>Circuit build:</h3>
 
@@ -53,12 +57,14 @@ sudo npm install
 
 <h3>Mobile App (Currently Android Only)</h3>
 
-<h5>Following SDK/Framework needed.</h5>
+<h5>Following SDK/Framework are needed.</h5>
 
 `Andorid`
 `Cordova`
 `CrossWalk`
 
+
+<h2>Other + Resource</h2>
 
 <h3>Credits + Thanks:</h3>
 Early contributor:<br />
