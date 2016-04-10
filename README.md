@@ -53,7 +53,7 @@ sudo npm install
 
 <h3>Mobile App (Currently Android Only)</h3>
 
-<h5>Following SDK/Framework needed.</h5><br/>
+<h5>Following SDK/Framework needed.</h5>
 
 `Andorid`
 `Cordova`
