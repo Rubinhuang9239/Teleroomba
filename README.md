@@ -54,9 +54,13 @@ sudo npm install
 <h3>Mobile App (Currently Android Only)</h3>
 
 <h5>Following SDK/Framework needed.<br/>
-<h6>`Andorid`</h6>
-<h6>`Cordova`</h6>
-<h6>`CrossWalk`</h6>
+
+```
+<h6>Andorid</h6>
+<h6>Cordova</h6>
+<h6>CrossWalk</h6>
+
+```
 
 <h3>Credits + Thanks:</h3>
 Early contributor:<br />
