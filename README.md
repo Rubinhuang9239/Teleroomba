@@ -59,15 +59,15 @@ sudo npm install
 
 <h3>Mobile App (Currently Android Only)</h3>
 
+
 <h5>Following SDK/Framework are needed.</h5>
 
-<b>`Andorid`</b>
+<h7>`Andorid`</h7>
 
-<br/>
 <b>SDK</b><br />
 http://developer.android.com/sdk/index.html
 
-<br />Android tutorial from Shwan Van Every's "Always on always connected syllabus"<br /> https://itp.nyu.edu/~sve204/alwaysonalwaysconnected_spring16/<br />
+Android tutorial from Shwan Van Every's "Always on always connected syllabus"<br /> https://itp.nyu.edu/~sve204/alwaysonalwaysconnected_spring16/<br />
 
 `Cordova`
 `CrossWalk`
