@@ -4,6 +4,8 @@
 A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai campus
 
 <h5>Demo Video</h5>
+
+WebRTC Video Stream + Data Channel Testing<br />
 <iframe src="https://player.vimeo.com/video/162164013" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <p><a href="https://vimeo.com/162164013">teleroomba_doc</a> from <a href="https://vimeo.com/user23013425">Rubin Huang</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
@@ -20,6 +22,13 @@ http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_6
 
 <br /><br />
 <h2>Build</h2>
+
+<h3>Hardware overview:</h3>
+1.Roomba<br />
+2.Acrylic Base<br />
+3.Monopod<br />
+4.MCU<br />
+5.Android Phone
 
 <h3>Circuit build:</h3>
 
