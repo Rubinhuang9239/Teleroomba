@@ -73,7 +73,7 @@ node roomba.js
 SDK<br />
 http://developer.android.com/sdk/index.html
 
-Android tutorial from Shwan Van Every's "Always on always connected syllabus"<br /> https://itp.nyu.edu/~sve204/alwaysonalwaysconnected_spring16/<br />
+Android tutorial from Shawn Van Every's "Always on always connected syllabus"<br /> https://itp.nyu.edu/~sve204/alwaysonalwaysconnected_spring16/<br />
 
 <b>`Cordova`, `Phonegap` </b>
 
@@ -99,7 +99,7 @@ Marc Abbey
 
 Advising:<br />
 Dan O'sullivan<br />
-Shwan Van Every<br />
+Shawn Van Every<br />
 
 <h3>Current API:</h3>
 coming soon....
