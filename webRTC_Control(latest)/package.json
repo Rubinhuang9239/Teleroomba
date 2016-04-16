@@ -2,14 +2,15 @@
   "name": "webrtc_server",
   "version": "0.0.0",
   "description": "Run a PeerJS WebRTC server",
-  "main": "index.js",
+  "main": "roomba.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Elliot Smith <elliot.smith@intel.com>",
+  "author": "Rubin Huang <hh1390@nyu.com> in ITP NYU",
   "license": "MIT",
   "dependencies": {
     "peer": "^0.2.5",
-    "ip": "^0.3.0"
+    "ip": "^0.3.0",
+    "express": "^4.13.4"
   }
 }

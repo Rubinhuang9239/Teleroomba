@@ -8,10 +8,6 @@ var servicePort = 8000;
 
 app.use(express.static('teleroomba_Android/www'));
 
-app.get('/', function(req, res){
-  res.sendfile('index_web.html');
-});
-
 http.listen(servicePort, function(){
     console.log("");
     console.log("---------------| Roomba |-----------------");
@@ -19,6 +15,9 @@ http.listen(servicePort, function(){
     console.log("Service server open on "+ ip.address() + ":" + servicePort);
 });
 
+app.get('/', function(req, res){
+  res.sendfile('index_web.html');
+});
 
 var PeerServer = require('peer').PeerServer;
 var server = new PeerServer({port: peerPort, allow_discovery: true});
