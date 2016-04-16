@@ -1,5 +1,6 @@
 # Teleroomba
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="169" width="169" />
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="169" width="169" />
 
 A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai campus
 
