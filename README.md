@@ -14,7 +14,8 @@ The following image provides the concept of this project.<br />
 
 WebRTC Video Stream + Data Channel Testing<br />
 <a target="_blank" href="https://vimeo.com/162164013">teleroomba_doc</a><br />
-<img target="_blank" href="https://vimeo.com/162164013" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback.jpg" width="260" />
+<a target="_blank" href="https://vimeo.com/162164013">
+<img href="https://vimeo.com/162164013" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback.jpg" width="260" /></a>
 
 
 <br /><br />
