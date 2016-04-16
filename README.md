@@ -16,7 +16,7 @@ WebRTC Video Stream + Data Channel Testing<br />
 <iframe src="https://player.vimeo.com/video/162164013" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <p><a href="https://vimeo.com/162164013">teleroomba_doc</a> from <a href="https://vimeo.com/user23013425">Rubin Huang</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
-<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/IMG_0055.jpg" width="200" />
+<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback.jpg" width="200" />
 
 
 <br /><br />
