@@ -2,12 +2,12 @@
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="169" width="169" />
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="144" width="144" />
 
-A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai campus
+A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai campus.<br />
 Thanks to Open Source Hardware Community, we hacked iRobot-Create roomba with Arduino(DFRobot Bluno), and created a telepresence robot. 
 The following image provides the concept of this project.
 
 
-
+<br />
 <h5>Demo Video</h5>
 
 WebRTC Video Stream + Data Channel Testing<br />
