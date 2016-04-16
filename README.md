@@ -27,7 +27,7 @@ http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_6
 1.Roomba<br />
 2.Acrylic Base<br />
 3.Monopod<br />
-4.MCU<br />
+4.MCU (DFrobot Bluno) <br />
 5.Android Phone
 
 <h3>Circuit build:</h3>
