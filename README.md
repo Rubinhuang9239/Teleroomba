@@ -111,12 +111,12 @@ https://crosswalk-project.org/
 You can connect to turn server and call the mobile device on roomba(default auto connect and call) and establish bluetooth connection between the device & Roomba's serial port from control terminal. Full manual list here:
 <br />
 <ol>
-<li>`Connect with id`</li>
-<li>`Call device with id`</li>
-<li>`Bluno BLE scan`</li>
-<li>`Restart safty mode`</li>
-<li>`Serial board reset`</li>
-<li>`Auto Docking`</li>
+<li>Connect with id</li>
+<li>Call device with id</li>
+<li>Bluno BLE scan</li>
+<li>Restart safty mode</li>
+<li>Serial board reset</li>
+<li>Auto Docking</li>
 </ol>
 
 
