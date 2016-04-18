@@ -9,7 +9,6 @@ The following image provides the concept of this project.<br />
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/concept.jpg" width="480" />
 
 
-<br />
 <h5>Demo Video</h5>
 
 WebRTC Video Stream + Data Channel Testing<br />
