@@ -119,6 +119,13 @@ You can connect to turn server and call the mobile device on roomba(default auto
 <li>Auto Docking</li>
 </ol>
 
+<h3>HUD display</h3>
+<b>Distance</b>
+A group of lines accroded to the perspective of the lense for helping driver to estimate the distance.
+
+<b>Direction</b>
+A rough predict of your crusing path, it will only show turning sign when roomba is doing same spot turning.
+
 
 <br /><br />
 <h2>Other + Resource</h2>
