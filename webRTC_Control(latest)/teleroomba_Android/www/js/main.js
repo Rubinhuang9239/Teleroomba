@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   // PeerJS server location
-  var SERVER_IP = '172.27.220.13';
+  var SERVER_IP = '172.16.247.68';
   var SERVER_PORT = 8888;
 
   // DOM elements manipulated as user interacts with the app
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alert("-- Your teleRoomba BLE is Connected! --");
 
           var BLEStatus = document.getElementById("BLEStatus");
-          BLEStatus.attributes.class.value = "BLEOn";
+          BLEStatus.attributes.class.value = "BLEOn bnt";
 
       }
     }

@@ -8,7 +8,7 @@
 
 	// 
 	var joystickRight = new VirtualJoystick({
-		container	: document.body,
+		container	: document.getElementById("touchLayer"),
 		func: "drive",
 		strokeStyle	: 'rgba(255,255,255,0.25)',
 		mouseSupport	: true,

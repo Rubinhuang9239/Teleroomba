@@ -11,7 +11,7 @@ animate.init = function(){
 
 		if(WebRTCDataMethold.connected){
 			logMessage("BLE", "Start BLE Scan");
-			this.attributes.class.value = "BLEBlinking";
+			this.attributes.class.value = "BLEBlinking bnt";
 
 			var BLEMacro = {
 				type : "BLE",
@@ -25,6 +25,11 @@ animate.init = function(){
 
 		}
 
+	});
+
+	settingBnt = document.getElementById("setting");
+	settingBnt.addEventListener("click",function(){
+		animate.settingPanelStatus();
 	});
 }
 
@@ -46,4 +51,14 @@ animate.changeDropDownStatus = function(){
 		animate.dropDownStatus = "show";
 	}
 
+}
+
+animate.settingPanelStatus = function(){
+	var settingPanel = document.getElementById("settingPanel");
+	if(settingPanel.style.transform == "translateY(120%)" || settingPanel.style.transform == ""){
+		settingPanel.style.transform = "translateY(0%)";
+	}
+	else if(settingPanel.style.transform == "translateY(0%)"){
+		settingPanel.style.transform = "translateY(120%)";
+	}
 }
