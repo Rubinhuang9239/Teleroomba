@@ -15,6 +15,9 @@ void setup() {
   delay(100);
   roombotSerial.write(131);  // SAFE MODE
   
+  //roombotSerial.write(131);
+  //  CAUTION!! FULL MODE MAY DAMAGE TELEROOMBA. MUST TESTING IN YOUR RANGE OF VIEW
+  
 }
 
 
@@ -34,7 +37,7 @@ void loop() {
       else if(cmd < 105){
       rightV = cmd - 50;
       }
-      drive(leftV*8,rightV*8);
+      drive(leftV*10,rightV*10);
       }
 
       
