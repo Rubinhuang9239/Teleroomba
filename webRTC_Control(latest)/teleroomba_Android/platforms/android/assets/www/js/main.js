@@ -1,7 +1,13 @@
+
 document.addEventListener('DOMContentLoaded', function () {
   // PeerJS server location
-  var SERVER_IP = '172.16.245.242';
-  var SERVER_PORT = 8888;
+  // var SERVER_IP = '172.16.243.24';
+  // var SERVER_PORT = 8888;
+
+  var SERVER_IP = '45.55.168.221';
+  var SERVER_PORT = 8001;
+
+  //socketCon.init(SERVER_IP);
 
   // DOM elements manipulated as user interacts with the app
   var callerIdEntry = document.querySelector('#caller-id');
@@ -86,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     try {
       // create connection to the ID server
-      peer = new Peer(callerId, {host: SERVER_IP, port: SERVER_PORT});
+      peer = new Peer(callerId, {host: SERVER_IP, port: SERVER_PORT, secure: true});
 
       // hack to get around the fact that if a server connection cannot
       // be established, the peer and its socket property both still have
