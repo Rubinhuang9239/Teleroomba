@@ -10,6 +10,8 @@ WebRTCDataMethold.cache = {
 	rV : 0
 };
 
+//Methold WebRTCDataMethold.sendData is defined in main.js//
+
 WebRTCDataMethold.caching = function(data){
  if(data.type == 'DR'){
 	WebRTCDataMethold.cache = data;
@@ -47,7 +49,8 @@ autoBLE.driveComHistory = {
 						  }
 autoBLE.BLEConnected = false;
 
-autoBLE.driveCom = function(){
+
+autoBLE.driveCom = function(){	//send_to_BLE//
 	if(app.connected){
 
 		if(WebRTCDataMethold.connected == true){

@@ -11,7 +11,7 @@ var remoteVideo = document.getElementById('remote-video');
 
 }
 
-animate.sideMenuStatus = "show";
+animate.sideMenuStatus = "hide";
 
 animate.sideMenuStatusTo = function(state){
 

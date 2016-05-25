@@ -35,7 +35,7 @@ setTimeout(function(){
 	document.getElementById('connect').click();
 	setTimeout(function(){
 	document.getElementById('dial').click();
-	animate.changeDropDownStatus();
+	//animate.changeDropDownStatus();
 	drag.init();
 	},400);
 },360);

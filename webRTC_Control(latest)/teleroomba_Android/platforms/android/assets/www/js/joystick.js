@@ -15,6 +15,7 @@
 		limitStickTravel: true,	
 		stickRadius: 50
 	});
+
 	joystickRight.addEventListener('mouseMove', function(event){
 		if(joystickRight.deltaX()+joystickRight.deltaY() != 0){
 			calcuDrive();
@@ -99,4 +100,23 @@
 		WebRTCDataMethold.sendData(cmd);
 	}
 
-	
+
+	//clean-up need to be done:
+
+	//var joyStickControl = {};
+
+	//joyStickControl.cmd={ lV : 0, rV : 0 };
+
+	// joyStickControl.sendBrake = function(){
+	// 	var cmd = {
+
+	// 		type : 'DR',
+	// 		lV : 0,
+	// 		rV : 0
+			
+	// 	};
+
+	// 	WebRTCDataMethold.sendData(cmd);
+	// }
+
+

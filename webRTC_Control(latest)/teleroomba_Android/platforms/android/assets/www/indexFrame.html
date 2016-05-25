@@ -1,0 +1,295 @@
+<html>
+
+<head>
+
+	<link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<script src="libs/jquery/jquery.js"></script>
+	<script src="js/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="js/switchery/switchery.min.css" />
+	<script src="js/switchery/switchery.min.js"></script>
+
+	<style>
+
+		body,html{
+			height: 100%;
+			width: 100%;
+			padding: 0px;
+			margin: 0px;
+			overflow: hidden;
+		}
+
+		#mainFrame{
+
+			width: 100%;
+			height: 100%;
+			background-color: #444;
+			padding: 0px;
+			margin: 0px;
+			color: #FFF;
+			overflow: scroll;
+
+		}
+
+		#settingPanelVertical{
+			height: 100%;
+			background-color: #333;
+			padding: 0px;
+		}
+
+		#remote-video{
+		}
+
+		#settingPanelHorizontal	{
+			width: 100%;
+			height: 30%;
+			background-color: #444;
+			padding: 0px;
+		}
+
+		.rightRole,.leftRole{
+			padding: 0px;
+		}
+
+		#videoFrame{
+			background-color: #222;
+			height: 70%;
+			width: 100%;
+			border-right: 1px solid #999;
+			border-bottom: 1px solid #999;
+		}
+
+		#remote-video{
+			position: relative;
+			top: 0px
+			right: 0px;
+			left: 0px;
+			bottom: 0px;
+			margin: auto;
+			height: 100%;
+			width: 100%;
+		}
+
+		.settingItem{
+			padding-top: 12px;
+			padding-left: 40px;
+			height: 45px;
+			/*border-top: 1px solid #777;*/
+			cursor: pointer;
+			background-size: 32px 32px;
+			background-position: left center;
+			background-repeat: no-repeat;
+			transition:background-color 0.15s ease-in-out;
+		}
+		.settingItem:hover{
+			background-color: rgba(255,255,255,0.25);
+		}
+
+
+		.settingToggel{
+			cursor: default;
+		}
+		.settingToggel:hover{
+			background-color: transparent;
+		}
+
+		.switchBox{
+			height: 45px;
+			padding: 0px;
+			padding-top: 12px;
+		}
+
+		#DevConsoleBox{
+			background-color: #222;
+			height: 100%;
+		}
+
+		#HardWareInfo{
+			background-color: #2A2A2A;
+			height: 100%;
+		}
+
+		.panelName{
+			border-bottom: solid 1px #444;
+			padding-bottom: 9px
+		}
+
+
+		#settingContent{
+			position: absolute;
+			height: 100%;
+			width: 100%;
+		}
+
+		#phoneBatToggel{
+			background-image: url("img/phone_bat_icon.svg");
+		}
+
+		#reverseViewToggel{
+			background-image: url("img/reverse_view_icon.svg");
+		}
+
+		#videoAugToggel{
+			background-image: url("img/video_aug_icon.svg");
+		}
+
+		#vrModeToggel{
+			background-image: url("img/vr_mode_icon.svg");
+		}
+
+		#keyInputToggel{
+			background-image: url("img/key_input_icon.svg");
+		}
+
+		#learningToggel{
+			background-image: url("img/Learning_icon.svg");
+		}
+
+		#rebootBluno{
+			background-image: url("img/reboot_bluno_icon.svg");
+		}
+
+		#rebootPhone{
+			background-image: url("img/reboot_phone_icon.svg");
+		}
+
+		#aboutTeleroomba{
+			background-image: url("img/about_teler_icon.svg");
+		}
+
+		#settingDetail{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-color: rgba(255,180,55,0.5);
+			z-index: 2;
+			transform:translateX(101%);
+		}
+
+	</style>
+
+
+</head>
+
+
+<body>
+
+<div id = "mainFrame" class = "container">
+
+	<div class = "leftRole col-xs-12 col-sm-9 col-md-9">
+		<div id = "videoFrame" >
+			<video id = "remote-video" loop="loop" src="img/placeHolderVideo.mp4" autoplay ></video>
+		</div>
+
+		<div id = "settingPanelHorizontal" class = "container">
+			<div id="DevConsoleBox" class="col-xs-6 col-sm-6 col-md-6">
+				<h5 class = "panelName">Developer Console</h5>
+			</div>
+
+			<div id="HardWareInfo" class="col-xs-6 col-sm-6 col-md-6">
+				<h5 class = "panelName">Hardware Info</h5>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id = "settingPanelVertical" class="rightRole col-xs-12 col-sm-3 col-md-3">
+		<div id = "settingContent" >
+
+			<h5 class = "panelName" style = "width:100%; text-align:center; margin-bottom:20px;">Settings</h5>
+
+			<div class = "container" style = "width:100%;">
+				<div class="settingItem settingToggel col-xs-10 col-sm-10 col-md-10" id="phoneBatToggel">Battery Indicator</div>
+				<div class="switchBox col-xs-2 col-sm-2 col-md-2">
+					<input type="checkbox" class="js-switch" checked />
+				</div>
+
+				<div class="settingItem settingToggel col-xs-10 col-sm-10 col-md-10" id="reverseViewToggel">Reverse Sight</div>
+				<div class="switchBox col-xs-2 col-sm-2 col-md-2">
+					<input type="checkbox" class="js-switch" checked />
+				</div>
+
+				<div class="settingItem settingToggel col-xs-10 col-sm-10 col-md-10" id="videoAugToggel">Video Augment</div>
+				<div class="switchBox col-xs-2 col-sm-2 col-md-2">
+					<input type="checkbox" class="js-switch" checked />
+				</div>
+
+				<div class="settingItem settingToggel col-xs-10 col-sm-10 col-md-10" id="vrModeToggel">VR Mode</div>
+				<div class="switchBox col-xs-2 col-sm-2 col-md-2">
+					<input type="checkbox" class="js-switch" checked />
+				</div>
+				
+
+				<div class="settingItem settingToggel col-xs-10 col-sm-10 col-md-10" id="keyInputToggel">KeyBoard Input</div>
+				<div class="switchBox col-xs-2 col-sm-2 col-md-2">
+					<input type="checkbox" class="js-switch" checked />
+				</div>
+
+				<div class="settingItem settingToggel col-xs-10 col-sm-10 col-md-10" id="learningToggel">Learning</div>
+				<div class="switchBox col-xs-2 col-sm-2 col-md-2">
+					<input type="checkbox" class="js-switch" checked />
+				</div>
+
+				<div class="settingItem col-xs-12 col-sm-12 col-md-12" id="rebootPhone">Reboot Phone</div>
+
+				<div class="settingItem col-xs-12 col-sm-12 col-md-12" id="rebootBluno">Reboot Bluno</div>
+
+				<div class="settingItem col-xs-12 col-sm-12 col-md-12" id="aboutTeleroomba">About Teleroomba</div>
+
+			</div>
+
+		</div>
+
+		<div id="settingDetail">
+
+		</div>
+
+	</div>
+
+</div>
+
+<script>
+	var elem = document.getElementsByClassName('js-switch');
+	for(i=0; i< elem.length; i++ ){
+		var init = new Switchery(elem[i],{
+											    color             : '#00EE88',
+											    secondaryColor    : '#666',
+											    size              : 'small'
+											});
+	}
+
+
+
+	//-----------Conform------------//
+
+window.addEventListener("load",function(){
+
+	rebootPhone = document.getElementById("rebootPhone");
+	rebootPhone.addEventListener("click",function(){
+		if (confirm('Are You sure to reboot the Phone?')) {
+	    	// Save it!
+		} else {
+		    // Do nothing!
+		}
+	});
+
+	rebootPhone = document.getElementById("rebootBluno");
+	rebootPhone.addEventListener("click",function(){
+		if (confirm('Are You sure to reboot the Bluno?')) {
+	    	// Save it!
+		} else {
+		    // Do nothing!
+		}
+	});
+
+});
+	
+
+
+	</script>
+
+</body>
+
+
+</html>
