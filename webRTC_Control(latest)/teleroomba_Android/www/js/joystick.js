@@ -101,22 +101,4 @@
 	}
 
 
-	//clean-up need to be done:
-
-	//var joyStickControl = {};
-
-	//joyStickControl.cmd={ lV : 0, rV : 0 };
-
-	// joyStickControl.sendBrake = function(){
-	// 	var cmd = {
-
-	// 		type : 'DR',
-	// 		lV : 0,
-	// 		rV : 0
-			
-	// 	};
-
-	// 	WebRTCDataMethold.sendData(cmd);
-	// }
-
 

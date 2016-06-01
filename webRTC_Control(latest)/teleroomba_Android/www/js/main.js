@@ -123,16 +123,17 @@ document.addEventListener('DOMContentLoaded', function () {
         connection.on('open', function() {
             connected = true;
             WebRTCDataMethold.connected = true;
+
         });
 
         connection.on('data',function(data){
             //console.log("peer " + data);
-            //WebRTCDataMethold.caching(data);
             WebRTCDataMethold.caching(data);
         });
 
         WebRTCDataMethold.sendData = function(data){
-          if(connected){ 
+          if(connected){
+            
             connection.send(data);
           }
         }
@@ -188,11 +189,39 @@ document.addEventListener('DOMContentLoaded', function () {
     connection.on('open', function() {
       connected = true;
       WebRTCDataMethold.connected = true;
+
+      //ask about ble status!
+            var BLEProbe = {
+              type:"BLE?"
+            }
+
+            WebRTCDataMethold.sendData(BLEProbe);
+
     });
 
     connection.on('data', function(data) {
 
-      console.log("connection " + data);
+      console.log("connection " + data.type + " " + data.text);
+
+      if(data.type == "BLE?"){
+        var BLEStatus = document.getElementById("BLEStatus");
+
+        if(data.text == "RB: " + true){
+          BLEStatus.attributes.class.value = "BLEOn bnt";
+          autoBLE.BLEConnected = true;
+          console.log("ble connected");
+        }
+        else if(data.text == "RB: " + false){
+          BLEStatus.attributes.class.value = "BLEOff bnt";
+          autoBLE.BLEConnected = false;
+          console.log("ble not connected");
+        }
+
+        data.type = "BLE";
+        data.text = "BLE Connection " + data.text;
+
+      }
+
       logMessage(data.type, data.text);
 
     });
@@ -210,7 +239,9 @@ document.addEventListener('DOMContentLoaded', function () {
         logMessage("Peer", " Roomba has disconnected");
         remoteVideo.src = "img/placeHolderVideo.mp4";
         remoteVideo.loop = "loop";
-        animate.changeDropDownStatus();
+        WebRTCDataMethold.connected = false;
+        autoBLE.BLEConnected = false;
+        BLEStatus.attributes.class.value = "BLEOff bnt";
       });
 
       call.on('error', function (e) {
@@ -245,9 +276,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   WebRTCDataMethold.sendData = function(data){
-    if(connected){ 
+
+    if(WebRTCDataMethold.connected){ 
       connection.send(data);
+
+      if(data.type = "DR"){
+        if(autoBLE.BLEConnected == false){
+          animate.speedCalcu(0,0,2);
+        }
+        else{
+          animate.speedCalcu(data.lV,data.rV);
+        }
+      }
+
     }
+
+    else{
+      //logMessage
+      if(data.type = "DR"){
+        animate.speedCalcu(0,0,1);
+      }
+    }
+
   }
 
 });
@@ -296,6 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           var BLEStatus = document.getElementById("BLEStatus");
           BLEStatus.attributes.class.value = "BLEOn bnt";
+          autoBLE.BLEConnected = true;
 
       }
     }

@@ -38,7 +38,7 @@ setTimeout(function(){
 	//animate.changeDropDownStatus();
 	drag.init();
 	},400);
-},360);
+},800);
 
 
 }

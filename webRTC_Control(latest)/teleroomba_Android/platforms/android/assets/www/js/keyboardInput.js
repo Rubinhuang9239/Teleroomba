@@ -116,9 +116,9 @@ keyBoard.drive = function(empty){
 		}
 
 	}
-	console.log(msg, cmd);
+	//console.log(msg, cmd);
 
 	//Send to Phone
-	//WebRTCDataMethold.sendData(cmd);
+	WebRTCDataMethold.sendData(cmd);
 
 }

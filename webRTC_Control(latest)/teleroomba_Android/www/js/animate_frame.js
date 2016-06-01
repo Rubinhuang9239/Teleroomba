@@ -2,6 +2,8 @@ var animate = {};
 
 animate.settingOn = false;
 
+animate.speedDisplay = null;
+
 animate.init = function(){
 
 	BLEStatus = document.getElementById("BLEStatus");
@@ -86,6 +88,8 @@ animate.init = function(){
 		animate.loadSettingDetail("aboutContent");
 	});
 
+	animate.speedDisplay = document.getElementById("speedVal");
+
 }
 
 animate.settingPanelStatus = function(status){
@@ -148,4 +152,21 @@ animate.removeSettingDetail = function(){
 	animate.clearSettingDetail();
 	var settingDetail = document.getElementById("settingDetail");
 	settingDetail.style.transform = "translateX(103%)";
+}
+
+animate.speedCalcu = function(speedInputL,speedInputR,offLine){
+
+	if( offLine > 0 ){
+		if(offLine == 1){
+			animate.speedDisplay.innerHTML = "<span style='font-size:24px'>X WebRTC</span>";
+		}
+		else if( offLine == 2){
+			animate.speedDisplay.innerHTML = "<span style='font-size:24px'>X BLE</span>";
+		}
+
+		return false;
+	}
+
+	speedInput = (speedInputL+speedInputR) * 0.5;
+	animate.speedDisplay.innerHTML = ((speedInput / 50) * 1.125).toPrecision(3);
 }

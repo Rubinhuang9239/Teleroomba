@@ -127,12 +127,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         connection.on('data',function(data){
             //console.log("peer " + data);
-            //WebRTCDataMethold.caching(data);
             WebRTCDataMethold.caching(data);
         });
 
         WebRTCDataMethold.sendData = function(data){
-          if(connected){ 
+          if(connected){
+            
             connection.send(data);
           }
         }
@@ -192,7 +192,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     connection.on('data', function(data) {
 
-      console.log("connection " + data);
+      console.log("connection " + data.type + data.text);
+
+      if(data.type == "BLE?"){
+        var BLEStatus = document.getElementById("BLEStatus");
+
+        if(data.text == "RB: " + true){
+          BLEStatus.attributes.class.value = "BLEOn bnt";
+        }
+        else if(data.text == "RB: " + true){
+          BLEStatus.attributes.class.value = "BLEOn bnt";
+        }
+
+        data.type = "BLE";
+
+      }
+
       logMessage(data.type, data.text);
 
     });
@@ -210,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
         logMessage("Peer", " Roomba has disconnected");
         remoteVideo.src = "img/placeHolderVideo.mp4";
         remoteVideo.loop = "loop";
-        animate.changeDropDownStatus();
+        WebRTCDataMethold.connected = false;
       });
 
       call.on('error', function (e) {
@@ -245,9 +260,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   WebRTCDataMethold.sendData = function(data){
-    if(connected){ 
+
+    if(WebRTCDataMethold.connected){ 
       connection.send(data);
+
+      if(data.type = "DR"){
+        if(autoBLE.BLEConnected == false){
+          animate.speedCalcu(0,0,2);
+        }
+        else{
+          animate.speedCalcu(data.lV,data.rV);
+        }
+      }
+
     }
+
+    else{
+      //logMessage
+      if(data.type = "DR"){
+        animate.speedCalcu(0,0,1);
+      }
+    }
+
   }
 
 });

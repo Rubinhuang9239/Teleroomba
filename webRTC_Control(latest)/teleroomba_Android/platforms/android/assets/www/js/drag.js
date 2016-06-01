@@ -79,38 +79,3 @@ drag.init = function(){
 
 
 }
-
-// drag.begin = function(){
-//     var persSlider = document.getElementById('persSlider');
-//     var persMono = document.getElementById('persMono');
-//     var HUDPers = document.getElementById("HUDPers");
-
-//     var persSliderHummer = new Hammer.Manager(persSlider);
-
-//     persSliderHummer.add( new Hammer.Pan({ direction: Hammer.DIRECTION_VERTICAL, threshold: 0 }) );
-//         persSliderHummer.on("panmove panstart panend", function(ev){
-
-//         if( ev.type == "panstart"){
-//             persSlider.style.opacity = "1";
-//         }
-
-//         else if( ev.type == "panmove"){
-//             if(drag.camHeight.y + ev.deltaY>0 && drag.camHeight.y + ev.deltaY<150){
-//             persSlider.style.transform = "translateY(" + (drag.camHeight.y + ev.deltaY) + "px)";
-//             persMono.style.backgroundSize = "100% " + (180 - (drag.camHeight.y + ev.deltaY)) + "px";
-
-//             HUDPers.style.transform = "perspective(300px) translateY(" + 5*(drag.camHeight.y + ev.deltaY) + "px) translateZ(0px) rotateX(60deg)";
-
-//             }
-//         }
-
-//         else if( ev.type == "panend"){
-//             drag.camHeight.x += ev.deltaX;
-//             drag.camHeight.y += ev.deltaY;
-//             persSlider.style.opacity = "0.65";
-//         }
-
-//     });
-// }
-
-

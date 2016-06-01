@@ -26,3 +26,7 @@ else if( state == "show" ){
 }
 
 }
+
+animate.speedCalcu = function(){
+	
+}

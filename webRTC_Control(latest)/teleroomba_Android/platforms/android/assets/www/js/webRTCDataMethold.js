@@ -23,9 +23,13 @@ WebRTCDataMethold.caching = function(data){
  	}
  	//autoBLE.singleCom(data.macro);
  }
- //CHARGE//TONE//HELP//B_RATE
+ else if(data.type == 'BLE?'){
+	  var bleStatus = app.connected;
 
+	  WebRTCDataMethold.FeedBack( "BLE?", bleStatus );
+ }
 }
+ //CHARGE//TONE//HELP//B_RATE
 
 WebRTCDataMethold.FeedBack = function(tag, text){
 
@@ -40,6 +44,9 @@ WebRTCDataMethold.FeedBack = function(tag, text){
 
 WebRTCDataMethold.connected = false;
 
+
+
+
 var autoBLE = {};
 
 autoBLE.driveComInterval = true;
@@ -47,6 +54,7 @@ autoBLE.driveComHistory = {
 							lV:0,
 							rV:0
 						  }
+
 autoBLE.BLEConnected = false;
 
 
@@ -111,6 +119,6 @@ autoBLE.driveCom = function(){	//send_to_BLE//
 	}
 }
 
-autoBLE.singleCom =function(){
+// autoBLE.singleCom =function(){
 
-}
+// }

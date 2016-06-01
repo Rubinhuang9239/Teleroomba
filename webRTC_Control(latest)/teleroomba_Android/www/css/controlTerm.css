@@ -296,7 +296,8 @@ a{color: #FFF !important;}
     #BLEStatus{
       background-image: url("../img/ble.png");
       background-size: 85%;
-      left:0px;
+      top:0px;
+      left: 0px;
     }
 
     #setting{
@@ -307,12 +308,7 @@ a{color: #FFF !important;}
     }
 
     @media (max-width: 480px) {
-
-    #BLEStatus{
-      top:0px;
-      left: 0px;
-    }
-
+    	
     #setting{
       top:37px;
       left: 0px;
