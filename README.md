@@ -7,6 +7,10 @@ Thanks to Open Source Hardware Community, we hacked iRobot-Create roomba with Ar
 The following image provides the concept of this project.<br />
 
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/concept.jpg" width="480" />
+<br /><br />
+Next steps
+<br />
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/360_system.png" width="480" />
 
 
 <h5>Demo Video</h5>
