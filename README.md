@@ -2,13 +2,41 @@
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="169" width="169" />
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="144" width="144" />
 
+<h2>Info</h2>
+
 A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai campus.<br />
 Thanks to Open Source Hardware Community, we hacked iRobot-Create roomba with Arduino(DFRobot Bluno), and created a telepresence robot. <br />
 The following image provides the concept of this project.<br />
 
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/concept.jpg" width="480" />
 <br /><br />
-Next steps
+<h5>Dev Schedule</h5>
+
+Teleroomba 1.x
+
+A 2D video and real time communication telepresence robot
+
+It’s a roomba based robot which controlled from a web + Android + Arduino system.
+User can control the robot from a web browser with keyboard input/mouse/touch screen.
+
+Teleroomba 2.x
+
+A 2D/3D video and real time communication telepresence robot
+
+It’s a roomba based robot which controlled from a web + Android + Arduino system.
+With the power of Lattepanda and Linux, this model is able to live stream a UV map from 360 camera like thetaS.
+
+User can control the robot from a web browser with keyboard input/mouse/touch screen.
+An individual window will stream the 360 video.
+
+Teleroomba 3.x
+
+A 2D/3D video and real time communication telepresence robot
+
+A fully integrated system on Linux runs on lattepanda/raspberry Pi
+support multi HDMI-Input/output, connect to live stream engine, webGL and even Unity game features.
+
+
 <br />
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/360_system.jpg" width="480" />
 
