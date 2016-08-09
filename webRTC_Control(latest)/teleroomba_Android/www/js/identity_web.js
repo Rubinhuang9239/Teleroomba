@@ -4,7 +4,9 @@
 var identity = {
 	device : "web",
 	role : "control",
-	target : "roomba"
+	target : "roomba",
+	video : true,
+	audio : true
 }
 
 

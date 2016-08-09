@@ -1,0 +1,113 @@
+<html>
+
+
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="360view/css/bootstrap.css" />
+	<link rel="stylesheet" href="360view/css/sphereView.css" />
+	<link rel="stylesheet" href="js/switchery/switchery.min.css" />
+
+</head>
+
+<body class = "container">
+<video id="thetaVideo" autoplay muted loop style="display:none">
+	<source src="360view/test.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+</video>
+
+<!-- <script src="360view/js/localCamTest.js"></script> -->
+<script src="360view/js/jquery.js"></script>
+<script src="360view/js/three.min.js"></script>
+<script src="360view/js/StereoEffect.js"></script>
+<script src="360view/js/OrbitControls.js"></script>
+<script src="360view/js/theta-view.js"></script>
+<script src="360view/js/peer.js"></script>
+<script src="360view/js/main.js"></script>
+<script src="360view/js/identity_360.js"></script>
+<script src="js/switchery/switchery.min.js"></script>
+
+
+<script>
+
+var settingDB = {
+			"headset" : false,
+		}
+
+window.addEventListener( 'DOMContentLoaded', theta_view('thetaVideo'), false );
+</script>
+
+
+<div id = "sphereViewSetting" class="rightRole col-xs-12 col-sm-3 col-md-3">
+
+		<div id = "settingContent" >
+
+			<div id="settingClose" class="closeBnt"></div>
+
+			<h5 class = "panelName" style = "width:100%; text-align:center;">Settings</h5>
+
+			<div class = "container" style = "width:100%; padding-bottom: 20px;">
+
+					<div id="credentials">
+				        <input class="peerIdInput" type="text" id="caller-id" placeholder='My Peer ID'><br/>
+				        <button id="connect">Connect</button>
+
+				        <input class="peerIdInput" type="select" id="recipient-id" placeholder='Aim Peer ID'>
+				        </input><br/>
+				        <button id="dial">Call</button>
+				        <br /><br />
+
+				  	</div>
+
+				  	<div class="settingItem settingToggel col-xs-10 col-sm-10 col-md-10" id="vrModeToggel">Headset Mode</div>
+					<div class="switchBox col-xs-2 col-sm-2 col-md-2">
+						<input key="headset" type="checkbox" class="js-switch" checked="true" />
+					</div>
+
+					<br />
+			        <div id="DevConsoleBox">
+			          <h5 class = "panelName">Developer Console</h5>
+			          <div id="messages">
+			            Dom Initialized...<br />
+			            Waiting for Javascript callbacks.
+			          </div>
+			        </div>
+
+
+			</div>
+
+		</div>
+		<video id = "local-video" style = "display:none;" muted autoplay></video>
+</div>
+
+
+</body>
+
+	<script>
+		var elem = document.getElementsByClassName('js-switch');
+		for(i=0; i< elem.length; i++ ){
+			var init = new Switchery(elem[i],
+			{
+				color             : '#00EE88',
+				secondaryColor    : '#666',
+				size              : 'small'
+			});
+
+
+		}
+
+
+		$('.js-switch').change(function(e){
+
+			e.target.attributes.checked = !e.target.attributes.checked;
+
+			settingDB[e.target.attributes.key.value] = e.target.attributes.checked;
+
+			console.log(e.target.attributes.key.value , e.target.attributes.checked);
+		});
+
+		$('.js-switch').click();
+
+	</script>
+
+
+</html>

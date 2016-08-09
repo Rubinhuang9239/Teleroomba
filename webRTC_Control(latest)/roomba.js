@@ -52,8 +52,25 @@ http.listen(servicePort, function(){
 app.use(express.static('teleroomba_Android/www'));
 
 app.get('/', function(req, res){
-  res.sendfile('index_web.html');
+  res.sendfile('teleroomba_Android/www/index.html');
 });
+
+app.get('/role', function(req, res){
+  res.sendfile('teleroomba_Android/www/route.html');
+});
+
+app.get('/panda', function(req, res){
+  res.sendfile('teleroomba_Android/www/index_panda.html');
+});
+
+app.get('/360', function(req, res){
+  res.sendfile('teleroomba_Android/www/360view/index.html');
+});
+
+
+
+
+//-------------Peer.js---------------------//
 
 var PeerServer = require('peer').PeerServer;
 var server = new PeerServer({port: peerPort, allow_discovery: true});

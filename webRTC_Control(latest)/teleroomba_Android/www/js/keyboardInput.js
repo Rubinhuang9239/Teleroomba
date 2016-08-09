@@ -34,7 +34,7 @@ keyBoard.checkEmpty = function(){
 	var emptyCount = 0;
 
 	for(key in keyBoard.keydownList){
-		emptyCount = keyBoard.keydownList[key];
+		emptyCount += keyBoard.keydownList[key];
 	}
 
 	//if empty, keyBoard.drive(0);

@@ -1,11 +1,11 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   // PeerJS server location
-  // var SERVER_IP = '172.16.243.24';
-  // var SERVER_PORT = 8888;
+  var SERVER_IP = '192.168.1.100';
+  var SERVER_PORT = 8888;
 
-  var SERVER_IP = '45.55.168.221';
-  var SERVER_PORT = 8001;
+  // var SERVER_IP = '45.55.168.221';
+  // var SERVER_PORT = 8001;
 
   //socketCon.init(SERVER_IP);
 
@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
     else {
       navigator.webkitGetUserMedia(
         {
-          audio: true,
-          video: true
+          video: identity.video,
+          audio: identity.audio
         },
 
         function (stream) {
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     try {
       // create connection to the ID server
-      peer = new Peer(callerId, {host: SERVER_IP, port: SERVER_PORT, secure: true});
+      peer = new Peer(callerId, {host: SERVER_IP, port: SERVER_PORT, secure: false});
 
       // hack to get around the fact that if a server connection cannot
       // be established, the peer and its socket property both still have

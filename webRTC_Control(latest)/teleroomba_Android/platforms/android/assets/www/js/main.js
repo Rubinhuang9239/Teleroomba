@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         connection.on('open', function() {
             connected = true;
             WebRTCDataMethold.connected = true;
+
         });
 
         connection.on('data',function(data){
@@ -188,23 +189,36 @@ document.addEventListener('DOMContentLoaded', function () {
     connection.on('open', function() {
       connected = true;
       WebRTCDataMethold.connected = true;
+
+      //ask about ble status!
+            var BLEProbe = {
+              type:"BLE?"
+            }
+
+            WebRTCDataMethold.sendData(BLEProbe);
+
     });
 
     connection.on('data', function(data) {
 
-      console.log("connection " + data.type + data.text);
+      console.log("connection " + data.type + " " + data.text);
 
       if(data.type == "BLE?"){
         var BLEStatus = document.getElementById("BLEStatus");
 
         if(data.text == "RB: " + true){
           BLEStatus.attributes.class.value = "BLEOn bnt";
+          autoBLE.BLEConnected = true;
+          console.log("ble connected");
         }
-        else if(data.text == "RB: " + true){
-          BLEStatus.attributes.class.value = "BLEOn bnt";
+        else if(data.text == "RB: " + false){
+          BLEStatus.attributes.class.value = "BLEOff bnt";
+          autoBLE.BLEConnected = false;
+          console.log("ble not connected");
         }
 
         data.type = "BLE";
+        data.text = "BLE Connection " + data.text;
 
       }
 
@@ -226,6 +240,8 @@ document.addEventListener('DOMContentLoaded', function () {
         remoteVideo.src = "img/placeHolderVideo.mp4";
         remoteVideo.loop = "loop";
         WebRTCDataMethold.connected = false;
+        autoBLE.BLEConnected = false;
+        BLEStatus.attributes.class.value = "BLEOff bnt";
       });
 
       call.on('error', function (e) {
@@ -330,6 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           var BLEStatus = document.getElementById("BLEStatus");
           BLEStatus.attributes.class.value = "BLEOn bnt";
+          autoBLE.BLEConnected = true;
 
       }
     }

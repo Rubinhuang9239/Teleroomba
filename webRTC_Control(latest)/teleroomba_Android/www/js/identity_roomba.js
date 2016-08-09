@@ -4,6 +4,8 @@
 var identity = {
 	device : "android",
 	role : "roomba",
+	video : true,
+	audio : true
 }
 
 

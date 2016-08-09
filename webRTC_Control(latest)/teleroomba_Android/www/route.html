@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Teleroomba Roles</title>
+
+<style>
+
+
+html,body{
+	height: 100%;
+	width: 100%;
+}
+
+body{
+	padding: 0px;
+	margin: 0px;
+	background-color: #444;
+}
+
+.route{
+
+	font-size: 1.5em;
+	height: 100px;
+	width: 60%;
+	margin: auto;
+	text-align: center;
+	line-height: 60px;
+	background-color: #FF9900;
+	transition:all 0.4s ease-in-out;
+	cursor: pointer;
+}
+
+.route:hover{
+
+	background-color: #ffde36;
+	
+}
+
+</style>
+
+<script>
+
+window.addEventListener("load",function(){
+
+var container = document.getElementById("control");
+container.addEventListener("click",function(){
+	window.open("/"); 
+});
+
+var panda = document.getElementById("panda");
+panda.addEventListener("click",function(){
+	window.open("/panda"); 
+});
+
+var sphere = document.getElementById("sphere");
+sphere.addEventListener("click",function(){
+	window.open("/360"); 
+});
+
+
+
+
+});
+
+</script>
+
+</head>
+
+
+<body>
+
+<div class = "container">
+
+<div class="route" id="control">
+control
+</div>
+
+<div class="route" id="panda">
+panda
+</div>
+
+<div class="route" id="sphere">
+360view
+</div>
+
+
+</div>
+
+</body>
+
+</html>
