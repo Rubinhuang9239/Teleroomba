@@ -52,7 +52,6 @@ documented over iterations
 <img href="https://vimeo.com/162164013" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback2.jpg"  height="160" /></a>
 <a href="https://vimeo.com/166125306">
 <img href="https://vimeo.com/166125306" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback3.jpg"  height="160" /></a>
-
 <a href="https://vimeo.com/177041877">
 <img href="https://vimeo.com/177041877" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback4.jpg"  height="160" /></a>
 
