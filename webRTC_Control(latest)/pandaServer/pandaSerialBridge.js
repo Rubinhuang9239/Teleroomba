@@ -7,8 +7,22 @@ var io = require("socket.io")(3000);
 
 io.on('connection', function (socket) {
   console.log(socket.id);
+
+  socket.on("drive",function(data){
+
+    drive.lv = data[0];
+    drive.rv = data[1];
+
+    console.log(data);
+
+  })
+
 });
 
+var drive = {
+  lv: 0,
+  rv: 0
+}
 
 
 
@@ -36,7 +50,6 @@ SerialPort.list(function (err, ports) {
   });
 
 
-
   if(portName != null){
 
     var myPort = new SerialPort(portName, {
@@ -48,19 +61,14 @@ SerialPort.list(function (err, ports) {
 
 
     myPort.on('open', function() {
-      // myPort.write(120, function(err) {
-      //   if (err) {
-      //     return console.log('Error on write: ', err.message);
-      //   }
-      //   console.log('message go');
-      // });
       console.log("Serial opened on " + portName);
     });
 
     myPort.on('data', function(data) {
+      //data feed check
       console.log(data);
-      //myPort.flush();
-      myPort.write("265,800,420\n");
+
+      myPort.write(drive.lv + "," + drive.rv + "\n");
     });
 
     // open errors will be emitted as an error event
