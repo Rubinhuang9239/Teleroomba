@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1"/>
-    <title>[Master]Panda Sight</title>
+    <title>[Master]Roomba Control</title>
 
 
 	<link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,11 +24,7 @@
     <script src="js/peer.js"></script>
     <script src="js/webRTCDataMethold.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/identity_panda.js"></script>
-
-    <script src="js/socket.io.js"></script>
-    <script src="js/socket_panda.js"></script>
-
+    <script src="js/identity_web.js"></script>
 
 
 </head>
@@ -43,10 +39,7 @@
 		<div id = "touchLayer"></div>
 
 		<div id = "videoFrame" >
-
-			<!--Mute audio for teleroomba 2-->
-			<!-- <video id = "remote-video" muted src="img/placeHolderVideo.mp4" autoplay ></video> -->
-			<video style = "display:none;" id = "remote-video" muted src="" autoplay ></video>
+			<video id = "remote-video" loop="loop" src="img/placeHolderVideo.mp4" autoplay ></video>
 
 			<video id="local-video" muted autoplay></video>
 
@@ -222,8 +215,6 @@
 		keyboard : true,
 		learning : true
 	}
-
-	//socketCon.init();
 
 	</script>
 

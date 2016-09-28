@@ -5,7 +5,7 @@ var identity = {
 	device : "web",
 	role : "panda",
 	target : "360view",
-	video : true,
+	video : {optional:[ {minHeight:1920}, {minWidth:1080} ]},
 	audio : false
 }
 

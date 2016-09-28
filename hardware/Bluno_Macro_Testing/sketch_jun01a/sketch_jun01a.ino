@@ -1,5 +1,5 @@
 #include <SoftwareSerial.h>
-SoftwareSerial roombotSerial(12, 11);//RX/TX
+SoftwareSerial roombotSerial(10, 11);//RX/TX
 
 int tones[] = {76,16,76,16,76,32,76,16,76,16,76,32,76,16,79,16};
 
@@ -8,7 +8,7 @@ void setup() {
     roombotSerial.begin(115200);  
     roombotSerial.write(128);  // START
     
-    delay(500);
+    delay(2500);
   roombotSerial.write(131);
   
   roombotSerial.write(140);

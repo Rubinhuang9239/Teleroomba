@@ -16,26 +16,46 @@ html,body{
 body{
 	padding: 0px;
 	margin: 0px;
+	height: 100%;
 	background-color: #444;
 }
 
 .route{
-
-	font-size: 1.5em;
-	height: 100px;
-	width: 60%;
+	position: absolute;
+	font-size: 2em;
+	height: 20%;
+	width: 100%;
 	margin: auto;
 	text-align: center;
-	line-height: 60px;
+	line-height: 90px;
+	border-top: solid 1px #FFF;
+	border-bottom: solid 1px #FFF;
 	background-color: #FF9900;
 	transition:all 0.4s ease-in-out;
 	cursor: pointer;
+	color: #FFF;
 }
 
 .route:hover{
 
-	background-color: #ffde36;
+	background-color: #FFDE36;
 	
+}
+
+#control{
+	top:5%;
+}
+
+#panda{
+	top:25%;
+}
+
+#sphere{
+	top:45%;
+}
+
+#control_Model2{
+	top:65%;
 }
 
 </style>
@@ -44,8 +64,8 @@ body{
 
 window.addEventListener("load",function(){
 
-var container = document.getElementById("control");
-container.addEventListener("click",function(){
+var control = document.getElementById("control");
+control.addEventListener("click",function(){
 	window.open("/"); 
 });
 
@@ -59,7 +79,10 @@ sphere.addEventListener("click",function(){
 	window.open("/360"); 
 });
 
-
+var control2 = document.getElementById("control_Model2");
+control2.addEventListener("click",function(){
+	window.open("/control2"); 
+});
 
 
 });
@@ -85,6 +108,9 @@ panda
 360view
 </div>
 
+<div class="route" id="control_Model2">
+control( Model2 )
+</div>
 
 </div>
 

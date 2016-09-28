@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   // PeerJS server location
-  var SERVER_IP = '192.168.1.100';
+  var SERVER_IP = 'localhost';
   var SERVER_PORT = 8888;
 
   // var SERVER_IP = '45.55.168.221';

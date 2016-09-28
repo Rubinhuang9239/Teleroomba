@@ -67,6 +67,9 @@ app.get('/360', function(req, res){
   res.sendfile('teleroomba_Android/www/360view/index.html');
 });
 
+app.get('/control2', function(req, res){
+  res.sendfile('teleroomba_Android/www/control_model2.html');
+});
 
 
 
