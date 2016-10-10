@@ -8,9 +8,9 @@
 
 	// 
 	var joystickRight = new VirtualJoystick({
-		container	: document.getElementById("touchLayer"),
+		container: document.getElementById("touchLayer"),
 		func: "drive",
-		strokeStyle	: 'rgba(255,255,255,0.25)',
+		strokeStyle	: 'rgba(255,255,255,0.35)',
 		mouseSupport	: true,
 		limitStickTravel: true,	
 		stickRadius: 50
@@ -75,8 +75,8 @@
 			}
 
 			else if(joystickRight.deltaX()> -25 && joystickRight.deltaX() < 25){
-			 	cmd.lV = -40;
-			 	cmd.rV = -40;
+			 	cmd.lV = -10;
+			 	cmd.rV = -10;
 			}
 			else{
 				cmd.lV = 0;
@@ -85,7 +85,7 @@
 		}
 
 		cmd.type = 'DR';
-		sendCmd(cmd);
+		sendCmd("DR",cmd);
 	}
 
 	function sendBrake(){
@@ -97,7 +97,7 @@
 			
 		};
 
-		sendCmd(cmd);
+		sendCmd("DR",cmd);
 	}
 
 

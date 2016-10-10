@@ -63,6 +63,10 @@ app.get('/panda', function(req, res){
   res.sendfile('teleroomba_Android/www/index_panda.html');
 });
 
+app.get('/frontCam', function(req, res){
+  res.sendfile('teleroomba_Android/www/frontCam.html');
+});
+
 app.get('/360', function(req, res){
   res.sendfile('teleroomba_Android/www/360view/index.html');
 });

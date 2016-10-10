@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if(WebRTCDataMethold.connected){ 
       connection.send(data);
 
-      if(data.type = "DR"){
+      if(data.type == "DR"){
         if(autoBLE.BLEConnected == false){
           animate.speedCalcu(0,0,2);
         }
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     else{
       //logMessage
-      if(data.type = "DR"){
+      if(data.type == "DR"){
         animate.speedCalcu(0,0,1);
       }
     }

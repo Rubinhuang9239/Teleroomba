@@ -4,7 +4,7 @@
 var identity = {
 	device : "web",
 	role : "360view",
-	target : "panda",
+	target : "thetaS",
 	video : true,
 	audio : false
 }

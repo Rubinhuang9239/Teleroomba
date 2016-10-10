@@ -1,27 +1,128 @@
 <html>
 
-<script src="js/virtualjoystick.js"></script>
-<script src="js/socket.io.js"></script>
-<script src="js/socket.js"></script>
+<head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1"/>
 
-<style>
+	<script src="js/virtualjoystick.js"></script>
+	<script src="js/socket.io.js"></script>
+	<script src="js/socket.js"></script>
 
-body{
-	height: 100%;
-	width: 100%;
-	background-color: #000;
-	margin:0px;
-	padding: 0px;
-}
+	<style>
 
-#view{
+	body{
+		height: 100%;
+		width: 100%;
+		margin:0px;
+		padding: 0px;
+	}
 
-}
+	#view{
 
-</style>
+	}
+
+	#settingLayer{
+		position: absolute;
+		z-index: 9999999;
+		width: 100%;
+		top: 0px;
+	}
+
+	#touchLayer{
+		height: 100%;
+		width: 100%;
+		background-color: #444;
+	}
+
+	.func{
+		width: 25%;
+		height: 3.5em;
+		line-height: 3.5em;
+		background-color: rgba(255,255,255,0.1);
+		float: left;
+		font-size: 1em;
+		text-align: center;
+		color:#FFF;
+		font-family: "Helvetica";
+
+	}
+
+	</style>
+
+	<script>
+	var Status = {
+		beep1:false,
+		beep2:false,
+	};
+
+	window.addEventListener("load",function(){
+
+		var beep1 = document.getElementById('beep1');
+		var beep2 = document.getElementById('beep2');
+
+		beep1.addEventListener("click",function(){
+			if( animate.beepStatus.beep1 ){
+				beep1.style.backgroundColor = "rgba(255,255,255,0.1)";
+				animate.beepStatus.beep1 = false;
+
+			}else{
+				beep1.style.backgroundColor = "#FF9900";
+				animate.beepStatus.beep1 = true;
+				animate.beepStatus.beep2 = false;
+			}
+		});
+
+		beep2.addEventListener("click",function(){
+			if( animate.beepStatus.beep2 ){
+				beep2.style.backgroundColor = "rgba(255,255,255,0.1)";
+				animate.beepStatus.beep2 = false;
+			}else{
+				beep2.style.backgroundColor = "#FF9900";
+				animate.beepStatus.beep2 = true;
+				animate.beepStatus.beep1 = false;
+			}
+		});
+
+		dock.addEventListener("click",function(){
+				Status.beep1 = false;
+				Status.beep2 = false;
+				beep1.style.backgroundColor = "rgba(255,255,255,0.1)";
+				beep2.style.backgroundColor = "rgba(255,255,255,0.1)";
+
+				var cmd = false;
+
+				sendCmd("DK", cmd);
+		});
+
+		restart.addEventListener("click",function(){
+				Status.beep1 = false;
+				Status.beep2 = false;
+				beep1.style.backgroundColor = "rgba(255,255,255,0.1)";
+				beep2.style.backgroundColor = "rgba(255,255,255,0.1)";
+
+				var cmd = false;
+
+				sendCmd("SM", cmd);
+		});
+
+	});
+	</script>
+
+
+</head>
 
 <body id="view">
-	<script src = "js/joystick.js"></script>
+	<div id="touchLayer"></div>
+
+	<div id="settingLayer">
+		<div class="func" id = "beep1">Beep1</div>
+		<div class="func" id = "beep2">Beep2</div>
+		<div class="func" id = "dock">dock</div>
+		<div class="func" id = "restart">Safe Mode</div>
+	</div>
+
 </body>
+
+<script src = "js/joystick.js"></script>
 
 </html>

@@ -1,5 +1,7 @@
-var socket = io.connect();
+var socket = io.connect("http://127.0.0.1:3000");
 
-function sendCmd(cmd){
-socket.emit("drive", cmd);
+function sendCmd(type,cmd){
+
+	socket.emit(type, cmd);
+
 }
