@@ -18,7 +18,7 @@ WebRTCDataMethold.caching = function(data){
 						);
  }
  else if(data.type == 'SM'){ //enter safe mode
-	 localSocket.sendCmd(data.type,true);
+	 localSocket.sendCmd(data.type,null);
  }
 
  //console.log(data);

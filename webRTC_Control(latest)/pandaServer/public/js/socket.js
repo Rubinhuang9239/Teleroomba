@@ -1,4 +1,4 @@
-var socket = io.connect("http://127.0.0.1:3000");
+var socket = io("https://localSerial.itp.io:3000");
 
 function sendCmd(type,cmd){
 

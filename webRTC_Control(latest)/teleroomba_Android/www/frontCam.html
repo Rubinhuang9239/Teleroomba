@@ -153,11 +153,12 @@
         <input type="select" id="recipient-id"></input>
         <div class="menuItem uiButton" id="dial">WebRTC Call</div>
 
-        <div class = "menuItem">Wheel Speed</div>
-        <div id = "wheelSpeedIndicator">
-        <div id = "leftVShow" class = "menuItem" >L : N/A</div>
-        <div id = "rightVShow" class = "menuItem" >R : N/A</div>
+        <br/>
+        <div class = "menuItem">Media Player:</div>
+        <div class = "menuItem" id = "mediaListPanel">
+          <span style="opacity:0.5;">Play list no Media loaded<span>
         </div>
+        <div id = "mediaPlayerContainer"></div>
 
         <div class = "menuItem uiButton" id = "bleScan" onclick="app.startScan()"> BLE Scan 
         </div>
@@ -169,13 +170,6 @@
           <div class = "menuItem uiButton" id="disconnectButton" style = "background:#FF9900;" onclick="app.disconnect()">Disconnect
           </div>
         </div>
-
-
-
-
-
-
-
 
 
         <div class = "menuItem" id = "about">
@@ -209,5 +203,7 @@
   <script src="js/webRTCDataMethold_model2.js"></script>
   <script src="js/socket.io.js"></script>
   <script src="js/localSocket.js"></script>
+
+  <script src="js/mediaPlayer.js"></script>
 
 </html>

@@ -38,6 +38,7 @@ identity.replacePeerId = function(){
 		setTimeout(function(){
 			//document.getElementById('dial').click();
 			drag.init();
+			mediaPlayer.init({type:"audio"});
 		},400);
 	},800);
 

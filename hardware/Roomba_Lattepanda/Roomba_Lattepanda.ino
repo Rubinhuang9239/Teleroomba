@@ -16,6 +16,8 @@ int ledDir = 0;
 int beepType[] = {0,0};
 boolean beeping = false;
 
+#define debugSwitch 2
+
 void setup() {
   
   //Init Windows/Linux serial port interaction
@@ -48,18 +50,18 @@ void loop() {
   // put your main code here, to run repeatedly:
   if( Serial.available() > 0 ){
     
-      boolean goAhead = false; 
-    
-      for(int i=0; i < 4; i++ ){
-        int prob = Serial.parseInt();
-        if(prob == 60){
-          goAhead = true;
-          break;
-        }
-      }    
-     
-      if(goAhead){
-          
+//      boolean goAhead = false; 
+//    
+//      for(int i=0; i < 4; i++ ){
+//        int prob = Serial.parseInt();
+//        if(prob == 60){
+//          goAhead = true;
+//          break;
+//        }
+//      }    
+//     
+//      if(goAhead){
+
         int cmd = Serial.parseInt();
         int input1 = Serial.parseInt();
         int input2 = Serial.parseInt();
@@ -99,16 +101,23 @@ void loop() {
         }
         
         
-        Serial.print(cmd);
-        Serial.print(' ');
-        Serial.print(input1);
-        Serial.print(' ');
-        Serial.println(input2);
-       
-      }
-      else{
-        Serial.println("skip");
-      }
+        if( digitalRead(debugSwitch) == HIGH ){
+          Serial.print(cmd);
+          Serial.print(' ');
+          Serial.print(input1);
+          Serial.print(' ');
+          Serial.print(input2);
+        }
+        Serial.print('\n');
+        
+      //Go Ahead if Finish
+      
+//      }
+//      else{
+//        Serial.println("skip");
+//      }
+      
+      //Go Ahead Finish
     
     }
     
@@ -136,7 +145,7 @@ void loop() {
       pixels.show();
       
      
-     delay(40);
+     delay(41);
 }
 
 void drive(signed int leftV, signed int rightV){
