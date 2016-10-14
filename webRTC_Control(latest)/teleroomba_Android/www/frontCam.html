@@ -126,6 +126,36 @@
       display: none;
     }
 
+    #mediaListPanel{
+      height: 240px;
+      overflow-y: scroll; 
+    }
+
+    .mediaLink{
+      height: 1.5em;
+      cursor: pointer;
+      background-color:transparent;
+      transition:background-color 0.2s ease-in-out;
+    }
+    .mediaLink:hover{
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    #updatePlaylist{
+      float: right;
+      cursor: pointer;
+      height: 36px;
+      width: 36px;
+      background-image: url("img/reload.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.5;
+      transition:all 0.4s ease-in-out;
+    }
+    #updatePlaylist:hover{
+      opacity: 1;
+    }
+
     </style>
 
   </head>
@@ -154,7 +184,11 @@
         <div class="menuItem uiButton" id="dial">WebRTC Call</div>
 
         <br/>
-        <div class = "menuItem">Media Player:</div>
+        <div class = "menuItem">
+          Media Player:
+          <div id = "updatePlaylist"></div>
+        </div>
+        
         <div class = "menuItem" id = "mediaListPanel">
           <span style="opacity:0.5;">Play list no Media loaded<span>
         </div>

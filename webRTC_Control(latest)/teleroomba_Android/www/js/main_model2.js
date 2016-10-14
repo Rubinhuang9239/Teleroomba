@@ -116,9 +116,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     connection.on('data', function(data) {
 
-      console.log("connection " + data.type + " " + data.text);
-
-      webConsole.logMessage(data.type, data.text);
+      //console.log("connection " + data.type + " " + data.text);
+      WebRTCDataMethold.cachingFeedBack(data);
 
     });
 
@@ -224,6 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       else{
         console.warn( "Data did not send, no WebRTC connection: ", data );
+        webConsole.logMessage("Peer", "Data did not send, no WebRTC connection: <span style='color:#FFF'>" + data.type + "</span>")
       }
     }
 
@@ -244,7 +244,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   webConsole.makePara = function ( tag, text ) {
     var p = document.createElement('p');
-    p.innerHTML = "<span style = 'font-size:1.25em'>[" + tag + "]</span> " + text; ;
+    p.innerHTML = "<span style = 'font-size:1.25em'>[" + tag + "]</span> " + text;
+    p.style.overflowWrap = "break-word";
     return p;
   };
 
@@ -272,12 +273,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   webConsole.logMessage = function (tag, text) {
 
-    if( identity.role == "roomba" ){
-
-      WebRTCDataMethold.FeedBack(tag, text);
-
-    }
-
     var tagGroup={
                   "Peer": "#FF7700",
                   "handShake Server": "#11FFAA",
@@ -285,6 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   "On Air": "#FF5500",
                   "Touch" : "#FFF",
                   "Error" : "#FF0000",
+                  "Media" : "#FF9900",
                 }
 
     var color = '#0580FF';

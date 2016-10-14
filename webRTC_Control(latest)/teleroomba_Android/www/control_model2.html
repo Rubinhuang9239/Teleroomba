@@ -125,8 +125,9 @@
 				<div class="switchBox col-xs-2 col-sm-2 col-md-2">
 					<input key="learning" type="checkbox" class="js-switch" checked="true" />
 				</div> -->
+				<div class="settingItem col-xs-12 col-sm-12 col-md-12" id="mediaControl">Media Control</div>
 
-				<div class="settingItem col-xs-12 col-sm-12 col-md-12" id="cameraHeight">camera Height</div>
+				<div class="settingItem col-xs-12 col-sm-12 col-md-12" id="cameraHeight">Camera Height</div>
 
 				<div class="settingItem col-xs-12 col-sm-12 col-md-12" id="autoDock">Auto Dock</div>
 
@@ -142,8 +143,12 @@
 
 			<div id="settingDetailClose" class="closeBnt"></div>
 
-			<h5 class="panelName" style="text-align:center">Setting Details</h5>
+			<h5 class="panelName" id = "detailName" style="text-align:center">Setting Details</h5>
 			<div id="detailDynamic" class = "container">
+
+				<div id = "MediaBox" class="dynamicContent">
+			          <div id = "mediaListPanel"></div>	          
+				</div>
 
 				<div id = "PersSettingBox" class="dynamicContent">
 					<div id = "persMono">

@@ -13,6 +13,8 @@ var https = require('https');
 //--------------File_System---------------//
 
 var fs = require('fs');
+const junk = require('junk');
+
 var httpsOptions = {
    key: fs.readFileSync('my-key.pem'),
    cert: fs.readFileSync('my-cert.pem')
@@ -30,6 +32,8 @@ var checkMedia = function(){
       io.emit(err);
       return
     }
+
+    Flist = Flist.filter(junk.not);
     io.emit("returnMD",Flist);
   }
 

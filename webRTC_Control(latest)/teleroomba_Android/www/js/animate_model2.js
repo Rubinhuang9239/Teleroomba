@@ -38,6 +38,19 @@ animate.init = function(){
 		animate.removeSettingDetail();
 	});
 
+	var mediaControl = document.getElementById("mediaControl");
+	mediaControl.addEventListener("click",function(){
+
+		var cmd = {
+			type : "MD",
+			key : "load"
+		}
+
+		WebRTCDataMethold.sendData(cmd);
+
+		animate.loadSettingDetail("MediaBox", "Media Playlist");
+	});
+
 	var rebootRoomba = document.getElementById("rebootRoomba");
 	rebootRoomba.addEventListener("click",function(){
 		var cmd = {
@@ -48,12 +61,12 @@ animate.init = function(){
 	
 	var cameraHeight = document.getElementById("cameraHeight");
 	cameraHeight.addEventListener("click",function(){
-		animate.loadSettingDetail("PersSettingBox");
+		animate.loadSettingDetail("PersSettingBox", "Camera Height");
 	});
 
 	var aboutTele = document.getElementById("aboutTeleroomba");
 	aboutTele.addEventListener("click",function(){
-		animate.loadSettingDetail("aboutContent");
+		animate.loadSettingDetail("aboutContent", "About");
 	});
 
 	animate.speedDisplay = document.getElementById("speedVal");
@@ -158,7 +171,10 @@ animate.settingPanelStatus = function(status){
 
 }
 
-animate.loadSettingDetail = function(content){
+animate.loadSettingDetail = function(content, lable){
+
+	var detailName = document.getElementById("detailName");
+	detailName.innerHTML = lable;
 
 	var settingDetail = document.getElementById("settingDetail");
 	settingDetail.style.transform = "translateX(0%)";
@@ -230,4 +246,19 @@ animate.speedCalcu = function(speedInputL,speedInputR,offLine){
 
 	speedInput = (speedInputL+speedInputR) * 0.5;
 	animate.speedDisplay.innerHTML = ((speedInput / 50) * 1.125).toPrecision(3);
+}
+
+animate.loadPlayList = function(mediaList){
+
+	var mediaListPanel = document.getElementById("mediaListPanel");
+	mediaListPanel.innerHTML = "<ol></ol>";
+
+	for(i=0; i < mediaList.length; i++){
+		mediaListPanel.innerHTML += "<li class='mediaLink' listPos='" + i + "'>" + mediaList[i] + "</li>";
+	}
+
+	$(".mediaLink").click(function(e){
+		WebRTCDataMethold.sendData("MD", e.target.attributes.listPos.value );
+	});
+	
 }

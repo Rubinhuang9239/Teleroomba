@@ -20,8 +20,24 @@ WebRTCDataMethold.caching = function(data){
  else if(data.type == 'SM'){ //enter safe mode
 	 localSocket.sendCmd(data.type,null);
  }
+ else if(data.type == 'MD'){ //enter safe mode
+ 	if(data.key == "load"){
+ 		mediaPlayer.requestLocalMediaLS();
+ 	}
+ }
 
  //console.log(data);
+
+}
+
+WebRTCDataMethold.cachingFeedBack = function(feedBack){
+
+	if(feedBack.type == "MD"){
+
+		animate.loadPlayList(feedBack.text);
+		webConsole.logMessage("Media", feedBack.text);
+		webConsole.logMessage("Media", "Found Media:");
+	}
 
 }
 
@@ -29,7 +45,7 @@ WebRTCDataMethold.FeedBack = function(tag, text){
 
 	var feedBack = {
         type : tag,
-        text : "RB: " + text //RB: roomba back
+        text : text
       }
 
     WebRTCDataMethold.sendData(feedBack);
