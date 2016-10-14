@@ -24,8 +24,11 @@ WebRTCDataMethold.caching = function(data){
  	if(data.key == "load"){
  		mediaPlayer.requestLocalMediaLS();
  	}
+ 	else{
+ 		var listPos =  data.key;
+ 		mediaPlayer.loadMedia(mediaPlayer.audioPlayer, mediaPlayer.srcRepo + mediaPlayer.mediaList[listPos], mediaPlayer.mediaList[listPos]);
+ 	}
  }
-
  //console.log(data);
 
 }
@@ -34,9 +37,11 @@ WebRTCDataMethold.cachingFeedBack = function(feedBack){
 
 	if(feedBack.type == "MD"){
 
-		animate.loadPlayList(feedBack.text);
+		if( typeof(feedBack.text) == "object" ){
+		 	animate.loadPlayList(feedBack.text);
+		}
+
 		webConsole.logMessage("Media", feedBack.text);
-		webConsole.logMessage("Media", "Found Media:");
 	}
 
 }

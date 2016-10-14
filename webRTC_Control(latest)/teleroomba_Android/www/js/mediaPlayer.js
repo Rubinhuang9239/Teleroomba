@@ -3,7 +3,8 @@ var mediaPlayer = {
 	audioPlayer : null,
 	videoPlayer : null,
 
-	mediaList : null
+	mediaList : null,
+	srcRepo : "https://localSerial.itp.io:3000/media/"
 
 };
 
@@ -47,18 +48,22 @@ mediaPlayer.showLocalMediaLS = function(mediaList){
 	var mediaListPanel = document.getElementById("mediaListPanel");
 	mediaListPanel.innerHTML = "<ol></ol>";
 
+	mediaPlayer.mediaList = mediaList;//caching the list
+
 	for(i=0; i < mediaList.length; i++){
-		mediaListPanel.innerHTML += "<li class='mediaLink' mediahref='https://localSerial.itp.io:3000/media/" + mediaList[i] + "''>" + mediaList[i] + "</li>";
+		mediaListPanel.innerHTML += "<li class='mediaLink' mediahref='" + mediaList[i] + "''>" + mediaList[i] + "</li>";
 	}
 
 	$(".mediaLink").click(function(e){
-		mediaPlayer.loadMedia(mediaPlayer.audioPlayer,e.target.attributes.mediahref.value);
+		mediaPlayer.loadMedia(mediaPlayer.audioPlayer, mediaPlayer.srcRepo + e.target.attributes.mediahref.value, e.target.attributes.mediahref.value);
 	});
 
 }
 
-mediaPlayer.loadMedia = function(player,url){
+mediaPlayer.loadMedia = function(player,url,file){
 
 	player.src = url;
+
+	WebRTCDataMethold.FeedBack("MD", "New track loaded: " + file);//Media Feedback
 
 }

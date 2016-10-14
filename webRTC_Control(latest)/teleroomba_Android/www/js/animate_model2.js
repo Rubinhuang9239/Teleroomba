@@ -258,7 +258,11 @@ animate.loadPlayList = function(mediaList){
 	}
 
 	$(".mediaLink").click(function(e){
-		WebRTCDataMethold.sendData("MD", e.target.attributes.listPos.value );
+		var cmd = {
+			type : "MD",
+			key : e.target.attributes.listPos.value
+		}
+		WebRTCDataMethold.sendData(cmd);
 	});
 	
 }
