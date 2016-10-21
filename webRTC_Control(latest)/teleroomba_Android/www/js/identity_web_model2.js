@@ -39,6 +39,7 @@ identity.replacePeerId = function(){
 			document.getElementById('dial').click();
 	//animate.changeDropDownStatus();
 	drag.init();
+	mediaPlayer.initUI();
 },400);
 	},800);
 

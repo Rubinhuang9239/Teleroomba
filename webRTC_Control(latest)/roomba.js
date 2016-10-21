@@ -59,8 +59,8 @@ app.get('/role', function(req, res){
   res.sendfile('teleroomba_Android/www/route.html');
 });
 
-app.get('/panda', function(req, res){
-  res.sendfile('teleroomba_Android/www/index_panda.html');
+app.get('/360Cam', function(req, res){
+  res.sendfile('teleroomba_Android/www/360Cam.html');
 });
 
 app.get('/frontCam', function(req, res){

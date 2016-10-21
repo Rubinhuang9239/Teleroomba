@@ -27,6 +27,7 @@ var checkMedia = function(){
   fs.readdir("./public/media", success);
 
   function success(err,Flist){
+    console.log(Flist);
     
     if(err){
       io.emit(err);

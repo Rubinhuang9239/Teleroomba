@@ -13,6 +13,10 @@ body{
 			background-color: #444;
 		}
 
+::-webkit-scrollbar { 
+      display: none; 
+}
+
 a{color: #FFF !important;}
 
 		#mainFrame{

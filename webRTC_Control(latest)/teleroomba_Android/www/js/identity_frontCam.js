@@ -2,7 +2,10 @@
 //I am Front Camera
 
 var identity = {
-	device : "GoPro Camera",
+	device : {
+				label : "GoPro Camera/ Web Camera",
+				name : ["XHD????"]
+			},
 	role : "frontCam",
 	target : "control2",
 	video : {optional:[ {minHeight:1920}, {minWidth:1080} ]},

@@ -25,8 +25,24 @@ WebRTCDataMethold.caching = function(data){
  		mediaPlayer.requestLocalMediaLS();
  	}
  	else{
- 		var listPos =  data.key;
- 		mediaPlayer.loadMedia(mediaPlayer.audioPlayer, mediaPlayer.srcRepo + mediaPlayer.mediaList[listPos], mediaPlayer.mediaList[listPos]);
+
+ 		if(data.key == "play"){
+ 			mediaPlayer.audioPlayer.play();
+ 		}
+ 		else if(data.key == "pause"){
+ 			mediaPlayer.audioPlayer.pause();
+ 		}
+ 		else if(data.key == "loop"){
+ 			mediaPlayer.audioPlayer.loop = true;
+ 		}
+ 		else if(data.key == "noloop"){
+ 			mediaPlayer.audioPlayer.loop = false;
+ 		}
+ 		else{
+ 			var listPos =  data.key;
+ 			mediaPlayer.loadMedia(mediaPlayer.audioPlayer, mediaPlayer.srcRepo + mediaPlayer.mediaList[listPos], mediaPlayer.mediaList[listPos]);
+ 		}
+ 		
  	}
  }
  //console.log(data);

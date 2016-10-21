@@ -67,3 +67,60 @@ mediaPlayer.loadMedia = function(player,url,file){
 	WebRTCDataMethold.FeedBack("MD", "New track loaded: " + file);//Media Feedback
 
 }
+
+mediaPlayer.state = {
+	play : true,
+	loop : true
+}
+
+mediaPlayer.initUI = function(){
+	var mdPause = document.getElementById("mdPause");
+
+	mdPause.addEventListener("click",function(){
+
+		var cmd = { type : "MD" };
+
+		if(mediaPlayer.state.play === true){
+			mediaPlayer.state.play = false;
+			cmd.key = "pause";
+			this.style.backgroundColor = "#555";
+			this.style.backgroundImage = "url('img/mdPlay.svg')";
+		}
+		else{
+			mediaPlayer.state.play = true;
+			cmd.key = "play";
+			this.style.backgroundColor = "#FF9900";
+			this.style.backgroundImage = "url('img/mdPause.svg')";
+		}
+
+		WebRTCDataMethold.sendData(cmd);
+
+	});
+
+	var mdLoop = document.getElementById("mdLoop");
+
+	mdLoop.addEventListener("click",function(){
+
+		var cmd = { type : "MD" };
+
+		if(mediaPlayer.state.loop === true){
+			mediaPlayer.state.loop = false;
+			cmd.key = "noloop";
+			this.style.backgroundColor = "#555";
+		}
+		else{
+			mediaPlayer.state.loop = true;
+			cmd.key = "loop";
+			this.style.backgroundColor = "#FF9900";
+			if(mediaPlayer.state.play == true ){
+ 				WebRTCDataMethold.sendData({
+ 					type : "MD",
+ 					key : "play"
+ 				});
+ 			}
+		}
+
+		WebRTCDataMethold.sendData(cmd);
+		
+	});
+}

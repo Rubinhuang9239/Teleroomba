@@ -1,6 +1,4 @@
-
-var theta_view = function (video_id) {
-	var scene = new THREE.Scene();
+var scene = new THREE.Scene();
 	var width  = window.innerWidth;
 	var height = window.innerHeight;
 	var fov    = 100;
@@ -8,7 +6,7 @@ var theta_view = function (video_id) {
 	var near   = 1;
 	var far    = 1000;
 	var camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-	camera.position.set( 0, 0, 0.1 );
+	camera.position.set( 0, 0, 0.01 );
 
 
 	var renderer = new THREE.WebGLRenderer();
@@ -23,6 +21,63 @@ var theta_view = function (video_id) {
 	var directionalLight = new THREE.DirectionalLight( 0xffffff );
 	directionalLight.position.set( 0, 0.7, 0.7 );
 	scene.add( directionalLight );
+
+
+	// PCで閲覧時にマウスドラッグで操作
+	var controls = new THREE.OrbitControls(camera, element);
+	//controls.rotateUp(Math.PI / 4);
+	controls.noPan = true;
+
+        ( function renderLoop () {
+        requestAnimationFrame( renderLoop );
+
+        //if( !settingDB.headset ){
+        	renderer.render( scene, camera );
+        // }else{
+        // 	effect.render(scene, camera);
+        // }
+          
+        } )();
+
+
+var stitchHelper = {};
+
+stitchHelper.stitchVal = {
+    	a:422,
+    	b:426,
+    	c:425,
+    	d:425,
+    	
+    	e:479,
+    	f:595,
+    	g:1442,
+    	h:596,
+}
+
+stitchHelper.stitchDemo = {
+    	a:"StretchV",
+    	b:"StretchU",
+    	c:"StretchV",
+    	d:"StretchU",
+    	
+    	e:"DriftV",
+    	f:"DriftU",
+    	g:"DriftV",
+    	h:"DriftU",
+}
+
+stitchHelper.init = function(){
+	stitchHelper.stitchTypeBox = document.getElementById("stitchTypeBox");
+	stitchHelper.demoSphere = document.getElementById("demoSphere");
+}
+
+var theta_view = function (video_id) {
+
+	//console.log(scene);
+
+	if(scene.children[1]){
+		scene.remove(scene.children[1]);
+	}
 
 	var video = document.getElementById( video_id );
 	var texture = new THREE.VideoTexture( video );
@@ -44,34 +99,21 @@ var theta_view = function (video_id) {
 
 			if (i < faceVertexUvs.length / 2) {
 				var correction = (x == 0 && z == 0) ? 1 : (Math.acos(y) / Math.sqrt(x * x + z * z)) * (2 / Math.PI);
-                                uvs[ j ].x = x * (404 / 1920) * correction + (447 / 1920);
-                                uvs[ j ].y = z * (404 / 1080) * correction + (582 / 1080);
+                                //Front RotateX
+                                uvs[ j ].x = x * (stitchHelper.stitchVal.a / 1920) * correction + (stitchHelper.stitchVal.e / 1920);
+                                uvs[ j ].y = z * (stitchHelper.stitchVal.b / 1080) * correction + (stitchHelper.stitchVal.f / 1080);
                         } else {
 				var correction = ( x == 0 && z == 0) ? 1 : (Math.acos(-y) / Math.sqrt(x * x + z * z)) * (2 / Math.PI);
-                                uvs[ j ].x = -1 * x * (404 / 1920) * correction + (1460 / 1920);
-                                uvs[ j ].y = z * (404 / 1080) * correction + (582 / 1080);
+                                uvs[ j ].x = -1 * x * (stitchHelper.stitchVal.c / 1920) * correction + (stitchHelper.stitchVal.g / 1920);
+                                
+                                uvs[ j ].y = z * (stitchHelper.stitchVal.d / 1080) * correction + (stitchHelper.stitchVal.h / 1080);
                         }
                 }
         }
 
         geometry.rotateZ(-Math.PI / 2);
+        geometry.rotateY(Math.PI / 2);
 	var material = new THREE.MeshBasicMaterial( { map: texture } );
 	var mesh = new THREE.Mesh( geometry, material );
 	scene.add( mesh );
-
-	// PCで閲覧時にマウスドラッグで操作
-	var controls = new THREE.OrbitControls(camera, element);
-	controls.rotateUp(Math.PI / 4);
-	controls.noPan = true;
-
-        ( function renderLoop () {
-        requestAnimationFrame( renderLoop );
-
-        if( !settingDB.headset ){
-        	renderer.render( scene, camera );
-        }else{
-        	effect.render(scene, camera);
-        }
-          
-        } )();
 };

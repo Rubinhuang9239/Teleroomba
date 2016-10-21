@@ -11,11 +11,14 @@
 </head>
 
 <body class = "container">
-<video id="thetaVideo" autoplay muted loop style="display:none">
+
+<div id = "setting" class = "bnt" title="Setting"></div>
+<div id = "stitch" class = "bnt" title="Setting"></div>
+
+<video id="thetaVideo" muted loop style="display:none">
 	<source src="360view/test.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
 </video>
 
-<!-- <script src="360view/js/localCamTest.js"></script> -->
 <script src="360view/js/jquery.js"></script>
 <script src="360view/js/three.min.js"></script>
 <script src="360view/js/StereoEffect.js"></script>
@@ -24,6 +27,7 @@
 <script src="360view/js/peer.js"></script>
 <script src="360view/js/main.js"></script>
 <script src="360view/js/identity_360.js"></script>
+<script src="360view/js/animate_360.js"></script>
 <script src="js/switchery/switchery.min.js"></script>
 
 
@@ -34,7 +38,10 @@ var settingDB = {
 			"headset" : false,
 		}
 
-window.addEventListener( 'DOMContentLoaded', theta_view('thetaVideo'), false );
+window.addEventListener( 'DOMContentLoaded', function(){theta_view('thetaVideo');
+	stitchHelper.init();
+});
+
 </script>
 
 
@@ -107,6 +114,72 @@ window.addEventListener( 'DOMContentLoaded', theta_view('thetaVideo'), false );
 		});
 
 		$('.js-switch').click();
+
+	</script>
+
+	<div id="stitchHelper">
+		<div id="stitchHelpClose" class="closeBnt"></div>
+		<h4>Stitch Helper</h4>
+
+		<div id = "stitchTypeBox" class = "stitchTypes">
+			<div id = "demoSphere" class = "demoStatusNone" ></div>
+		</div>
+
+		<div id = "sphereASettings">
+			<b>A</b> Stretch V: <span class = "stitchValDis">422</span>
+			<input class = "slide spA" key="a" type = "range" min="400" max="450" value = "422" />
+			<b>A</b> Stretch U: <span class = "stitchValDis">426</span>
+			<input class = "slide spA" key="b" type = "range" min="400" max="450" value = "426" />
+			<b>A</b> Drift V: <span class = "stitchValDis">479</span>
+			<input class = "slide spA" key="e" type = "range" min="420" max="500" value = "479" />
+			<b>A</b> Drift U: <span class = "stitchValDis">595</span>
+			<input class = "slide spA" key="f" type = "range" min="550" max="620" value = "595" />
+		</div>
+
+		<br />
+
+		<div id = "sphereBSettings">
+			<b>B</b> Stretch V: <span class = "stitchValDis">425</span>
+			<input class = "slide spB" key="c" type = "range" min="400" max="450" value = "425" />
+			<b>B</b> Stretch U: <span class = "stitchValDis">425</span>
+			<input class = "slide spB" key="d" type = "range" min="400" max="450" value = "425" />
+			<b>B</b> Drift V: <span class = "stitchValDis">1442</span>
+			<input class = "slide spB" key="g" type = "range" min="1380" max="1500" value = "1442" />
+			<b>B</b> Drift U: <span class = "stitchValDis">596</span>
+			<input class = "slide spB" key="h" type = "range" min="560" max="620" value = "596" />
+		</div>
+
+	</div>
+
+	<script>
+
+
+
+	$(".slide").bind('input', function(e){
+  		stitchHelper.stitchVal[e.target.attributes.key.value] = e.target.value;
+		theta_view('thetaVideo');
+		e.target.previousElementSibling.innerHTML = e.target.value;
+	});
+
+
+	$(".spA").mouseenter(function(e){
+		stitchHelper.stitchTypeBox.style.transform = "rotateY(0deg)";
+		stitchHelper.demoSphere.style.backgroundColor = "rgba(255,170,0,0.5)";
+	});
+
+	$(".spB").mouseenter(function(e){
+		stitchHelper.stitchTypeBox.style.transform = "rotateY(180deg)";
+		stitchHelper.demoSphere.style.backgroundColor = "rgba(170,255,0,0.5)";
+	});
+
+	$(".slide").mouseenter(function(e){
+		stitchHelper.demoSphere.className = "demoStatus" + stitchHelper.stitchDemo[e.target.attributes.key.value];
+	});
+
+	$(".slide").mouseleave(function(e){
+		stitchHelper.demoSphere.className = "demoStatusNone";
+	});
+
 
 	</script>
 

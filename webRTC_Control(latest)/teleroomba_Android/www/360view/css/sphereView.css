@@ -26,18 +26,9 @@ a{color: #FFF !important;}
 			top:0px;
 			right:0px;
 			color:#CCC;
+			transform: translateX(100%);
+			transition: transform 0.5s ease-in-out;
 		}
-
-		.rightRole,.leftRole{
-			padding: 0px;
-			height: 100%;
-		}
-
-		/*
-		.leftRole{
-			width: 100% !important;
-			transition: width 0.8s ease-in-out;
-		}*/
 
 
 		.settingItem{
@@ -130,18 +121,6 @@ a{color: #FFF !important;}
 			background-image: url("../img/backSigh.svg");
 		}
 
-		#phoneBatToggel{
-			background-image: url("../img/phone_bat_icon.svg");
-		}
-
-		#reverseViewToggel{
-			background-image: url("../img/reverse_view_icon.svg");
-		}
-
-		#videoAugToggel{
-			background-image: url("../img/video_aug_icon.svg");
-		}
-
 		#vrModeToggel{
 			background-image: url("../img/vr_mode_icon.svg");
 		}
@@ -150,33 +129,12 @@ a{color: #FFF !important;}
 			background-image: url("../img/key_input_icon.svg");
 		}
 
-		#learningToggel{
-			background-image: url("../img/Learning_icon.svg");
-		}
-
-		#cameraHeight{
-			background-image: url("../img/camera_height_icon.svg")
-		}
-
 		#autoDock{
 			background-image: url("../img/auto_dock_icon.svg");
 		}
 
 		#rebootBluno{
 			background-image: url("../img/reboot_bluno_icon.svg");
-		}
-
-		#rebootPhone{
-			background-image: url("../img/reboot_phone_icon.svg");
-		}
-
-		#aboutTeleroomba{
-			background-image: url("../img/about_teler_icon.svg");
-		}
-
-		#detailDynamic{
-			width: 100%;
-			height: 100%;
 		}
 
 		/****** HUD_Interface*****/
@@ -226,94 +184,138 @@ a{color: #FFF !important;}
       top: 0px;
     }
 
-    #BLEStatus{
-      background-image: url("../img/ble.png");
-      background-size: 85%;
-      top:0px;
-      left: 0px;
-    }
-
     #setting{
       background-image: url("../img/setting.png");
       background-color: #FF9900;
       background-size: 72%;
-      left:37px;
+      left:40px;
     }
 
-    @media (max-width: 480px) {
-    	
-    #setting{
-      top:37px;
-      left: 0px;
+    #stitch{
+      background-image: url("../img/360.svg");
+      background-color: #00EE88;
+      background-size: 72%;
+      left:0px;
     }
 
+    #stitchHelper{
+		position :fixed;
+		top : auto;
+		left : 5px; 
+		bottom : 0px;
+		bottom : 10%;
+		background-color:rgba(0,0,0,0.5);
+		width : 280px;
+		border-radius: 5px;
+		padding: 10px;
+		color: #FFF;
+		text-shadow:1px 1px 2px rgba(0,0,0,0.4);
+		transition: transform 0.75s ease-in-out;
 	}
 
+	#stitchHelpClose{
+		left: auto;
+		right: 0px !important;
+	}
 
-    #messages{
-      text-align: left;
-      width: 100%;
-      height: 100%;
-      overflow: scroll;
+	#stitchHelper h4{
+		font-weight: normal;
+		text-align: center;
+	}
+
+	#stitchTypeBox{
+		width: 120px;
+		height: 120px;
+		margin: auto;
+		border-radius: 50%;
+		background-color: rgba(0,0,0,0.5);
+		border: solid 1px #CCC;
+		background-size: 100% 100%;
+		background-image: url("../img/stitchTypeBox.svg");
+		transition: transform 0.75s ease-in-out;
+	}
+
+	#demoSphere{
+		position: relative;
+		height: 70%;
+		width: 70%;
+		background-color: rgba(255,170,0,0.5);
+		/*background-color: rgba(170,255,0,0.5);*/
+		top:15%;
+		margin: auto;
+		border-radius: 50%;
+		animation-duration: 2s;
+      	animation-iteration-count: infinite;
+      	transition: background-color 0.75s;
+	}
+
+	.demoStatusNone{
+		animation-name: none;
+	}
+
+	.demoStatusStretchV{
+		animation-name: StretchV;
+	}
+
+	.demoStatusStretchU{
+		animation-name: StretchU;
+	}
+
+	.demoStatusDriftV{
+		animation-name: DriftV;
+	}
+
+	.demoStatusDriftU{
+		animation-name: DriftU;
+	}
+
+	.stitchTypes{
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	#sphereASettings b{
+		color:#FF9900;
+	}
+
+	#sphereBSettings b{
+		color:#99FF00;
+	}
+
+	.stitchValDis{
+		color:#CCC;
+	}
+
+	#stitchHelper input{
+		margin: 2px auto 0px auto;
+		width: 100%;
+		cursor: pointer;
+	}
+
+	@keyframes DriftV {
+	    0%   {transform: translateY(0%);}
+	    25%  {transform: translateY(8%);}
+	    75%  {transform: translateY(-8%);}
+	    0%   {transform: translateY(0%);}
     }
 
-
-    .BLEOn{
-      background-color: #05D060;
+    @keyframes StretchV {
+	    0%   {transform: scaleY(1);}
+	    25%  {transform: scaleY(1.2);}
+	    75%  {transform: scaleY(0.8);}
+	    0%   {transform: scaleY(1);}
     }
 
-    .BLEOff{
-      background-color: #888;
+    @keyframes DriftU {
+	    0%   {transform: translateX(0%);}
+	    25%  {transform: translateX(8%);}
+	    75%  {transform: translateX(-8%);}
+	    0%   {transform: translateX(0%);}
     }
 
-    .BLEBlinking{
-      animation-name: BLEBlink;
-      animation-duration: 1.6s;
-      animation-iteration-count: infinite;
-    }
-
-    @keyframes BLEBlink {
-    0%   {background-color: #888;}
-    50%  {background-color: #05D060;}
-    100% {background-color: #888;}
-    }
-
-    #HUD{
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      height: 70%;
-      width: 100%;
-      /*background-color: rgba(255,150,20,0.5);*/
-      z-index: 59;
-      color:rgba(50,155,60,0.5);
-      overflow: hidden;
-    }
-
-    #touchLayer{
-      /*display: none;*/
-      width: 100%;
-      height: 70%;
-      position: absolute !important;
-      top: 0px;
-      left: 0px;
-      z-index: 159;
-      margin: 0px;
-      /*cursor: pointer;*/
-      /*background-color: rgba(255,150,20,0.2);*/
-    }
-
-    .dynamicContent{
-    	display: none;
-    }
-
-    #PersSettingBox{
-      margin: auto;
-      height:240px;
-      width:64px;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: bottom center;
-      background-image: url("../img/PersSetBottom.svg");
-      /*display: none;*/
+    @keyframes StretchU {
+	    0%   {transform: scaleX(1);}
+	    25%  {transform: scaleX(1.2);}
+	    75%  {transform: scaleX(0.8);}
+	    0%   {transform: scaleX(1);}
     }

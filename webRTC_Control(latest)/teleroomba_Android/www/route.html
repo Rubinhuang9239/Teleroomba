@@ -48,6 +48,12 @@
 		background-position: 50% 0.2em;
 		background-repeat: no-repeat;
 	}
+	.route:hover{
+		background-color: rgba(53,255,178,0.8);
+		transform:scale(0.98);
+		background-size: 5.6em;
+		line-height: 16em;
+	}
 
 	#control,#control_Model2{
 		background-image: url("route_img/control.svg");
@@ -57,17 +63,12 @@
 		background-image: url("route_img/frontCam.svg");
 	}
 
-	#panda{
+	#cam360{
 		background-image: url("route_img/thetaS.svg");
 	}
 
 	#sphere{
 		background-image: url("route_img/360.svg");
-	}
-
-	.route:hover{
-		background-color: rgba(53,255,178,0.8);
-		transform:scale(0.96);
 	}
 
 	#control{
@@ -114,9 +115,9 @@
 			window.open("/frontCam"); 
 		});
 
-		var panda = document.getElementById("panda");
-		panda.addEventListener("click",function(){
-			window.open("/panda"); 
+		var cam360 = document.getElementById("cam360");
+		cam360.addEventListener("click",function(){
+			window.open("/360Cam"); 
 		});
 
 		var sphere = document.getElementById("sphere");
@@ -124,10 +125,10 @@
 			window.open("/360"); 
 		});
 		sphere.addEventListener("mouseover",function(){
-			panda.style.backgroundColor = "rgba(53,255,178,0.2)";
+			cam360.style.backgroundColor = "rgba(53,255,178,0.2)";
 		});
 		sphere.addEventListener("mouseout",function(){
-			panda.style.backgroundColor = "rgba(255,255,255,0.25)";
+			cam360.style.backgroundColor = "rgba(255,255,255,0.25)";
 		});
 
 		var control2 = document.getElementById("control_Model2");
@@ -174,7 +175,7 @@ Front Camera
 Control (Model2)
 </div>
 
-<div class="route" id="panda">
+<div class="route" id="cam360">
 ThetaS
 </div>
 

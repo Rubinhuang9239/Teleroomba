@@ -16,7 +16,7 @@ int ledDir = 0;
 int beepType[] = {0,0};
 boolean beeping = false;
 
-#define debugSwitch 2
+#define debugSwitch 12
 
 void setup() {
   
@@ -49,18 +49,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   if( Serial.available() > 0 ){
-    
-//      boolean goAhead = false; 
-//    
-//      for(int i=0; i < 4; i++ ){
-//        int prob = Serial.parseInt();
-//        if(prob == 60){
-//          goAhead = true;
-//          break;
-//        }
-//      }    
-//     
-//      if(goAhead){
+   
 
         int cmd = Serial.parseInt();
         int input1 = Serial.parseInt();
@@ -81,13 +70,11 @@ void loop() {
           drive(leftV,rightV);
         }
         else if( cmd == 1 ){  //drive
-          //Serial.println("drive");
           signed int leftV = input1;
           signed int rightV = input2;
           drive(leftV,rightV);
         }
         else if( cmd == 2 ){ //start/stop roomba beep
-          //Serial.println("handle beep");
           int action = input1; //1.start 2.stop
           int type = input2; //1.police 2.reverse 3.low freq
           handleBeep(action,type);
@@ -96,7 +83,6 @@ void loop() {
           roombotSerial.write(131); // Seek dock
         }
         else if( cmd == 4 ){ //enter safe mode again
-          //Serial.println("restart");
           roombotSerial.write(131); // SAFE MODE
         }
         
@@ -110,14 +96,6 @@ void loop() {
         }
         Serial.print('\n');
         
-      //Go Ahead if Finish
-      
-//      }
-//      else{
-//        Serial.println("skip");
-//      }
-      
-      //Go Ahead Finish
     
     }
     
@@ -202,5 +180,3 @@ void beep(){
     roombotSerial.write(1);
 
 }
-
-

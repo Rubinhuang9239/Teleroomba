@@ -251,7 +251,7 @@ animate.speedCalcu = function(speedInputL,speedInputR,offLine){
 animate.loadPlayList = function(mediaList){
 
 	var mediaListPanel = document.getElementById("mediaListPanel");
-	mediaListPanel.innerHTML = "<ol></ol>";
+	mediaListPanel.innerHTML = "<ul></ul>";
 
 	for(i=0; i < mediaList.length; i++){
 		mediaListPanel.innerHTML += "<li class='mediaLink' listPos='" + i + "'>" + mediaList[i] + "</li>";

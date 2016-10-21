@@ -13,6 +13,10 @@ body{
 	background-color: #444;
 }
 
+::-webkit-scrollbar { 
+      display: none; 
+}
+
 a{color: #FFF !important;}
 
 #mainFrame{
@@ -432,16 +436,46 @@ a{color: #FFF !important;}
 
 			.mediaLink{
 				font-size: 16px;
-				height: 2em;
+				line-height: 2em;
 				cursor: pointer;
 				background-color:transparent;
 				transition:background-color 0.2s ease-in-out;
+				list-style-type:none;
+				border-bottom: solid 0.5px #444;
 			}
 			.mediaLink:hover{
 				background-color: rgba(255,255,255,0.2);
 			}
 
 			#mediaListPanel{
-				height: 240px;
+				height: 360px;
 				overflow-y: scroll; 
 			}
+
+			.mediaControl{
+				height: 36px;
+				width: 36px;
+				background-color: #FF9900;
+				border-radius: 18px;
+				float: left;
+				margin-right: 4px;
+				cursor: pointer;
+				transition:opacity 0.2s ease-in-out;
+				background-size: 72%;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			.mediaControl:hover{
+				opacity:0.8;
+			}
+
+			#mdPause{
+				background-image: url("../img/mdPause.svg");
+			}
+
+			#mdLoop{
+				background-image: url("../img/mdLoop.svg");
+			}
+
+
+

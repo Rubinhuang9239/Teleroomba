@@ -23,10 +23,12 @@ keyBoard.Input = function(event) {
 }
 
 keyBoard.InputFinish = function(event) {
+	console.log("up");
     var key = event.which;
     keyBoard.keydownList[key] = false;
 
     keyBoard.checkEmpty();
+    keyBoard.drive();
 }
 
 keyBoard.checkEmpty = function(){
@@ -38,9 +40,9 @@ keyBoard.checkEmpty = function(){
 	}
 
 	//if empty, keyBoard.drive(0);
-	if( emptyCount == 0 ){
-		keyBoard.drive(0);
-	}
+	// if( emptyCount == 0 ){
+	// 	keyBoard.drive(0);
+	// }
 
 }
 
@@ -116,7 +118,7 @@ keyBoard.drive = function(empty){
 		}
 
 	}
-	//console.log(msg, cmd);
+	console.log(msg, cmd);
 
 	//Send to Phone
 	cmd.type = "DR";
