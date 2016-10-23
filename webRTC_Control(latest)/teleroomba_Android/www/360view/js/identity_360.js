@@ -24,20 +24,18 @@ identity.replacePeerId = function(){
 	var recipientIdEntry = document.querySelector('#recipient-id');
 	recipientIdEntry.value = identity.target;
 
-	logMessage("Peer","-----------------------");
-	logMessage("Peer","My ID: " + identity.role);
-	logMessage("Peer","Roomba ID: " + identity.target);
-	logMessage("Peer","Peer ID auto input:");
-	logMessage("Peer","-----------------------");
+	webConsole.logMessage("Peer","-----------------------");
+	webConsole.logMessage("Peer","My ID: " + identity.role);
+	webConsole.logMessage("Peer","Roomba ID: " + identity.target);
+	webConsole.logMessage("Peer","Peer ID auto input:");
+	webConsole.logMessage("Peer","-----------------------");
 
 
 	setTimeout(function(){
 		document.getElementById('connect').click();
 		setTimeout(function(){
 			document.getElementById('dial').click();
-	//animate.changeDropDownStatus();
-	//drag.init();
-},400);
+		},400);
 	},1200);
 
 

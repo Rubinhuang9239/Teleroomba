@@ -16,7 +16,7 @@
 <div id = "stitch" class = "bnt" title="Setting"></div>
 
 <video id="thetaVideo" muted loop style="display:none">
-	<source src="360view/test.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+	<source src="360view/m20.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
 </video>
 
 <script src="360view/js/jquery.js"></script>
@@ -26,7 +26,8 @@
 <script src="360view/js/theta-view.js"></script>
 <script src="360view/js/peer.js"></script>
 <script src="360view/js/main.js"></script>
-<script src="360view/js/identity_360.js"></script>
+<script src="360view/js/webRTCDataMethold_model2.js"></script>
+<!-- <script src="360view/js/identity_360.js"></script> -->
 <script src="360view/js/animate_360.js"></script>
 <script src="js/switchery/switchery.min.js"></script>
 
@@ -38,7 +39,10 @@ var settingDB = {
 			"headset" : false,
 		}
 
-window.addEventListener( 'DOMContentLoaded', function(){theta_view('thetaVideo');
+window.addEventListener( 'DOMContentLoaded', function(){
+	HUDSystem.init();
+	initThree();
+	theta_view('thetaVideo');
 	stitchHelper.init();
 });
 
@@ -163,12 +167,12 @@ window.addEventListener( 'DOMContentLoaded', function(){theta_view('thetaVideo')
 
 
 	$(".spA").mouseenter(function(e){
-		stitchHelper.stitchTypeBox.style.transform = "rotateY(0deg)";
+		stitchHelper.stitchTypeBox.style.transform = "perspective(240px) rotateY(0deg)";
 		stitchHelper.demoSphere.style.backgroundColor = "rgba(255,170,0,0.5)";
 	});
 
 	$(".spB").mouseenter(function(e){
-		stitchHelper.stitchTypeBox.style.transform = "rotateY(180deg)";
+		stitchHelper.stitchTypeBox.style.transform = "perspective(240px) rotateY(180deg)";
 		stitchHelper.demoSphere.style.backgroundColor = "rgba(170,255,0,0.5)";
 	});
 
