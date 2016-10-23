@@ -7,7 +7,7 @@ function initThree(){
 	var height = window.innerHeight;
 	var fov    = 100;
 	var aspect = width / height;
-	var near   = 1;
+	var near   = 0.01;
 	var far    = 1000;
 	camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
 	camera.position.set( 0, 0, 0.00001 );
@@ -31,13 +31,19 @@ function initThree(){
 
     HUDSystem.addToScene();
 
-        ( function renderLoop () {
+    ( function renderLoop () {
 
         HUDSystem.followObjs.rotation.x = camera.rotation.x;
         HUDSystem.followObjs.rotation.y = camera.rotation.y;
         HUDSystem.followObjs.rotation.z = camera.rotation.z;
 
         requestAnimationFrame( renderLoop );
+        //Get visualCenter world Matrix
+        var visualCenterWM = new THREE.Vector3();
+    	visualCenterWM.setFromMatrixPosition( HUDSystem.visualCenter.matrixWorld );
+    	//update the guide line
+    	HUDSystem.visCtrGuideLine.geometry.vertices[0].copy(visualCenterWM);
+    	HUDSystem.visCtrGuideLine.geometry.verticesNeedUpdate = true;
 
         //if( !settingDB.headset ){
         	renderer.render( scene, camera );
@@ -45,8 +51,8 @@ function initThree(){
         // 	effect.render(scene, camera);
         // }
           
-        } )();
-    }
+    } )();
+}
 
 //---------HUD_display-------------//
 
@@ -106,23 +112,38 @@ HUDSystem.init = function(){
 
     HUDSystem.defaultCenter.position.z = -90;
 
-    HUDSystem.defaultCenter.scale.x = 0.5;
-    HUDSystem.defaultCenter.scale.y = 0.5;
-    HUDSystem.defaultCenter.scale.z = 0.5;
+    HUDSystem.defaultCenter.scale.x = 0.4;
+    HUDSystem.defaultCenter.scale.y = 0.4;
+    HUDSystem.defaultCenter.scale.z = 0.4;
 
 
     HUDSystem.staticObjs.add(HUDSystem.defaultCenter);
 
-    var lineMaterial = new THREE.LineBasicMaterial({
-            color: 0x0000ff
+
+    //visual center guide line
+    var visCtrGuideGeo = new THREE.Geometry();
+        visCtrGuideGeo.vertices.push(new THREE.Vector3(0, 0, -90));
+        visCtrGuideGeo.vertices.push(new THREE.Vector3(0, 0, -90));
+        visCtrGuideGeo.dynamic = true;
+        visCtrGuideGeo.verticesNeedUpdate = true;
+		//visCtrGuideGeo.elementsNeedUpdate = true;
+
+    var guidelineMat = new THREE.LineBasicMaterial({
+            color: 0xFF4400,
+            transparent: true,
+            opacity: 0.5,
+            //depthWrite:false,
+            blending: THREE.AdditiveBlending,
+            linewidth: 4
     });
 
-    var LineGeometry = new THREE.Geometry();
-        LineGeometry.vertices.push(new THREE.Vector3(-10, 0, 0));
-        LineGeometry.vertices.push(new THREE.Vector3(0, 10, 0));
-        LineGeometry.vertices.push(new THREE.Vector3(10, 0, 0));
+    HUDSystem.visCtrGuideLine = new THREE.Line(visCtrGuideGeo, guidelineMat);
 
-    HUDSystem.line = new THREE.Line(LineGeometry, lineMaterial);
+    HUDSystem.staticObjs.add(HUDSystem.visCtrGuideLine);
+
+    var originLabel = HUDSystem.textSprite("ORIGIN");
+    originLabel.position.set(0,6,-90);
+   	HUDSystem.staticObjs.add( originLabel );
 
     
 }
@@ -130,9 +151,60 @@ HUDSystem.init = function(){
 HUDSystem.addToScene = function(){
     scene.add(HUDSystem.followObjs);
     scene.add(HUDSystem.staticObjs);
-    scene.add(HUDSystem.line);
 }
 
+
+HUDSystem.textSprite = function(text) {
+
+    if(text != ""){
+
+        var font = "Helvetica",
+            size = 72,
+            color = "#FF9900";
+
+        font = size + "px " + font;
+
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        context.font = font;
+
+        // get size data (height depends only on font size)
+        var metrics = context.measureText(text),
+            textWidth = metrics.width;
+
+        canvas.width = textWidth + 3;
+        canvas.height = size + 20;
+        //canvas.height = 2*size + 40;
+
+        context.font = font;
+        context.fillStyle = color;
+        context.fillText(text, 0, size + 3);
+
+        // canvas contents will be used for a texture
+        var texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+
+        var mesh = new THREE.Mesh(
+        new THREE.PlaneGeometry(canvas.width, canvas.height),
+        new THREE.MeshBasicMaterial({
+            map: texture,
+            side: THREE.DoubleSide,
+            transparent:true,
+            opacity:0.75,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending
+        }));
+
+        mesh.scale.set(0.06,0.06,0.06);
+
+    }
+    else{
+        mesh = null;
+    }
+
+    return mesh;
+
+}
 
 
 
