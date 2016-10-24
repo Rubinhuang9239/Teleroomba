@@ -1,5 +1,6 @@
 var scene = null ;
 var camera = null;
+var renderer = null;
 
 function initThree(){
     scene = new THREE.Scene();
@@ -10,13 +11,14 @@ function initThree(){
 	var near   = 0.01;
 	var far    = 1000;
 	camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-	camera.position.set( 0, 0, 0.00001 );
+	camera.position.set( 0, 0, 0.001 );
 
 
-	var renderer = new THREE.WebGLRenderer();
+	renderer = new THREE.WebGLRenderer();
 	renderer.setSize( width, height );
-	var element = renderer.domElement;
-	document.body.appendChild( element );
+	var rendererDom = renderer.domElement;
+    var container = document.getElementById("threeContainer");
+	container.appendChild( rendererDom );
 
 	var effect;
 	effect = new THREE.StereoEffect(renderer);
@@ -26,38 +28,32 @@ function initThree(){
 	directionalLight.position.set( 0, 0.7, 0.7 );
 	scene.add( directionalLight );
 
-	var controls = new THREE.OrbitControls(camera, element);
+	var controls = new THREE.OrbitControls(camera, container);
 	controls.noPan = true;
 
-    HUDSystem.addToScene();
+    renderLoop();
 
-    ( function renderLoop () {
+}
 
-        HUDSystem.followObjs.rotation.x = camera.rotation.x;
-        HUDSystem.followObjs.rotation.y = camera.rotation.y;
-        HUDSystem.followObjs.rotation.z = camera.rotation.z;
+function renderLoop() {
+
+    if(HUDSystem.inited){
+        HUDSystem.update();
+    }
 
         requestAnimationFrame( renderLoop );
-        //Get visualCenter world Matrix
-        var visualCenterWM = new THREE.Vector3();
-    	visualCenterWM.setFromMatrixPosition( HUDSystem.visualCenter.matrixWorld );
-    	//update the guide line
-    	HUDSystem.visCtrGuideLine.geometry.vertices[0].copy(visualCenterWM);
-    	HUDSystem.visCtrGuideLine.geometry.verticesNeedUpdate = true;
-
         //if( !settingDB.headset ){
-        	renderer.render( scene, camera );
+        renderer.render( scene, camera );
         // }else{
-        // 	effect.render(scene, camera);
+        //  effect.render(scene, camera);
         // }
-          
-    } )();
 }
 
 //---------HUD_display-------------//
 
 var HUDSystem = {
     geoLibrary:{},
+    inited: false
 };
 
 HUDSystem.init = function(){
@@ -103,7 +99,13 @@ HUDSystem.init = function(){
 
     HUDSystem.visualCenter.position.z = -90;
 
-    HUDSystem.followObjs.add(HUDSystem.visualCenter); 
+    HUDSystem.visualCenterWM = new THREE.Vector3(0,0,-90);
+
+    HUDSystem.followObjs.add(HUDSystem.visualCenter);
+
+    HUDSystem.distLabel = HUDSystem.textSprite("0");
+    HUDSystem.distLabel.position.set(0,-12,-90);
+    HUDSystem.followObjs.add( HUDSystem.distLabel );
 
 
     //------------//
@@ -134,7 +136,7 @@ HUDSystem.init = function(){
             opacity: 0.5,
             //depthWrite:false,
             blending: THREE.AdditiveBlending,
-            linewidth: 4
+            linewidth: 3,
     });
 
     HUDSystem.visCtrGuideLine = new THREE.Line(visCtrGuideGeo, guidelineMat);
@@ -145,12 +147,113 @@ HUDSystem.init = function(){
     originLabel.position.set(0,6,-90);
    	HUDSystem.staticObjs.add( originLabel );
 
-    
+    HUDSystem.addToScene();
+    HUDSystem.initUserInteraction();
+
+    HUDSystem.inited = true;
+
 }
 
 HUDSystem.addToScene = function(){
+
+    HUDSystem.followObjs.position.set(0,0.0001,0);
+    HUDSystem.staticObjs.position.set(0,0,0);
+
     scene.add(HUDSystem.followObjs);
     scene.add(HUDSystem.staticObjs);
+
+    HUDSystem.getOffAngle();
+}
+
+HUDSystem.userInteraction = false
+
+HUDSystem.initUserInteraction = function(){
+
+    var rendererDom = renderer.domElement;
+
+    rendererDom.addEventListener( 'mousedown', function(){
+        HUDSystem.userInteraction = true;
+    } );
+    rendererDom.addEventListener( 'mouseup', function(){
+        HUDSystem.userInteraction = false;
+    } );
+
+    rendererDom.addEventListener( 'touchstart', function(){
+        HUDSystem.userInteraction = true;
+    } );
+    rendererDom.addEventListener( 'touchend', function(){
+        HUDSystem.userInteraction = false;
+    } );
+
+
+    handleUserDrag = function(){
+
+        if(HUDSystem.userInteraction == false){
+            return false
+        }
+        
+        var dist = HUDSystem.calcuShift(HUDSystem.visualCenterWM);
+
+        
+        //---update texture---//
+        var text = "d: " + dist;
+        var color = "#FF9900";
+        var size = 72;
+        var font = size + "px " + "Helvetica";
+
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        context.font = font;
+
+        // get size data (height depends only on font size)
+        var metrics = context.measureText(text),
+            textWidth = metrics.width;
+
+        canvas.width = textWidth + 3;
+        canvas.height = size + 20;
+
+        context.font = font;
+        context.fillStyle = color;
+        context.fillText(text, 0, size + 3);
+
+        // canvas contents will be used for a texture
+        var texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        texture.minFilter = THREE.LinearFilter
+
+        HUDSystem.distLabel.material.map = texture;
+        HUDSystem.distLabel.geometry = new THREE.PlaneGeometry(canvas.width, canvas.height);
+
+
+        //---update_offAngle_Val---//
+        HUDSystem.getOffAngle();
+
+    }
+
+    rendererDom.addEventListener( 'mousemove', handleUserDrag);
+    rendererDom.addEventListener( 'touchmove', handleUserDrag);
+
+}
+
+
+
+HUDSystem.getOffAngle = function(){
+    var followObjsAng = HUDSystem.followObjs.rotation;
+    document.getElementById("offAngleX").innerHTML = ((followObjsAng.x)/Math.PI*180).toPrecision(4);
+    document.getElementById("offAngleY").innerHTML = ((followObjsAng.y)/Math.PI*180).toPrecision(4);
+    document.getElementById("offAngleZ").innerHTML = ((followObjsAng.z)/Math.PI*180).toPrecision(4);
+}
+
+
+HUDSystem.update = function(){
+    HUDSystem.followObjs.rotation.x = camera.rotation.x;
+    HUDSystem.followObjs.rotation.y = camera.rotation.y;
+    HUDSystem.followObjs.rotation.z = camera.rotation.z;
+
+    HUDSystem.visCtrGuideLine.geometry.verticesNeedUpdate = true;
+    HUDSystem.visualCenterWM.setFromMatrixPosition( HUDSystem.visualCenter.matrixWorld );
+    //update the guide line
+    HUDSystem.visCtrGuideLine.geometry.vertices[0].copy(HUDSystem.visualCenterWM);
 }
 
 
@@ -206,6 +309,10 @@ HUDSystem.textSprite = function(text) {
 
 }
 
+HUDSystem.calcuShift = function(visualCenterWM){
+    var dist = parseInt(HUDSystem.visualCenterWM.distanceTo(HUDSystem.defaultCenter.position));
+    return dist;
+}
 
 
 

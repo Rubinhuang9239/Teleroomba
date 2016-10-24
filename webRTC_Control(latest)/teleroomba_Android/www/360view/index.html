@@ -12,114 +12,86 @@
 
 <body class = "container">
 
-<div id = "setting" class = "bnt" title="Setting"></div>
-<div id = "stitch" class = "bnt" title="Setting"></div>
+	<div id = "setting" class = "bnt" title="Setting"></div>
+	<div id = "stitch" class = "bnt" title="Setting"></div>
 
-<video id="thetaVideo" muted loop style="display:none">
-	<source src="360view/m20.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-</video>
+	<video id="thetaVideo" muted loop style="display:none">
+		<source src="360view/m20.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+		</video>
 
-<script src="360view/js/jquery.js"></script>
-<script src="360view/js/three.min.js"></script>
-<script src="360view/js/StereoEffect.js"></script>
-<script src="360view/js/OrbitControls.js"></script>
-<script src="360view/js/theta-view.js"></script>
-<script src="360view/js/peer.js"></script>
-<script src="360view/js/main.js"></script>
-<script src="360view/js/webRTCDataMethold_model2.js"></script>
-<!-- <script src="360view/js/identity_360.js"></script> -->
-<script src="360view/js/animate_360.js"></script>
-<script src="js/switchery/switchery.min.js"></script>
+		<script src="360view/js/jquery.js"></script>
+		<script src="360view/js/three.min.js"></script>
+		<script src="360view/js/StereoEffect.js"></script>
+		<script src="360view/js/OrbitControls.js"></script>
+		<script src="360view/js/theta-view.js"></script>
+		<script src="360view/js/peer.js"></script>
+		<script src="360view/js/main.js"></script>
+		<script src="360view/js/webRTCDataMethold_model2.js"></script>
+		<script src="360view/js/identity_360.js"></script>
+		<script src="360view/js/animate_360.js"></script>
+		<script src="js/switchery/switchery.min.js"></script>
 
 
 
-<script>
+		<script>
 
-var settingDB = {
+		var settingDB = {
 			"headset" : false,
 		}
 
-window.addEventListener( 'DOMContentLoaded', function(){
-	HUDSystem.init();
-	initThree();
-	theta_view('thetaVideo');
-	stitchHelper.init();
-});
+		window.addEventListener( 'DOMContentLoaded', function(){
+			initThree();
+			theta_view('thetaVideo');
+			HUDSystem.init();
+			stitchHelper.init();
+		});
 
-</script>
+		</script>
 
 
-<div id = "sphereViewSetting" class="rightRole col-xs-12 col-sm-3 col-md-3">
+		<div id = "sphereViewSetting" class="rightRole col-xs-12 col-sm-3 col-md-3">
 
-		<div id = "settingContent" >
+			<div id = "settingContent" >
 
-			<div id="settingClose" class="closeBnt"></div>
+				<div id="settingClose" class="closeBnt"></div>
 
-			<h5 class = "panelName" style = "width:100%; text-align:center;">Settings</h5>
+				<h5 class = "panelName" style = "width:100%; text-align:center;">Settings</h5>
 
-			<div class = "container" style = "width:100%; padding-bottom: 20px;">
+				<div class = "container" style = "width:100%; padding-bottom: 20px;">
 
 					<div id="credentials">
-				        <input class="peerIdInput" type="text" id="caller-id" placeholder='My Peer ID'><br/>
-				        <button id="connect">Connect</button>
+						<input class="peerIdInput" type="text" id="caller-id" placeholder='My Peer ID'><br/>
+						<button id="connect">Connect</button>
 
-				        <input class="peerIdInput" type="select" id="recipient-id" placeholder='Aim Peer ID'>
-				        </input><br/>
-				        <button id="dial">Call</button>
-				        <br /><br />
+						<input class="peerIdInput" type="select" id="recipient-id" placeholder='Aim Peer ID'>
+					</input><br/>
+					<button id="dial">Call</button>
+					<br /><br />
 
-				  	</div>
+				</div>
 
-				  	<div class="settingItem settingToggel col-xs-10 col-sm-10 col-md-10" id="vrModeToggel">Headset Mode</div>
-					<div class="switchBox col-xs-2 col-sm-2 col-md-2">
-						<input key="headset" type="checkbox" class="js-switch" checked="true" />
+				<div class="settingItem settingToggel col-xs-10 col-sm-10 col-md-10" id="vrModeToggel">Headset Mode</div>
+				<div class="switchBox col-xs-2 col-sm-2 col-md-2">
+					<input key="headset" type="checkbox" class="js-switch" checked="true" />
+				</div>
+
+				<br />
+				<div id="DevConsoleBox">
+					<h5 class = "panelName">Developer Console</h5>
+					<div id="messages">
+						Dom Initialized...<br />
+						Waiting for Javascript callbacks.
 					</div>
-
-					<br />
-			        <div id="DevConsoleBox">
-			          <h5 class = "panelName">Developer Console</h5>
-			          <div id="messages">
-			            Dom Initialized...<br />
-			            Waiting for Javascript callbacks.
-			          </div>
-			        </div>
+				</div>
 
 
 			</div>
 
 		</div>
 		<video id = "local-video" style = "display:none;" muted autoplay></video>
-</div>
+	</div>
 
-
-</body>
-
-	<script>
-		var elem = document.getElementsByClassName('js-switch');
-		for(i=0; i< elem.length; i++ ){
-			var init = new Switchery(elem[i],
-			{
-				color             : '#00EE88',
-				secondaryColor    : '#666',
-				size              : 'small'
-			});
-
-
-		}
-
-
-		$('.js-switch').change(function(e){
-
-			e.target.attributes.checked = !e.target.attributes.checked;
-
-			settingDB[e.target.attributes.key.value] = e.target.attributes.checked;
-
-			console.log(e.target.attributes.key.value , e.target.attributes.checked);
-		});
-
-		$('.js-switch').click();
-
-	</script>
+	<div id="threeContainer"></div>
 
 	<div id="stitchHelper">
 		<div id="stitchHelpClose" class="closeBnt"></div>
@@ -155,37 +127,71 @@ window.addEventListener( 'DOMContentLoaded', function(){
 
 	</div>
 
-	<script>
+	<div id="offAngleBox">
+	<p class="offAngle">X : <span id="offAngleX"><span></p>
+	<p class="offAngle">Y : <span id="offAngleY"><span></p>
+	<p class="offAngle">Z : <span id="offAngleZ"><span></p>
+	</div>
 
+</body>
 
-
-	$(".slide").bind('input', function(e){
-  		stitchHelper.stitchVal[e.target.attributes.key.value] = e.target.value;
-		theta_view('thetaVideo');
-		e.target.previousElementSibling.innerHTML = e.target.value;
+<script>
+var elem = document.getElementsByClassName('js-switch');
+for(i=0; i< elem.length; i++ ){
+	var init = new Switchery(elem[i],
+	{
+		color             : '#00EE88',
+		secondaryColor    : '#666',
+		size              : 'small'
 	});
 
 
-	$(".spA").mouseenter(function(e){
-		stitchHelper.stitchTypeBox.style.transform = "perspective(240px) rotateY(0deg)";
-		stitchHelper.demoSphere.style.backgroundColor = "rgba(255,170,0,0.5)";
-	});
-
-	$(".spB").mouseenter(function(e){
-		stitchHelper.stitchTypeBox.style.transform = "perspective(240px) rotateY(180deg)";
-		stitchHelper.demoSphere.style.backgroundColor = "rgba(170,255,0,0.5)";
-	});
-
-	$(".slide").mouseenter(function(e){
-		stitchHelper.demoSphere.className = "demoStatus" + stitchHelper.stitchDemo[e.target.attributes.key.value];
-	});
-
-	$(".slide").mouseleave(function(e){
-		stitchHelper.demoSphere.className = "demoStatusNone";
-	});
+}
 
 
-	</script>
+$('.js-switch').change(function(e){
+
+	e.target.attributes.checked = !e.target.attributes.checked;
+
+	settingDB[e.target.attributes.key.value] = e.target.attributes.checked;
+
+	console.log(e.target.attributes.key.value , e.target.attributes.checked);
+});
+
+$('.js-switch').click();
+
+
+
+//Stich Helper
+
+
+$(".slide").bind('input', function(e){
+	stitchHelper.stitchVal[e.target.attributes.key.value] = e.target.value;
+	theta_view('thetaVideo');
+	e.target.previousElementSibling.innerHTML = e.target.value;
+});
+
+
+$(".spA").mouseenter(function(e){
+	stitchHelper.stitchTypeBox.style.transform = "perspective(240px) rotateY(0deg)";
+	stitchHelper.demoSphere.style.backgroundColor = "rgba(255,170,0,0.5)";
+});
+
+$(".spB").mouseenter(function(e){
+	stitchHelper.stitchTypeBox.style.transform = "perspective(240px) rotateY(180deg)";
+	stitchHelper.demoSphere.style.backgroundColor = "rgba(170,255,0,0.5)";
+});
+
+$(".slide").mouseenter(function(e){
+	stitchHelper.demoSphere.className = "demoStatus" + stitchHelper.stitchDemo[e.target.attributes.key.value];
+});
+
+$(".slide").mouseleave(function(e){
+	stitchHelper.demoSphere.className = "demoStatusNone";
+});
+
+
+</script>
 
 
 </html>
