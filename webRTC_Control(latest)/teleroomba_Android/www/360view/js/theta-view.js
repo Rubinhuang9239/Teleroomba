@@ -163,6 +163,8 @@ HUDSystem.addToScene = function(){
     scene.add(HUDSystem.staticObjs);
 
     HUDSystem.getOffAngle();
+
+    setTimeout(function(){ HUDSystem.resetCameraAngle()}, 4000);
 }
 
 HUDSystem.userInteraction = false
@@ -238,10 +240,29 @@ HUDSystem.initUserInteraction = function(){
 
 
 HUDSystem.getOffAngle = function(){
-    var followObjsAng = HUDSystem.followObjs.rotation;
+    var followObjsAng = camera.rotation;
     document.getElementById("offAngleX").innerHTML = ((followObjsAng.x)/Math.PI*180).toPrecision(4);
     document.getElementById("offAngleY").innerHTML = ((followObjsAng.y)/Math.PI*180).toPrecision(4);
     document.getElementById("offAngleZ").innerHTML = ((followObjsAng.z)/Math.PI*180).toPrecision(4);
+}
+
+HUDSystem.resetCameraAngle = function(){
+
+
+    camera.rotation.x += 0.2 * (0-camera.rotation.x);
+    camera.rotation.y += 0.2 * (0-camera.rotation.y);
+    camera.rotation.z += 0.2 * (0-camera.rotation.z);
+
+    if( Math.abs(camera.rotation.z)>= 0.005 ){
+
+        setTimeout(function(){
+            HUDSystem.resetCameraAngle();
+        },36);
+
+    }else{
+        camera.rotation.set(0,0,0);
+        console.log("Done Reset");
+    }
 }
 
 
