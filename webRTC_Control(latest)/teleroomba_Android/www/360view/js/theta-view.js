@@ -1,6 +1,8 @@
 var scene = null ;
 var camera = null;
 var renderer = null;
+var effect = null;
+var controls = null;
 
 function initThree(){
     scene = new THREE.Scene();
@@ -20,7 +22,6 @@ function initThree(){
     var container = document.getElementById("threeContainer");
 	container.appendChild( rendererDom );
 
-	var effect;
 	effect = new THREE.StereoEffect(renderer);
 	effect.setSize(width, height);
 
@@ -28,7 +29,7 @@ function initThree(){
 	directionalLight.position.set( 0, 0.7, 0.7 );
 	scene.add( directionalLight );
 
-	var controls = new THREE.OrbitControls(camera, container);
+	controls = new THREE.OrbitControls(camera, container);
 	controls.noPan = true;
 
     renderLoop();
@@ -42,11 +43,11 @@ function renderLoop() {
     }
 
         requestAnimationFrame( renderLoop );
-        //if( !settingDB.headset ){
-        renderer.render( scene, camera );
-        // }else{
-        //  effect.render(scene, camera);
-        // }
+        if( !settingDB.headset ){
+            renderer.render( scene, camera );
+        }else{
+            effect.render(scene, camera);
+        }
 }
 
 //---------HUD_display-------------//
@@ -164,31 +165,14 @@ HUDSystem.addToScene = function(){
 
     HUDSystem.getOffAngle();
 
-    setTimeout(function(){ HUDSystem.resetCameraAngle()}, 4000);
+    //setTimeout(function(){ HUDSystem.resetCameraAngle()}, 4000);
 }
 
-HUDSystem.userInteraction = false
+HUDSystem.userInteraction = false;
 
-HUDSystem.initUserInteraction = function(){
+HUDSystem.initUserInteraction = function(status){
 
-    var rendererDom = renderer.domElement;
-
-    rendererDom.addEventListener( 'mousedown', function(){
-        HUDSystem.userInteraction = true;
-    } );
-    rendererDom.addEventListener( 'mouseup', function(){
-        HUDSystem.userInteraction = false;
-    } );
-
-    rendererDom.addEventListener( 'touchstart', function(){
-        HUDSystem.userInteraction = true;
-    } );
-    rendererDom.addEventListener( 'touchend', function(){
-        HUDSystem.userInteraction = false;
-    } );
-
-
-    handleUserDrag = function(){
+        handleUserDrag = function(){
 
         if(HUDSystem.userInteraction == false){
             return false
@@ -232,6 +216,30 @@ HUDSystem.initUserInteraction = function(){
 
     }
 
+
+        if(status == "reset"){
+
+            handleUserDrag();
+
+            return false
+        }
+
+    var rendererDom = renderer.domElement;
+
+    rendererDom.addEventListener( 'mousedown', function(){
+        HUDSystem.userInteraction = true;
+    } );
+    rendererDom.addEventListener( 'mouseup', function(){
+        HUDSystem.userInteraction = false;
+    } );
+
+    rendererDom.addEventListener( 'touchstart', function(){
+        HUDSystem.userInteraction = true;
+    } );
+    rendererDom.addEventListener( 'touchend', function(){
+        HUDSystem.userInteraction = false;
+    } );
+
     rendererDom.addEventListener( 'mousemove', handleUserDrag);
     rendererDom.addEventListener( 'touchmove', handleUserDrag);
 
@@ -253,6 +261,7 @@ HUDSystem.resetCameraAngle = function(){
     camera.rotation.y += 0.2 * (0-camera.rotation.y);
     camera.rotation.z += 0.2 * (0-camera.rotation.z);
 
+
     if( Math.abs(camera.rotation.z)>= 0.005 ){
 
         setTimeout(function(){
@@ -261,8 +270,13 @@ HUDSystem.resetCameraAngle = function(){
 
     }else{
         camera.rotation.set(0,0,0);
+        controls.reset();
         console.log("Done Reset");
     }
+
+    //change the dist display
+    HUDSystem.userInteraction = true;
+    HUDSystem.initUserInteraction("reset");
 }
 
 

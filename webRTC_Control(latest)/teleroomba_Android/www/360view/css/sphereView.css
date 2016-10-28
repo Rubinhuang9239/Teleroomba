@@ -200,10 +200,8 @@ a{color: #FFF !important;}
 
     #stitchHelper{
 		position :fixed;
-		top : auto;
+		top : 12%;
 		left : 5px; 
-		bottom : 0px;
-		bottom : 10%;
 		background-color:rgba(0,0,0,0.5);
 		width : 280px;
 		border-radius: 5px;
@@ -211,9 +209,13 @@ a{color: #FFF !important;}
 		color: #FFF;
 		text-shadow:1px 1px 2px rgba(0,0,0,0.4);
 		transition: transform 0.75s ease-in-out;
+		overflow-y: scroll;
+		height: 72%;
+		min-height: 320px;
 	}
 
 	#stitchHelpClose{
+		position: absolute;
 		left: auto;
 		right: 0px !important;
 	}
@@ -325,7 +327,6 @@ a{color: #FFF !important;}
 	top: auto;
 	bottom: 0px;
 	left: 0px;
-	height: 60px;
 	background-color: rgba(0,0,0,0.25);
 	width:100px;
 	color: #FFF;
@@ -341,3 +342,40 @@ a{color: #FFF !important;}
 .offAngle{
 
 }
+
+#resetCam{
+	background-color: rgba(0,255,200,0.25);
+	cursor: pointer;
+}
+#resetCam:hover{
+	opacity: 0.75;
+}
+
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  background-color: #444;
+  margin: 6px 0px 6px 0px;
+}
+
+
+input[type=range]::-webkit-slider-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #CCC;
+  cursor: pointer;
+  -webkit-appearance: none;
+  border: none;
+  margin-top: -5px;
+  box-shadow: 0px 1px 4px rgba(0,0,0,0.35);
+}
+

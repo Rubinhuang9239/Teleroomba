@@ -25,6 +25,17 @@ animate.init = function(){
 		animate.stitchHelpStatus("close");
 	});
 
+	var resetCam = document.getElementById("resetCam");
+	resetCam.addEventListener("click",function(){
+		HUDSystem.resetCameraAngle();
+	});
+
+	window.addEventListener('resize', function(){
+	  camera.aspect = window.innerWidth / window.innerHeight;
+	  camera.updateProjectionMatrix();
+	  renderer.setSize(window.innerWidth, window.innerHeight);
+	});
+
 }
 
 
