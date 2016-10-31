@@ -13,6 +13,7 @@ animate.init = function(){
 	stitchBtn = document.getElementById("stitch");
 	stitchBtn.addEventListener("click",function(){
 		animate.stitchHelpStatus("open");
+		HUDSystem.stitchMode();
 	});
 
 	var settingClose = document.getElementById("settingClose");
@@ -23,6 +24,7 @@ animate.init = function(){
 	var stitchHelpClose = document.getElementById("stitchHelpClose");
 	stitchHelpClose.addEventListener("click",function(){
 		animate.stitchHelpStatus("close");
+		HUDSystem.resetCameraAngle();
 	});
 
 	var resetCam = document.getElementById("resetCam");
@@ -30,11 +32,35 @@ animate.init = function(){
 		HUDSystem.resetCameraAngle();
 	});
 
-	window.addEventListener('resize', function(){
-	  camera.aspect = window.innerWidth / window.innerHeight;
-	  camera.updateProjectionMatrix();
-	  renderer.setSize(window.innerWidth, window.innerHeight);
+
+	var elem = document.getElementsByClassName('js-switch');
+	for(i=0; i< elem.length; i++ ){
+		var init = new Switchery(elem[i],
+		{
+			color             : '#00EE88',
+			secondaryColor    : '#666',
+			size              : 'small'
+		});
+
+
+	}
+
+
+	$('.js-switch').change(function(e){
+
+		e.target.attributes.checked = !e.target.attributes.checked;
+
+		settingDB[e.target.attributes.key.value] = e.target.attributes.checked;
+
+		console.log(e.target.attributes.key.value , e.target.attributes.checked);
+
+		if(e.target.attributes.key.value == "headset" && e.target.attributes.checked == false){
+			resizeScene();
+		}
+
 	});
+
+
 
 }
 

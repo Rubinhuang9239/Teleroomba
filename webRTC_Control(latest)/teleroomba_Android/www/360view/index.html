@@ -21,9 +21,16 @@
 
 		<script src="360view/js/jquery.js"></script>
 		<script src="360view/js/three.min.js"></script>
+
 		<script src="360view/js/StereoEffect.js"></script>
+
 		<script src="360view/js/OrbitControls.js"></script>
+		<script src="360view/js/threeScene.js"></script>
+		<script src="360view/js/HUDSystem.js"></script>
+		<script src="360view/js/stitchHelper.js"></script>
 		<script src="360view/js/theta-view.js"></script>
+
+
 		<script src="360view/js/peer.js"></script>
 		<script src="360view/js/main.js"></script>
 		<script src="360view/js/webRTCDataMethold_model2.js"></script>
@@ -72,7 +79,7 @@
 
 				<div class="settingItem settingToggel col-xs-10 col-sm-10 col-md-10" id="vrModeToggel">Headset Mode</div>
 				<div class="switchBox col-xs-2 col-sm-2 col-md-2">
-					<input key="headset" type="checkbox" class="js-switch" checked="true" />
+					<input key="headset" type="checkbox" class="js-switch" />
 				</div>
 
 				<br />
@@ -97,102 +104,55 @@
 		<div id="stitchHelpClose" class="closeBnt"></div>
 		<h4>Stitch Helper</h4>
 
+		<div id = "portChoice" >
+			Streaming Port: 
+			<select id = "streamPort">
+			  <option value="USB">USB</option>
+			  <option value="HDMI">HDMI</option>
+			</select>
+		</div>
+
 		<div id = "stitchTypeBox" class = "stitchTypes">
 			<div id = "demoSphere" class = "demoStatusNone" ></div>
 		</div>
 
 		<div id = "sphereASettings">
-			<b>A</b> Stretch V: <span class = "stitchValDis">422</span>
-			<input class = "slide spA" key="a" type = "range" min="400" max="450" value = "422" />
-			<b>A</b> Stretch U: <span class = "stitchValDis">426</span>
-			<input class = "slide spA" key="b" type = "range" min="400" max="450" value = "426" />
-			<b>A</b> Drift V: <span class = "stitchValDis">479</span>
-			<input class = "slide spA" key="e" type = "range" min="420" max="500" value = "479" />
-			<b>A</b> Drift U: <span class = "stitchValDis">595</span>
-			<input class = "slide spA" key="f" type = "range" min="550" max="620" value = "595" />
+			<b>A</b> Stretch V: <span class = "stitchValDis" key="a">0</span>
+			<input class = "slide spA" key="a" type = "range" min="400" max="640" value = "0" />
+			<b>A</b> Stretch U: <span class = "stitchValDis" key="b">0</span>
+			<input class = "slide spA" key="b" type = "range" min="400" max="640" value = "0" />
+			<b>A</b> Drift V: <span class = "stitchValDis" key="e">0</span>
+			<input class = "slide spA" key="e" type = "range" min="400" max="640" value = "0" />
+			<b>A</b> Drift U: <span class = "stitchValDis" key="f">0</span>
+			<input class = "slide spA" key="f" type = "range" min="400" max="640" value = "0" />
 		</div>
 
 		<br />
 
 		<div id = "sphereBSettings">
-			<b>B</b> Stretch V: <span class = "stitchValDis">425</span>
-			<input class = "slide spB" key="c" type = "range" min="400" max="450" value = "425" />
-			<b>B</b> Stretch U: <span class = "stitchValDis">425</span>
-			<input class = "slide spB" key="d" type = "range" min="400" max="450" value = "425" />
-			<b>B</b> Drift V: <span class = "stitchValDis">1442</span>
-			<input class = "slide spB" key="g" type = "range" min="1380" max="1500" value = "1442" />
-			<b>B</b> Drift U: <span class = "stitchValDis">596</span>
-			<input class = "slide spB" key="h" type = "range" min="560" max="620" value = "596" />
+			<b>B</b> Stretch V: <span class = "stitchValDis" key="c">0</span>
+			<input class = "slide spB" key="c" type = "range" min="400" max="640" value = "0" />
+			<b>B</b> Stretch U: <span class = "stitchValDis" key="d">0</span>
+			<input class = "slide spB" key="d" type = "range" min="400" max="640" value = "0" />
+			<b>B</b> Drift V: <span class = "stitchValDis" key="g">0</span>
+			<input class = "slide spB" key="g" type = "range" min="1380" max="1600" value = "0" />
+			<b>B</b> Drift U: <span class = "stitchValDis" key="h">0</span>
+			<input class = "slide spB" key="h" type = "range" min="400" max="640" value = "0" />
 		</div>
 
 	</div>
 
 	<div id="offAngleBox">
-	<p id="resetCam">Reset Camera</p>
-	<p class="offAngle">X : <span id="offAngleX"><span></p>
-	<p class="offAngle">Y : <span id="offAngleY"><span></p>
-	<p class="offAngle">Z : <span id="offAngleZ"><span></p>
+
+		<p id="resetCam">Reset Camera</p>
+		<p class="offAngle">X : <span id="offAngleX"><span></p>
+		<p class="offAngle">Y : <span id="offAngleY"><span></p>
+		<p class="offAngle">Z : <span id="offAngleZ"><span></p>
+		
 	</div>
 
 </body>
 
-<script>
-var elem = document.getElementsByClassName('js-switch');
-for(i=0; i< elem.length; i++ ){
-	var init = new Switchery(elem[i],
-	{
-		color             : '#00EE88',
-		secondaryColor    : '#666',
-		size              : 'small'
-	});
-
-
-}
-
-
-$('.js-switch').change(function(e){
-
-	e.target.attributes.checked = !e.target.attributes.checked;
-
-	settingDB[e.target.attributes.key.value] = e.target.attributes.checked;
-
-	console.log(e.target.attributes.key.value , e.target.attributes.checked);
-});
-
-$('.js-switch').click();
-
-
-
-//Stich Helper
-
-
-$(".slide").bind('input', function(e){
-	stitchHelper.stitchVal[e.target.attributes.key.value] = e.target.value;
-	theta_view('thetaVideo');
-	e.target.previousElementSibling.innerHTML = e.target.value;
-});
-
-
-$(".spA").mouseenter(function(e){
-	stitchHelper.stitchTypeBox.style.transform = "perspective(240px) rotateY(0deg)";
-	stitchHelper.demoSphere.style.backgroundColor = "rgba(255,170,0,0.5)";
-});
-
-$(".spB").mouseenter(function(e){
-	stitchHelper.stitchTypeBox.style.transform = "perspective(240px) rotateY(180deg)";
-	stitchHelper.demoSphere.style.backgroundColor = "rgba(170,255,0,0.5)";
-});
-
-$(".slide").mouseenter(function(e){
-	stitchHelper.demoSphere.className = "demoStatus" + stitchHelper.stitchDemo[e.target.attributes.key.value];
-});
-
-$(".slide").mouseleave(function(e){
-	stitchHelper.demoSphere.className = "demoStatusNone";
-});
-
-
-</script>
 
 
 </html>

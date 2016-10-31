@@ -18,8 +18,6 @@ body{
 			background-size: cover;
 		}
 
-a{color: #FFF !important;}
-
 
 		#sphereViewSetting{
 			height: 100%;
@@ -35,43 +33,11 @@ a{color: #FFF !important;}
 		}
 
 
-		.settingItem{
-			padding-top: 12px;
-			padding-left: 40px;
-			height: 45px;
-			/*border-top: 1px solid #777;*/
-			cursor: pointer;
-			background-size: 32px 32px;
-			background-position: left center;
-			background-repeat: no-repeat;
-			transition:background-color 0.15s ease-in-out;
-		}
-		.settingItem:hover{
-			background-color: rgba(255,255,255,0.25);
-		}
-
-
-		.settingToggel{
-			cursor: default;
-		}
-		.settingToggel:hover{
-			background-color: transparent;
-		}
-
 		.switchBox{
-			height: 45px;
-			padding: 0px;
-			padding-top: 12px;
+			height: 20px;
+			padding: 10px;
 		}
 
-		#DevConsoleBox{
-			height: 320px;
-		}
-
-		#HardWareInfo{
-			background-color: #2A2A2A;
-			height: 100%;
-		}
 
 		.closeBnt{
 			height: 48px;
@@ -92,88 +58,12 @@ a{color: #FFF !important;}
 			opacity: 1;
 		}
 
-		.panelName{
-			border-bottom: solid 1px #444;
-			height:48px;
-			padding-top: 16px;
-			margin-top: 0px;
-		}
-
-
-		#settingContent{
-			position: absolute;
-			/*height: 0px;*/
-			height: 100%;
-			width: 100%;
-			overflow-x:hidden;
-			overflow-y:scroll;
-			z-index: 8;
-		}
-
-		#settingDetail{
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			z-index: 9;
-			background-color: #333;
-			box-shadow: -3px 0px 6px rgba(0,0,0,0.75);
-			transition:transform 0.6s ease-in-out;
-			transform:translateX(103%);
-		}
-
-		#settingDetailClose{
-			background-image: url("../img/backSigh.svg");
-		}
-
-		#vrModeToggel{
-			background-image: url("../img/vr_mode_icon.svg");
-		}
-
-		#keyInputToggel{
-			background-image: url("../img/key_input_icon.svg");
-		}
-
-		#autoDock{
-			background-image: url("../img/auto_dock_icon.svg");
-		}
-
-		#rebootBluno{
-			background-image: url("../img/reboot_bluno_icon.svg");
-		}
-
 		/****** HUD_Interface*****/
 
 	#credentials{
       border-bottom: solid 1px #444;
       color: #FFF;
-    }
-
-    .peerIdInput{
-      background-color: transparent;
-      text-align: left;
-      width: 100%;
-      font-size: 16px;
-      height: 20px;
-      margin-top: 15px;
-      padding: 6px 4% 6px 4%;
-      border: none;
-      color: #FFF;
-      border-bottom: solid 1px #666;
-    }
-
-    button{
-      margin-top:10px;
-      height: 28px;
-      width: 100%;
-      border-radius: 4px;
-      border: none;
-      background-color: #7094DC;
-      font-size: 14px;
-      color: #FFF;
-      position: relative;
-      bottom: 0px;
-    }
-	  
+    } 
 
     .bnt{
       position: absolute;
@@ -188,13 +78,6 @@ a{color: #FFF !important;}
       top: 0px;
     }
 
-    #setting{
-      background-image: url("../img/setting.png");
-      background-color: #FF9900;
-      background-size: 72%;
-      left:40px;
-    }
-
     #stitch{
       background-image: url("../img/360.svg");
       background-color: #00EE88;
@@ -204,7 +87,7 @@ a{color: #FFF !important;}
 
     #stitchHelper{
 		position :fixed;
-		top : 12%;
+		top : 40px;
 		left : 5px; 
 		background-color:rgba(0,0,0,0.5);
 		width : 280px;
@@ -346,6 +229,11 @@ a{color: #FFF !important;}
 
 .offAngle{
 
+}
+
+#vrModeToggel{
+	background-color: rgba(0,205,250,0.25);
+	cursor: pointer;
 }
 
 #resetCam{
