@@ -125,37 +125,39 @@ HUDSystem.initUserInteraction = function(status){
             return false
         }
         
+        if(HUDSystem.inited){
+                
         var dist = HUDSystem.calcuShift(HUDSystem.visualCenterWM);
 
-        
-        //---update texture---//
-        var text = "d: " + dist;
-        var color = "#FF9900";
-        var size = 72;
-        var font = size + "px " + "Helvetica";
+            //---update texture---//
+            var text = "d: " + dist;
+            var color = "#FF9900";
+            var size = 72;
+            var font = size + "px " + "Helvetica";
 
-        var canvas = document.createElement('canvas');
-        var context = canvas.getContext('2d');
-        context.font = font;
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+            context.font = font;
 
-        // get size data (height depends only on font size)
-        var metrics = context.measureText(text),
-            textWidth = metrics.width;
+            // get size data (height depends only on font size)
+            var metrics = context.measureText(text),
+                textWidth = metrics.width;
 
-        canvas.width = textWidth + 3;
-        canvas.height = size + 20;
+            canvas.width = textWidth + 3;
+            canvas.height = size + 20;
 
-        context.font = font;
-        context.fillStyle = color;
-        context.fillText(text, 0, size + 3);
+            context.font = font;
+            context.fillStyle = color;
+            context.fillText(text, 0, size + 3);
 
-        // canvas contents will be used for a texture
-        var texture = new THREE.Texture(canvas);
-        texture.needsUpdate = true;
-        texture.minFilter = THREE.LinearFilter
+            // canvas contents will be used for a texture
+            var texture = new THREE.Texture(canvas);
+            texture.needsUpdate = true;
+            texture.minFilter = THREE.LinearFilter
 
-        HUDSystem.distLabel.material.map = texture;
-        HUDSystem.distLabel.geometry = new THREE.PlaneGeometry(canvas.width, canvas.height);
+            HUDSystem.distLabel.material.map = texture;
+            HUDSystem.distLabel.geometry = new THREE.PlaneGeometry(canvas.width, canvas.height);
+        }
 
 
         //---update_offAngle_Val---//
@@ -202,92 +204,21 @@ HUDSystem.getOffAngle = function(){
 }
 
 
-HUDSystem.resetCameraAngle = function(){
-
-    camera.rotation.x += 0.2 * (0-camera.rotation.x);
-    camera.rotation.y += 0.2 * (0-camera.rotation.y);
-    camera.rotation.z += 0.2 * (0-camera.rotation.z);
-
-    camera.position.x += 0.2 * (0-camera.position.x);
-    camera.position.y += 0.2 * (0-camera.position.y);
-    camera.position.z += 0.2 * (0-camera.position.z);
-
-
-    //controls.target.copy(HUDSystem.visualCenterWM);
-
-
-
-    if(Math.abs(camera.rotation.z)>= 0.005 || Math.abs(camera.position.x) >= 0.05 || Math.abs(camera.position.y) >= 0.05 || Math.abs(camera.position.z) >= 0.05){
-
-        setTimeout(function(){
-            HUDSystem.resetCameraAngle();
-        },36);
-
-    }else{
-        camera.rotation.set(0,0,0);
-        controls.reset();
-        console.log("Done Reset");
-    }
-
-    //change the dist display
-    HUDSystem.userInteraction = true;
-    HUDSystem.initUserInteraction("AutoPan");
-}
-
-HUDSystem.stitchMode = function(){
-
-    camera.rotation.x += 0.2 * (0-camera.rotation.x);
-    camera.rotation.y += 0.2 * (0-camera.rotation.y);
-    camera.rotation.z += 0.2 * (0-camera.rotation.z);
-
-    camera.position.x += 0.2 * (0-camera.position.x);
-    camera.position.y += 0.2 * (0-camera.position.y);
-    camera.position.z += 0.2 * (0-camera.position.z);
-
-
-    var setStitchModeDist = function(){
-        if( camera.position.z <= 140){
-            controls.dollyIn(0.75);
-            controls.update();
-
-            setTimeout(function(){
-                setStitchModeDist();
-            },36);
-
-        }
-    }
-
-
-    if(Math.abs(camera.rotation.z)>= 0.005 || Math.abs(camera.position.x) >= 0.05 || Math.abs(camera.position.y) >= 0.05 || Math.abs(camera.position.z) >= 0.05){
-        setTimeout(function(){
-            HUDSystem.stitchMode();
-        },36);
-    }
-    else{
-        camera.rotation.set(0,0,0);
-        controls.reset();
-        console.log("Stitch Mode Entered");
-        setStitchModeDist();
-    }
-
-
-    //change the dist display
-    HUDSystem.userInteraction = true;
-    HUDSystem.initUserInteraction("AutoPan");
-}
-
-
 HUDSystem.update = function(){
 
+    if(HUDSystem.inited){
 
-    HUDSystem.followObjs.rotation.x = camera.rotation.x;
-    HUDSystem.followObjs.rotation.y = camera.rotation.y;
-    HUDSystem.followObjs.rotation.z = camera.rotation.z;
+        HUDSystem.followObjs.rotation.x = camera.rotation.x;
+        HUDSystem.followObjs.rotation.y = camera.rotation.y;
+        HUDSystem.followObjs.rotation.z = camera.rotation.z;
 
-    HUDSystem.visCtrGuideLine.geometry.verticesNeedUpdate = true;
-    HUDSystem.visualCenterWM.setFromMatrixPosition( HUDSystem.visualCenter.matrixWorld );
-    //update the guide line
-    HUDSystem.visCtrGuideLine.geometry.vertices[0].copy(HUDSystem.visualCenterWM);
+        HUDSystem.visCtrGuideLine.geometry.verticesNeedUpdate = true;
+        HUDSystem.visualCenterWM.setFromMatrixPosition( HUDSystem.visualCenter.matrixWorld );
+        //update the guide line
+        HUDSystem.visCtrGuideLine.geometry.vertices[0].copy(HUDSystem.visualCenterWM);
+        
+    }
+
 }
 
 
@@ -344,6 +275,8 @@ HUDSystem.textSprite = function(text) {
 }
 
 HUDSystem.calcuShift = function(visualCenterWM){
-    var dist = parseInt(HUDSystem.visualCenterWM.distanceTo(HUDSystem.defaultCenter.position));
-    return dist;
+    if(HUDSystem.inited){
+        var dist = parseInt(HUDSystem.visualCenterWM.distanceTo(HUDSystem.defaultCenter.position));
+        return dist;
+    }
 }

@@ -1,8 +1,11 @@
+// A Demo to use webGL features from Teleroomba
+// Setup a regular THREE scene, obit control and VR stereo view in this code.
+
 var scene = null ;
 var camera = null;
 var renderer = null;
-var effect = null;
 var controls = null;
+var effect = null;
 
 function initThree(){// init Three and Orbit Controls
     
@@ -39,7 +42,10 @@ function initThree(){// init Three and Orbit Controls
 	controls.noPan = true;
     controls.zoomSpeed = 2;
 
-    renderLoop();
+ 	//controls.enableDamping = true; // Damp is not recommeded;
+	//controls.dampingFactor = 0.32;
+
+    animateLoop();
 
 }
 
@@ -49,13 +55,21 @@ function resizeScene(){
 	renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function renderLoop() {
 
-    if(HUDSystem.inited){
-        HUDSystem.update();
-    }
+function animateLoop() {
 
-        requestAnimationFrame( renderLoop );
+				requestAnimationFrame( animateLoop );
+
+			    HUDSystem.update();
+				//controls.update(); // only do the camera damp when their is no HUD. // Damp is not recommeded;
+
+				render();
+
+			}
+
+
+function render() {
+	
         if( !settingDB.headset ){
             renderer.render( scene, camera );
         }else{

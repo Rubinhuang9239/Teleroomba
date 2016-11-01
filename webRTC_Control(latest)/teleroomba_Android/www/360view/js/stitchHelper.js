@@ -101,3 +101,73 @@ stitchHelper.refreashVal = function(){
 
 }
 
+stitchHelper.stitchMode = function(){
+
+    camera.rotation.x += 0.2 * (0-camera.rotation.x);
+    camera.rotation.y += 0.2 * (0-camera.rotation.y);
+    camera.rotation.z += 0.2 * (0-camera.rotation.z);
+
+    camera.position.x += 0.2 * (0-camera.position.x);
+    camera.position.y += 0.2 * (0-camera.position.y);
+    camera.position.z += 0.2 * (0-camera.position.z);
+
+
+    var setStitchModeDist = function(){
+        if( camera.position.z <= 140){
+            controls.dollyIn(0.75);
+            controls.update();
+
+            setTimeout(function(){
+                setStitchModeDist();
+            },36);
+
+        }
+    }
+
+
+    if(Math.abs(camera.rotation.z)>= 0.005 || Math.abs(camera.position.x) >= 0.05 || Math.abs(camera.position.y) >= 0.05 || Math.abs(camera.position.z) >= 0.05){
+        setTimeout(function(){
+            stitchHelper.stitchMode();
+        },36);
+    }
+    else{
+        camera.rotation.set(0,0,0);
+        controls.reset();
+        console.log("Stitch Mode Entered");
+        setStitchModeDist();
+    }
+
+    //change the dist display, Remove if you do not need the HUD
+    HUDSystem.userInteraction = true;
+    HUDSystem.initUserInteraction("AutoPan");
+}
+
+
+stitchHelper.resetCameraAngle = function(){
+
+    camera.rotation.x += 0.2 * (0-camera.rotation.x);
+    camera.rotation.y += 0.2 * (0-camera.rotation.y);
+    camera.rotation.z += 0.2 * (0-camera.rotation.z);
+
+    camera.position.x += 0.2 * (0-camera.position.x);
+    camera.position.y += 0.2 * (0-camera.position.y);
+    camera.position.z += 0.2 * (0-camera.position.z);
+
+
+    if(Math.abs(camera.rotation.z)>= 0.005 || Math.abs(camera.position.x) >= 0.05 || Math.abs(camera.position.y) >= 0.05 || Math.abs(camera.position.z) >= 0.05){
+
+        setTimeout(function(){
+            stitchHelper.resetCameraAngle();
+        },36);
+
+    }else{
+        camera.rotation.set(0,0,0);
+        controls.reset();
+        console.log("Done Reset");
+    }
+
+    //change the dist display, Remove if you do not need the HUD
+    HUDSystem.userInteraction = true;
+    HUDSystem.initUserInteraction("AutoPan");
+}
+

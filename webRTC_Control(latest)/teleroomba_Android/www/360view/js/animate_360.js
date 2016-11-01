@@ -13,7 +13,7 @@ animate.init = function(){
 	stitchBtn = document.getElementById("stitch");
 	stitchBtn.addEventListener("click",function(){
 		animate.stitchHelpStatus("open");
-		HUDSystem.stitchMode();
+		stitchHelper.stitchMode();
 	});
 
 	var settingClose = document.getElementById("settingClose");
@@ -24,12 +24,12 @@ animate.init = function(){
 	var stitchHelpClose = document.getElementById("stitchHelpClose");
 	stitchHelpClose.addEventListener("click",function(){
 		animate.stitchHelpStatus("close");
-		HUDSystem.resetCameraAngle();
+		stitchHelper.resetCameraAngle();
 	});
 
 	var resetCam = document.getElementById("resetCam");
 	resetCam.addEventListener("click",function(){
-		HUDSystem.resetCameraAngle();
+		stitchHelper.resetCameraAngle();
 	});
 
 
@@ -181,4 +181,23 @@ animate.loadPlayList = function(mediaList){
 		WebRTCDataMethold.sendData(cmd);
 	});
 	
+}
+
+animate.checkDoms = function(){
+	if( typeof HUDSystem == "undefined" ){
+	   var offAngleList =  document.getElementsByClassName("offAngle");
+
+	   for(i = 0; i < offAngleList.length; i++){
+	   		offAngleList[i].style.display = "none";
+	   }
+
+	}
+	else if( HUDSystem.inited == false ){
+		var offAngleList =  document.getElementsByClassName("offAngle");
+
+	   for(i = 0; i < offAngleList.length; i++){
+	   		offAngleList[i].style.display = "none";
+	   }
+	   	
+	}
 }

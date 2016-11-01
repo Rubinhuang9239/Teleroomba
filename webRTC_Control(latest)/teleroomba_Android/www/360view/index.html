@@ -16,11 +16,11 @@
 	<div id = "stitch" class = "bnt" title="Setting"></div>
 
 	<video id="thetaVideo" muted loop style="display:none">
-		<source src="360view/m20.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+		<source src="360view/placeholder.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
 		</video>
 
 		<script src="360view/js/jquery.js"></script>
-		<script src="360view/js/three.min.js"></script>
+		<script src="360view/js/three.min.82.js"></script>
 
 		<script src="360view/js/StereoEffect.js"></script>
 
@@ -28,7 +28,7 @@
 		<script src="360view/js/threeScene.js"></script>
 		<script src="360view/js/HUDSystem.js"></script>
 		<script src="360view/js/stitchHelper.js"></script>
-		<script src="360view/js/theta-view.js"></script>
+		<script src="360view/js/thetaView_Adjustable.js"></script>
 
 
 		<script src="360view/js/peer.js"></script>
@@ -106,9 +106,9 @@
 
 		<div id = "portChoice" >
 			Streaming Port: 
-			<select id = "streamPort">
-			  <option value="USB">USB</option>
-			  <option value="HDMI">HDMI</option>
+			<select class = "streamPort">
+			  <option class = "streamPort" value="USB">USB</option>
+			  <option class = "streamPort" value="HDMI">HDMI</option>
 			</select>
 		</div>
 
@@ -144,7 +144,7 @@
 
 	<div id="offAngleBox">
 
-		<p id="resetCam">Reset Camera</p>
+		<p class="offAngle" id="resetCam">Reset Camera</p>
 		<p class="offAngle">X : <span id="offAngleX"><span></p>
 		<p class="offAngle">Y : <span id="offAngleY"><span></p>
 		<p class="offAngle">Z : <span id="offAngleZ"><span></p>
