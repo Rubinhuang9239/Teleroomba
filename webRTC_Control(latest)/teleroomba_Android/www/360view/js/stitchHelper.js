@@ -88,7 +88,7 @@ stitchHelper.init = function(){
 
 stitchHelper.refreashVal = function(){
 
-    //console.log($(".slide"));
+    console.log($(".slide"));
     $(".slide").each(function(index,slide){
         //console.log(index,value);
         slide.value = stitchHelper.stitchPreSets[stitchHelper.currentMode][slide.attributes.key.value];
