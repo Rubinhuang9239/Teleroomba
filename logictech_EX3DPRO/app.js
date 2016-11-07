@@ -50,9 +50,11 @@ if(portName != null){
 
       serialData = data.toString();
 
-      process.stdout.clearLine();
-      process.stdout.cursorTo(0);
-      process.stdout.write('\x1b[33m'+"Serial Data>> "+serialData+'\x1b[0m');
+      // process.stdout.clearLine();
+      // process.stdout.cursorTo(0);
+      // process.stdout.write('\x1b[33m'+"Serial Data>> "+serialData+'\x1b[0m');
+
+      console.log(serialData);
 
     horiArc += 0.04;
     vertiArc += 0.05;
