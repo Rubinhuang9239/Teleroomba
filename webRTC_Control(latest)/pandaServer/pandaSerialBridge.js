@@ -229,7 +229,7 @@ SerialPort.list(function (err, ports) {
 
 //---------Socket.io------------//
 
-var serialReady = true;
+//var serialReady = true;
 
 io.on('connection', function (socket) {
   console.log( " socket join " + socket.id);
