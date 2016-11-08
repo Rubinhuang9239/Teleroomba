@@ -4,8 +4,8 @@ var SerialPort = require("serialport");
 //-----------------Demo_SendVal----------------//
 
 var sendVal = [90,138];
-var horiArc = 0;
-var vertiArc = 0;
+// var horiArc = 0;
+// var vertiArc = 0;
 
 var portNameChoice = ["/dev/cu.usbmodem1411", "/dev/cu.usbmodem1421"];
 var portName = null;
@@ -48,26 +48,25 @@ if(portName != null){
 
   port.on( 'data', function(data){
 
-      serialData = data.toString();
+    serialData = data.toString();
 
-      // process.stdout.clearLine();
-      // process.stdout.cursorTo(0);
-      // process.stdout.write('\x1b[33m'+"Serial Data>> "+serialData+'\x1b[0m');
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
+    process.stdout.write('\x1b[33m'+"Serial Data>> "+serialData+'\x1b[0m');
+    //console.log(serialData);
 
-      console.log(serialData);
+    // horiArc += 0.04;
+    // vertiArc += 0.05;
 
-    horiArc += 0.04;
-    vertiArc += 0.05;
+    // if(horiArc >= 2*Math.PI ){
+    //   horiArc = 0;
+    // }
+    // if(vertiArc >= 2*Math.PI ){
+    //   vertiArc = 0;
+    // }
 
-    if(horiArc >= 2*Math.PI ){
-      horiArc = 0;
-    }
-    if(vertiArc >= 2*Math.PI ){
-      vertiArc = 0;
-    }
-
-    sendVal[0] = Math.round(90 + 90*Math.sin(horiArc));
-    sendVal[1] = Math.round(138 + 42*Math.sin(vertiArc));
+    // sendVal[0] = Math.round(90 + 90*Math.sin(horiArc));
+    // sendVal[1] = Math.round(138 + 42*Math.sin(vertiArc));
 
     var sendingMSG = sendVal.length + ","; 
 
@@ -138,7 +137,12 @@ for( i = 0; i < hidDeviceList.length; i++ ){
       // var bits = BitArray.fromBuffer(buf).toJSON().join('').match(/.{1,8}/g).join(' ');
       // console.log(bits, JSON.stringify(controls));
       //console.log(JSON.stringify(controls));
-      console.log(controls);
+      //console.log(controls);
+
+      var servoVal = map.mapServo(controls.roll, controls.pitch);
+      sendVal[0] = servoVal.horiVal;
+      sendVal[1] = servoVal.vertiVal;
+
     });
 
   }
@@ -148,3 +152,30 @@ if(!logiEX){
     console.log("No Logitech EX 3D Pro was found!");
     console.log("Please plugin to USB");
 }
+
+var map = {};
+
+map.mapFunc = function(input,floor,ceil,MFloor,MCeil){
+
+  var output = null;
+
+  output = MFloor + (MCeil - MFloor) * (input - floor) / (ceil - floor);
+
+  return output
+
+}
+
+map.mapServo = function(roll, pitch){
+
+  var servoVal = {};
+
+  servoVal.horiVal = Math.round(map.mapFunc(roll, 0, 1023, 0, 180));
+  servoVal.vertiVal = Math.round(map.mapFunc(pitch, 0, 1023, 96, 180));
+
+  return servoVal;
+
+}
+
+//console.log(map.mapServo(512, 512));
+
+

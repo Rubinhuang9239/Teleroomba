@@ -29,7 +29,7 @@ void loop() {
     verticalServo.write(verticalVal);
   }
   
-  delay(32);
+  delay(36);
 }
 
 void printIntData(){
