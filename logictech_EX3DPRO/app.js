@@ -134,19 +134,25 @@ for( i = 0; i < hidDeviceList.length; i++ ){
         ]
       };
 
-      // var bits = BitArray.fromBuffer(buf).toJSON().join('').match(/.{1,8}/g).join(' ');
-      // console.log(bits, JSON.stringify(controls));
-      //console.log(JSON.stringify(controls));
-      //console.log(controls);
-
       var servoVal = map.mapServo(controls.roll, controls.pitch);
       sendVal[0] = servoVal.horiVal;
       sendVal[1] = servoVal.vertiVal;
+
+      if(currentSocket){
+        if( controls.roll != pVal[0] || controls.pitch != pVal[1]){
+          currentSocket.emit("data", { r: controls.roll, p: controls.pitch } );
+          pVal[0] = controls.roll;
+          pVal[1] = controls.pitch;
+          //console.log("send");
+        }
+      }
 
     });
 
   }
 }
+
+var pVal = [0,0];
 
 if(!logiEX){
     console.log("No Logitech EX 3D Pro was found!");
@@ -176,6 +182,36 @@ map.mapServo = function(roll, pitch){
 
 }
 
-//console.log(map.mapServo(512, 512));
+//--------Socket.io-----------//
+
+var http = require('http');
+
+var express = require('express');
+var app = express();
+
+httpServer = http.createServer(app);
+
+
+
+httpServer.listen(3000, function(){
+      console.log("");
+      console.log("");
+      console.log("");
+      console.log("Service server open on port " + 3000);
+});
+
+app.use(express.static('public'));
+
+io = require('socket.io')(httpServer);
+
+var currentSocket = null;
+
+io.on("connection",function(socket){
+
+  console.log(socket.id + " connected")
+
+  currentSocket = socket;
+
+})
 
 
