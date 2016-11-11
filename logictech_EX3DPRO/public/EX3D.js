@@ -86,17 +86,17 @@ EX3D.calcuDrive = function(roll,pitch){
 
 		EX3D.mapKnob.style.transform = "translateX(" + map.x  +"px) translateY(" + map.y +"px)";
 
-		if(deltaY < 0 ){
-
-			var dir = ( arcTanValue / Math.PI * 180 );
+		var power = Math.abs((map.r/EX3D.size).toPrecision(3));
+		var dir = ( arcTanValue / Math.PI * 180 );
 			if(dir < 0){
 				dir += 180; 
 			}
+		dir = Number(dir.toPrecision(3));
+
+		if(deltaY < 0 ){
 
 			var map = getMapVal();
 
-			dir = Number(dir.toPrecision(3));
-			var power = Math.abs((map.r/EX3D.size).toPrecision(3));
 
 			EX3D.data.lV =  parseInt((dir/45 - 1) * power * power * 50);
 			EX3D.data.rV =  parseInt((3 - dir/45) * power * power * 50);
@@ -111,23 +111,44 @@ EX3D.calcuDrive = function(roll,pitch){
 		}
 		else{
 			//
-			if(deltaX < 0){
-				//full speed left
-				EX3D.data={
-					lV: -50,
-					rV: 50
-				}
+			// if(deltaX < 0){
+			// 	//full speed left
+			// 	EX3D.data={
+			// 		lV: parseInt(-50 * power),
+			// 		rV: parseInt(50 * power)
+			// 	}
 
-			}else if(deltaX > 0){
-				//full speed right
-				EX3D.data={
-					lV: 50,
-					rV: -50
-				}
+			// }else if(deltaX > 0){
+			// 	//full speed right
+			// 	EX3D.data={
+			// 		lV: parseInt(50 * power),
+			// 		rV: parseInt(-50 * power)
+			// 	}
+			// }
+			//console.log(dir);
+			if(dir == NaN){
+				dir = 90;
+			}
+
+			EX3D.data.lV =  parseInt((dir/45 - 1) * power * power * -50);
+			EX3D.data.rV =  parseInt((3 - dir/45) * power * power * -50);
+
+			if(EX3D.data.lV < -50 ){
+				EX3D.data.lV = -50;
+			}
+			else if(EX3D.data.lV == -0){
+				EX3D.data.lV = 0;
+			}
+			if(EX3D.data.rV < -50 ){
+				EX3D.data.rV = -50;
+			}
+			else if(EX3D.data.rV == -0){
+				EX3D.data.rV = 0;
 			}
 		}
 
-					console.log(EX3D.data);
+		EX3D.data.type = "DR";
+		//console.log(EX3D.data);
 
 }
 
