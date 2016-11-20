@@ -36,11 +36,9 @@ A 2D/3D video and real time communication telepresence robot
 A fully integrated system on Linux runs on lattepanda/raspberry Pi
 support multi HDMI-Input/output, connect to live stream engine, webGL and even Unity game features.
 
-
-<br />
 <h6>Software</h6>
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_software.jpg" width="480" />
-<br />
+
 <h6>Hardware</h6>
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_hardware.jpg" width="480" />
 
