@@ -38,7 +38,11 @@ support multi HDMI-Input/output, connect to live stream engine, webGL and even U
 
 
 <br />
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/360_system.jpg" width="480" />
+Software
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_software.jpg" width="480" />
+<br />
+Hardware
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_hardware.jpg" width="480" />
 
 
 <h5>Demo Video</h5>
