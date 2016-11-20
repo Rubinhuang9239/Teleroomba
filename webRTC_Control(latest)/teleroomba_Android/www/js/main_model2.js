@@ -281,6 +281,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   "Touch" : "#FFF",
                   "Error" : "#FF0000",
                   "Media" : "#FF9900",
+                  "Settings" : "#2299CC",
                 }
 
     var color = '#0580FF';

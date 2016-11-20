@@ -7,7 +7,7 @@ stitchHelper.transform = {x:0,y:0,z:0};
 stitchHelper.rotation = {x:0,y:0,z:0};
 
 stitchHelper.stitchPreSets = {
-    USB:{
+    Ricoh_USB:{
     	a:422,
     	b:426,
     	c:425,
@@ -17,9 +17,11 @@ stitchHelper.stitchPreSets = {
     	f:595,
     	g:1442,
     	h:596,
+        rotateZ : (-Math.PI / 2),
+        videoSrc : "360view/video/thetaHDMI_Record.mp4"
     },
     
-    HDMI:{
+    Ricoh_HDMI:{
         a:428,
         b:477,
         c:425,
@@ -29,10 +31,26 @@ stitchHelper.stitchPreSets = {
         f:607,
         g:1441,
         h:605,
+        rotateZ : (-Math.PI / 2),
+        videoSrc : "360view/video/placeholder.mp4"
+    },
+
+    Insta360_RAW:{
+        a:419,
+        b:487,
+        c:429,
+        d:479,
+        
+        e:482,
+        f:534,
+        g:1446,
+        h:535,
+        rotateZ : (Math.PI / 2),
+        videoSrc : "360view/video/insta360.mp4"
     }
 }
 
-stitchHelper.currentMode = "USB";
+stitchHelper.currentMode = "Ricoh_USB";
 
 stitchHelper.stitchDemo = {
     	a:"StretchV",
@@ -83,12 +101,12 @@ stitchHelper.init = function(){
         stitchHelper.currentMode = e.target.value;
         stitchHelper.refreashVal();
         theta_view('thetaVideo');
-    })
+    });
 }
 
 stitchHelper.refreashVal = function(){
 
-    console.log($(".slide"));
+    //console.log($(".slide"));
     $(".slide").each(function(index,slide){
         //console.log(index,value);
         slide.value = stitchHelper.stitchPreSets[stitchHelper.currentMode][slide.attributes.key.value];
@@ -98,6 +116,9 @@ stitchHelper.refreashVal = function(){
         //console.log(index,value);
         stitchValDis.innerHTML = stitchHelper.stitchPreSets[stitchHelper.currentMode][stitchValDis.attributes.key.value];
     });
+
+    var video = document.getElementById("thetaVideo");
+    video.src = stitchHelper.stitchPreSets[stitchHelper.currentMode].videoSrc;
 
 }
 

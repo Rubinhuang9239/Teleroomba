@@ -23,7 +23,7 @@ keyBoard.Input = function(event) {
 }
 
 keyBoard.InputFinish = function(event) {
-	console.log("up");
+	//console.log("up");
     var key = event.which;
     keyBoard.keydownList[key] = false;
 
@@ -118,7 +118,7 @@ keyBoard.drive = function(empty){
 		}
 
 	}
-	console.log(msg, cmd);
+	//console.log(msg, cmd);
 
 	//Send to Phone
 	cmd.type = "DR";

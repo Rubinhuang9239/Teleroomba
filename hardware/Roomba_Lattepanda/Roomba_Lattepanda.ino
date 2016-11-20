@@ -21,6 +21,7 @@ boolean beeping = false;
 void setup() {
   
   //Init Windows/Linux serial port interaction
+  pinMode(debugSwitch,INPUT);
   
 
   Serial.begin(9600);

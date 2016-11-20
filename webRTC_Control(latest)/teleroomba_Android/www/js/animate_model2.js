@@ -48,7 +48,7 @@ animate.init = function(){
 
 		WebRTCDataMethold.sendData(cmd);
 
-		animate.loadSettingDetail("MediaBox", "Media Playlist");
+		animate.loadSettingDetail("mediaBox", "Media Playlist");
 	});
 
 	var rebootRoomba = document.getElementById("rebootRoomba");
@@ -223,6 +223,16 @@ animate.foldBeepBox = function(status){
 
 		WebRTCDataMethold.sendData(cmd);
 	}
+}
+
+animate.HUDOnOff = function(e){
+			var augment = document.getElementById("HUD");
+			if(e === true ){
+				augment.style.display = "block";
+			}
+			else{
+				augment.style.display = "none";
+			}
 }
 
 animate.removeSettingDetail = function(){

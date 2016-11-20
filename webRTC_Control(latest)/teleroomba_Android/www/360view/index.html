@@ -1,7 +1,11 @@
+<!DOCTYPE html>
+
 <html>
 
-
-
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=0.5, maximum-scale=0.5"/>
+		<meta charset="utf-8">
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="360view/css/bootstrap.css" />
@@ -15,15 +19,13 @@
 	<div id = "setting" class = "bnt" title="Setting"></div>
 	<div id = "stitch" class = "bnt" title="Setting"></div>
 
-	<video id="thetaVideo" muted loop style="display:none">
-		<source src="360view/placeholder.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-		</video>
+	<video id="thetaVideo" muted style="display:none" loop="true" autoplay="" src="360view/video/placeholder.mp4" type='video/mp4'></video>
 
 		<script src="360view/js/jquery.js"></script>
 		<script src="360view/js/three.min.82.js"></script>
 
 		<script src="360view/js/StereoEffect.js"></script>
-
+		<script src="360view/js/DeviceOrientationControls.js"></script>
 		<script src="360view/js/OrbitControls.js"></script>
 		<script src="360view/js/threeScene.js"></script>
 		<script src="360view/js/HUDSystem.js"></script>
@@ -107,8 +109,9 @@
 		<div id = "portChoice" >
 			Streaming Port: 
 			<select id="streamPort" class = "streamPort">
-			  <option class = "streamPort" value="USB">USB</option>
-			  <option class = "streamPort" value="HDMI">HDMI</option>
+					<option class = "streamPort" value="Ricoh_USB">Ricoh USB Live / Recorded</option>
+					<option class = "streamPort" value="Ricoh_HDMI">Ricoh HDMI Live</option>
+					<option class = "streamPort" value="Insta360_RAW">Insta360 4K Unstitched</option>
 			</select>
 		</div>
 

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var SERVER_IP = 'localhost';
   var SERVER_PORT = 8888;
 
-  // var SERVER_IP = '45.55.168.221';
+  // var SERVER_IP = 'teleroomba.itp.io';
   // var SERVER_PORT = 8001;
 
   //socketCon.init(SERVER_IP);

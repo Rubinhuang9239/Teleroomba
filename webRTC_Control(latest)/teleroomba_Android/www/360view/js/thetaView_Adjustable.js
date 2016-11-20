@@ -43,7 +43,7 @@ var theta_view = function (video_id) {
                 }
         }
 
-        geometry.rotateZ(-Math.PI / 2);
+        geometry.rotateZ( stitchHelper.stitchPreSets[stitchHelper.currentMode].rotateZ ); //-Math.PI / 2);
         geometry.rotateY(Math.PI / 2);
 	var material = new THREE.MeshBasicMaterial( { map: texture } );
 	var mesh = new THREE.Mesh( geometry, material );

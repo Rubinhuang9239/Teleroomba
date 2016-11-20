@@ -208,9 +208,17 @@ HUDSystem.update = function(){
 
     if(HUDSystem.inited){
 
-        HUDSystem.followObjs.rotation.x = camera.rotation.x;
-        HUDSystem.followObjs.rotation.y = camera.rotation.y;
-        HUDSystem.followObjs.rotation.z = camera.rotation.z;
+        if(HUDSystem.gyroMode == false){
+            HUDSystem.followObjs.rotation.x = camera.rotation.x;
+            HUDSystem.followObjs.rotation.y = camera.rotation.y;
+            HUDSystem.followObjs.rotation.z = camera.rotation.z;
+        }
+        else{
+            HUDSystem.userInteraction = true;
+            HUDSystem.initUserInteraction("AutoPan");
+            HUDSystem.getOffAngle();
+            controls.update();
+        }
 
         HUDSystem.visCtrGuideLine.geometry.verticesNeedUpdate = true;
         HUDSystem.visualCenterWM.setFromMatrixPosition( HUDSystem.visualCenter.matrixWorld );
@@ -279,4 +287,19 @@ HUDSystem.calcuShift = function(visualCenterWM){
         var dist = parseInt(HUDSystem.visualCenterWM.distanceTo(HUDSystem.defaultCenter.position));
         return dist;
     }
+}
+
+HUDSystem.gyroMode = false;
+
+HUDSystem.switchGyroMode = function(){
+
+
+    HUDSystem.gyroMode = true;
+
+    scene.remove(HUDSystem.followObjs);
+    camera.add(HUDSystem.followObjs);
+    scene.add(camera);
+
+    //console.log("hi");
+
 }

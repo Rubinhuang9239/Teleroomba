@@ -19,6 +19,11 @@ function initThree(){// init Three and Orbit Controls
 	camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
 	camera.position.set( 0, 0, 0.001 );
 
+	// Test object
+	// var demoGeometry = new THREE.SphereGeometry(5,16,16);
+	// var demoMaterial = new THREE.MeshBasicMaterial({ color : 0xFF9900, transparent: true, opacity: 0.5, wireframe:true });
+	// var mesh = new THREE.Mesh(demoGeometry, demoMaterial);
+	// scene.add(mesh);
 
 	renderer = new THREE.WebGLRenderer( { alpha: true } );
     renderer.setClearColor( 0x000000, 0 );
@@ -42,12 +47,46 @@ function initThree(){// init Three and Orbit Controls
 	controls.noPan = true;
     controls.zoomSpeed = 2;
 
+    function setOrientationControls(e) {
+
+    	if(e){//detect if the device support orientation
+        	if (!e.alpha) {
+          	return;
+        	}
+    	}
+
+    	HUDSystem.switchGyroMode();
+
+        controls = new THREE.DeviceOrientationControls(camera, true);
+
+        document.body.addEventListener('touchend', fullscreen);
+        window.removeEventListener('deviceorientation', setOrientationControls, true);
+	}
+
  	//controls.enableDamping = true; // Damp is not recommeded;
 	//controls.dampingFactor = 0.32;
 
+	window.addEventListener('deviceorientation', setOrientationControls, true);
+
     animateLoop();
 
+
+	function fullscreen() {
+		//console.log("hi");
+      if (container.requestFullscreen) {
+        container.requestFullscreen();
+      } else if (container.msRequestFullscreen) {
+        container.msRequestFullscreen();
+      } else if (container.mozRequestFullScreen) {
+        container.mozRequestFullScreen();
+      } else if (container.webkitRequestFullscreen) {
+        container.webkitRequestFullscreen();
+      }
+	}
+
 }
+
+
 
 function resizeScene(){
 	camera.aspect = window.innerWidth / window.innerHeight;
@@ -59,9 +98,7 @@ function resizeScene(){
 function animateLoop() {
 
 				requestAnimationFrame( animateLoop );
-
 			    HUDSystem.update();
-				//controls.update(); // only do the camera damp when their is no HUD. // Damp is not recommeded;
 
 				render();
 
@@ -76,4 +113,6 @@ function render() {
             effect.render(scene, camera);
         }
 }
+
+
 

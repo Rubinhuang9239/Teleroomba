@@ -146,14 +146,15 @@
 			<h5 class="panelName" id = "detailName" style="text-align:center">Setting Details</h5>
 			<div id="detailDynamic" class = "container">
 
-				<div id = "MediaBox" class="dynamicContent">
-					<div style = "height:36px;">
+				<div id = "mediaBox" class="dynamicContent">
 						<div class = "mediaControl" id = "mdPause" ></div>
 						<div class = "mediaControl" id = "mdLoop"></div>
-					</div>
+						<input type = "range" id = "mdVol">
 
 			        <div id = "mediaListPanel"></div>
+			        <p>click to play</p>
 				</div>
+
 
 				<div id = "PersSettingBox" class="dynamicContent">
 					<div id = "persMono">
@@ -211,9 +212,11 @@ $('.js-switch').change(function(e){
 	if(e.target.attributes.key.value == "beep"){
 		animate.foldBeepBox(e.target.attributes.checked);
 	}
+	else if(e.target.attributes.key.value == "augment"){
+		animate.HUDOnOff(e.target.attributes.checked);
+	}
 
-	console.log(e.target.attributes.key.value , e.target.attributes.checked);
-
+	webConsole.logMessage( "Settings" , e.target.attributes.key.value + " : " + e.target.attributes.checked);
 })
 
 var settingDB = {
@@ -230,7 +233,12 @@ var settingDB = {
 <script src="js/virtualjoystick.js"></script>
 <script src="js/joystick_model2.js"></script>
 <script src="js/keyboardInput_model2.js"></script>
+<script src="js/socket.io.js"></script>
+<script src="js/EX3DSocket.js"></script>
+<script src="js/EX3D.js"></script>
+
 <script src="js/mediaPlayer.js"></script>
+
 
 </body>
 
