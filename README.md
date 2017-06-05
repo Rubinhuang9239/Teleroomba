@@ -1,7 +1,8 @@
 # Teleroomba
 
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="144" width="144"/>
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="144" width="144"/>
+<br/>
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="144" width="144"/><img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="144" width="144"/>
+<br/>
 
 <h2>Info</h2>
 
@@ -42,8 +43,7 @@ support multi HDMI-Input/output, connect to live stream engine, webGL and even U
 <h2>Software and hardware structure</h2>
 The following imgae shows current version of teleroomba(2.x)
 <br/>
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_software.jpg" width="400" />
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_hardware.jpg" width="400" />
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_software.jpg" width="360"/><img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_hardware.jpg" width="360"/>
 
 <h2>Video and documentations</h2>
 
