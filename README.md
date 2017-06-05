@@ -1,6 +1,7 @@
 # Teleroomba
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="169" width="169" />
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="144" width="144" />
+
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="144" width="144"/>
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="144" width="144"/>
 
 <h2>Info</h2>
 
@@ -79,7 +80,7 @@ More documentation in this link
 
 
 <br /><br />
-<h2>Hack of the iRobot</h2>
+<h2>Hacking of the iRobot</h2>
 
 <h3>Hacking documentation in google slides:</h3>
 
