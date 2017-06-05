@@ -90,9 +90,9 @@ http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_6
 
 
 <h2>Build</h2>
-<a>see 1.x build wiki</a>
+<a href = "https://github.com/Rubinhuang9239/Teleroomba/wiki/1.x-build-wiki">see 1.x build wiki</a>
 <br/>
-<a>see 2.x build wiki</a>
+<a href = "https://github.com/Rubinhuang9239/Teleroomba/wiki/2.x-build-wiki">see 2.x build wiki</a>
 <br/>
 
 
