@@ -10,7 +10,7 @@ Thanks to Open Source Hardware Community, we hacked iRobot-Create roomba with Ar
 <br /><br />
 <h5>History + Future Development</h5>
 
-Teleroomba 1.x
+<b>Teleroomba 1.x</b>
 
 A 2D video and real time communication telepresence robot
 
@@ -22,7 +22,7 @@ The following image provides the concept of this project(teleroomba 1.x).<br/>
 It’s a roomba based robot which controlled from a web + Android + Arduino system.
 User can control the robot from a web browser with keyboard input/mouse/touch screen.
 
-Teleroomba 2.x
+<b>Teleroomba 2.x</b>
 
 A 2D/3D video and real time communication telepresence robot
 
@@ -32,7 +32,7 @@ With the power of Lattepanda and Linux, this model is able to live stream a UV m
 User can control the robot from a web browser with keyboard input/mouse/touch screen.
 An individual window will stream the 360 video.
 
-Teleroomba 3.x
+<b>Teleroomba 3.x</b>
 
 A 2D/3D video and real time communication telepresence robot
 
@@ -50,7 +50,7 @@ support multi HDMI-Input/output, connect to live stream engine, webGL and even U
 
 documented over iterations
 <br/>
--- Teleroomba 1 ---------------------
+<b>--------- Teleroomba 1 ----------</b>
 <br/>
 Andorid Device + Arduino
 <br/>
@@ -70,7 +70,7 @@ Details
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/serial_shield_outlet1.jpg" height="150" />
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/base_back.jpg" height="150" />
 <br/>
--- Teleroomba 2 ---------------------
+<b>--------- Teleroomba 2 ----------</b>
 <br/>
 Lattepanda + Node.js
 
