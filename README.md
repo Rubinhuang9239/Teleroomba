@@ -44,14 +44,13 @@ The following imgae shows current version of teleroomba(2.x)
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_software.jpg" width="400" />
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_hardware.jpg" width="400" />
 
-
 <h2>Video and documentations</h2>
 
 documented over iterations
 <br/>
 <b>Teleroomba 1.x</b>
 <br/>
-Andorid Device + Arduino
+Video
 <br/>
 <a href="https://vimeo.com/162164013"><img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback.jpg" height="160" /></a>
 <a href="https://vimeo.com/163361357">
@@ -74,14 +73,13 @@ Details
 Lattepanda + Node.js
 
 
-
 <h5>Circuit</h5>
 <h5>Interface</h5>
 More documentation in this link
 
 
 <br /><br />
-<h2>Hacking</h2>
+<h2>Hack of the iRobot</h2>
 
 <h3>Hacking documentation in google slides:</h3>
 
