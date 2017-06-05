@@ -5,10 +5,9 @@
 <h2>Info</h2>
 
 A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai campus.<br />
-Thanks to Open Source Hardware Community, we hacked iRobot-Create roomba with Arduino(DFRobot Bluno), and created a telepresence robot. <br />
+Thanks to Open Source Hardware Community, we hacked iRobot-Create roomba with Arduino(DFRobot Bluno), and created a telepresence robot.
 
-<br /><br />
-<h5>History + Future Development</h5>
+<h2>History + Future Development</h2>
 
 <b>Teleroomba 1.x</b>
 
@@ -39,10 +38,10 @@ A 2D/3D video and real time communication telepresence robot
 A fully integrated system on Linux runs on lattepanda/raspberry Pi
 support multi HDMI-Input/output, connect to live stream engine, webGL and even Unity game features.
 
-<h5>Software</h5>
+<h2>Software and hardware structure</h2>
+The following imgae shows current version of teleroomba(2.x)
+<br/>
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_software.jpg" width="400" />
-
-<h5>Hardware</h5>
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_hardware.jpg" width="400" />
 
 
@@ -69,7 +68,7 @@ Details
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_short.jpg" height="150" />
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/serial_shield_outlet1.jpg" height="150" />
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/base_back.jpg" height="150" />
-<br/>
+<br/><br/>
 <b>--------- Teleroomba 2 ----------</b>
 <br/>
 Lattepanda + Node.js
