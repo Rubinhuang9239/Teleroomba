@@ -1,8 +1,6 @@
 # Teleroomba
 
-
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="144" width="144"/>
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="144" width="144"/>
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="144" width="144"/><img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="144" width="144"/>
 
 <h2>Info</h2>
 
@@ -42,8 +40,8 @@ support multi HDMI-Input/output, connect to live stream engine, webGL and even U
 
 <h2>Software and hardware structure</h2>
 The following imgae shows current version of teleroomba(2.x)
-<br/>
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_software.jpg" width="360"/><img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_hardware.jpg" width="360"/>
+  <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_software.jpg" width="360"/>
+  <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_hardware.jpg" width="360"/>
 
 <h2>Video and documentations</h2>
 
@@ -53,21 +51,21 @@ documented over iterations
 <br/>
 Video
 <br/>
-<a href="https://vimeo.com/162164013"><img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback.jpg" height="160" /></a>
-<a href="https://vimeo.com/163361357">
-<img href="https://vimeo.com/162164013" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback2.jpg"  height="160" /></a>
-<a href="https://vimeo.com/166125306">
-<img href="https://vimeo.com/166125306" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback3.jpg"  height="160" /></a>
-<a href="https://vimeo.com/177041877">
-<img href="https://vimeo.com/177041877" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback4.jpg"  height="160" /></a>
+  <a href="https://vimeo.com/162164013"><img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback.jpg" height="160" /></a>
+  <a href="https://vimeo.com/163361357">
+  <img href="https://vimeo.com/162164013" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback2.jpg"  height="160" /></a>
+  <a href="https://vimeo.com/166125306">
+  <img href="https://vimeo.com/166125306" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback3.jpg"  height="160" /></a>
+  <a href="https://vimeo.com/177041877">
+  <img href="https://vimeo.com/177041877" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback4.jpg"  height="160" /></a>
 <br/>
 Details
 <br/>
-<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_full_height.jpg" height="150" />
-<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_side.jpg" height="150" />
-<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_short.jpg" height="150" />
-<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/serial_shield_outlet1.jpg" height="150" />
-<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/base_back.jpg" height="150" />
+  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_full_height.jpg" height="150" />
+  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_side.jpg" height="150" />
+  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_short.jpg" height="150" />
+  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/serial_shield_outlet1.jpg" height="150" />
+  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/base_back.jpg" height="150" />
 <br/><br/>
 <b>Teleroomba 2.x</b>
 <br/>
