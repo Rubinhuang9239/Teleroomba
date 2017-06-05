@@ -1,8 +1,8 @@
 # Teleroomba
 
-<br/>
-<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="144" width="144"/><img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="144" width="144"/>
-<br/>
+
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/icon.png" height="144" width="144"/>
+<img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/openSourceHardware.png" height="144" width="144"/>
 
 <h2>Info</h2>
 
