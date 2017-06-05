@@ -95,8 +95,27 @@ http://www.irobotweb.com/~/media/MainSite/PDFs/About/STEM/Create/iRobot_Roomba_6
 <a href = "https://github.com/Rubinhuang9239/Teleroomba/wiki/2.x-build-wiki">see 2.x build wiki</a>
 <br/>
 
+<h3>Control Manual</h3>
+You can connect to turn server and call the mobile device on roomba(default auto connect and call) and establish bluetooth connection between the device & Roomba's serial port from control terminal. Full manual list here:
+<br />
+<ol>
+<li>Connect with id</li>
+<li>Call device with id</li>
+<li>Bluno BLE scan</li>
+<li>Restart safty mode</li>
+<li>Serial board reset</li>
+<li>Auto Docking</li>
+</ol>
 
-<h2>Other + Resource</h2>
+<h3>HUD display</h3>
+<b>Distance</b>
+A group of lines accroded to the perspective of the lense for helping driver to estimate the distance.
+
+<b>Direction</b>
+A rough predict of your crusing path, it will only show turning sign when roomba is doing same spot turning.
+
+
+<h2>Credits + Resource</h2>
 
 <h3>Credits + Thanks:</h3>
 Early contributor:<br />
