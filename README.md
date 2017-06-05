@@ -58,9 +58,6 @@ documented over iterations
 <img href="https://vimeo.com/166125306" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback3.jpg"  height="160" /></a>
 <a href="https://vimeo.com/177041877">
 <img href="https://vimeo.com/177041877" src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback4.jpg"  height="160" /></a>
-
-<h5>Overview</h5>
-<br/>
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_full_height.jpg" height="150" />
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_side.jpg" height="150" />
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_short.jpg" height="150" />
