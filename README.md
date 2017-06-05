@@ -139,7 +139,3 @@ http://www.irobot.com/About-iRobot/STEM/Create-2/Projects.aspx
 Johnny Chung Lee's DIY Telepresence Robot(2011)
 with source code and intruductions
 http://procrastineering.blogspot.com/2011/02/low-cost-video-chat-robot.html
-
-<h5>SmartBots</h5>
-
-http://www.overdriverobotics.com/SmartBot/meet-smartbot-mk2-programmable-phone-robot/
