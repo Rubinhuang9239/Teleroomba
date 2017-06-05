@@ -43,13 +43,13 @@ support multi HDMI-Input/output, connect to live stream engine, webGL and even U
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_hardware.jpg" width="480" />
 
 
-<h5>Demo Video</h5>
+<h5>Video and documentations</h5>
 
-WebRTC Video Stream + Data Channel Testing<br />
-<br/>
 documented over iterations
 <br/>
 -- Teleroomba 1 ---------------------
+<br/>
+Andorid Device + Arduino
 <br/>
 <a href="https://vimeo.com/162164013"><img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/design/playback.jpg" height="160" /></a>
 <a href="https://vimeo.com/163361357">
