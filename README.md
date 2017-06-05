@@ -45,11 +45,11 @@ The following imgae shows current version of teleroomba(2.x)
 <img src="https://github.com/Rubinhuang9239/iCreate-Telepresence/blob/master/design/teleroomba_system_2/teleroomba_system_2_hardware.jpg" width="400" />
 
 
-<h5>Video and documentations</h5>
+<h2>Video and documentations</h2>
 
 documented over iterations
 <br/>
-<b>--------- Teleroomba 1 ----------</b>
+<b>Teleroomba 1.x</b>
 <br/>
 Andorid Device + Arduino
 <br/>
@@ -69,7 +69,7 @@ Details
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/serial_shield_outlet1.jpg" height="150" />
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/base_back.jpg" height="150" />
 <br/><br/>
-<b>--------- Teleroomba 2 ----------</b>
+<b>Teleroomba 2.x</b>
 <br/>
 Lattepanda + Node.js
 
