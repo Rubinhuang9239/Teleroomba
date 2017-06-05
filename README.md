@@ -66,6 +66,13 @@ Details
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/overview_short.jpg" height="150" />
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/serial_shield_outlet1.jpg" height="150" />
 <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.0/base_back.jpg" height="150" />
+<br/>
+-- Teleroomba 2 ---------------------
+<br/>
+Lattepanda + Node.js
+
+
+
 <h5>Circuit</h5>
 <h5>Interface</h5>
 More documentation in this link
