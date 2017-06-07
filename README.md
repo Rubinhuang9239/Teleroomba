@@ -71,7 +71,7 @@ Details
 <br/>
 Lattepanda + Node.js
 <br/>
-<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.1.0/roomba_front.jpg" height="320" />
+<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.1.0/roomba_front.jpg" height="400" />
 
 
 
