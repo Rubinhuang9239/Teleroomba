@@ -61,19 +61,18 @@ Video
 <br/>
 Details
 <br/>
-  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v1.2.0/overview_full_height.jpg" height="150" />
-  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v1.2.0/overview_side.jpg" height="150" />
-  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v1.2.0/overview_short.jpg" height="150" />
-  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v1.2.0/serial_shield_outlet1.jpg" height="150" />
-  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v1.2.0/base_back.jpg" height="150" />
+  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v1.2.0/overview_full_height.jpg" height="150"/>
+  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v1.2.0/overview_side.jpg" height="150"/>
+  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v1.2.0/overview_short.jpg" height="150"/>
+  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v1.2.0/serial_shield_outlet1.jpg" height="150"/>
+  <img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v1.2.0/base_back.jpg" height="150"/>
 <br/><br/>
 <b>Teleroomba 2.x</b>
 <br/>
 Lattepanda + Node.js
 <br/>
-<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.1.0/roomba_front.jpg" height="400" />
-
-
+<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.1.0/roomba_front.jpg" height="400"/>
+<img src="https://github.com/Rubinhuang9239/teleroomba/blob/master/documentation/frame/v2.1.0/roomba_side.jpg" height="400"/>
 
 <h5>Circuit</h5>
 <h5>Interface</h5>
