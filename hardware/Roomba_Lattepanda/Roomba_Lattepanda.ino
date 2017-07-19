@@ -1,30 +1,48 @@
 #include <SoftwareSerial.h>
 SoftwareSerial roombotSerial(10, 11);//RX/TX
 
+//#include <Servo.h>
+#include <Adafruit_TiCoServo.h>
+
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
-  #include <avr/power.h>
+ #include <avr/power.h>
 #endif
 
-#define LED 5
+//NeoPixel
+#define LED 6//5
 #define LEDNUM 12
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(LEDNUM, LED, NEO_GRB + NEO_KHZ800);
-
 float ledTimer = 0;
 int ledDir = 0;
 
+//Beep
 int beepType[] = {0,0};
 boolean beeping = false;
 
+//Debug Switch
 #define debugSwitch 12
+
+//Servo
+#define SERVO_PIN_R    10
+#define SERVO_PIN_P    9
+
+Adafruit_TiCoServo servoR;
+Adafruit_TiCoServo servoP;
+
+//Servo servoR;
+//Servo servoP;
+//int servoRpin = 3; //Roll//Pitch
+//int servoPpin = 6;
+int servoRVal = 90;
+int servoPVal = 128;
 
 void setup() {
   
   //Init Windows/Linux serial port interaction
   pinMode(debugSwitch,INPUT);
   
-
-  Serial.begin(9600);
+  Serial.begin(38400);
   while(!Serial){
                 //[Empty] wait for Serial Established
                 };
@@ -33,6 +51,10 @@ void setup() {
   
   pixels.begin(); // This initializes the NeoPixel library.
   pixels.setBrightness(25);
+  
+  servoR.attach(SERVO_PIN_R, 600, 2400);
+  servoP.attach(SERVO_PIN_P, 240, 2450);
+
   
   delay(50);
   //Init software serial port to Roomba
@@ -56,6 +78,9 @@ void loop() {
         int input1 = Serial.parseInt();
         int input2 = Serial.parseInt();
         
+        int input3 = -1;
+        int input4 = -1;
+        
         //-------Incoming_CMDs------//
         // [0.standby]
         // [1.drive]
@@ -63,39 +88,58 @@ void loop() {
         // [3.dock]
         // [4.enter safe mode again]
         
-        if( cmd == 0 ){   //standby
-          //Serial.println("standby");
-          signed int leftV = 0;
-          signed int rightV = 0;
-          //if(abs(leftV)<=50 && abs(leftV)<=50){}
-          drive(leftV,rightV);
-        }
-        else if( cmd == 1 ){  //drive
-          signed int leftV = input1;
-          signed int rightV = input2;
-          drive(leftV,rightV);
-        }
-        else if( cmd == 2 ){ //start/stop roomba beep
-          int action = input1; //1.start 2.stop
-          int type = input2; //1.police 2.reverse 3.low freq
-          handleBeep(action,type);
-        }
-        else if( cmd == 3 ){ //dock
-          roombotSerial.write(131); // Seek dock
-        }
-        else if( cmd == 4 ){ //enter safe mode again
-          roombotSerial.write(131); // SAFE MODE
-        }
+            if(cmd >= 5){
+              input3 = Serial.parseInt();
+              input4 = Serial.parseInt();
+
+              servoRVal = input3;
+              servoPVal = input4;
+              
+              cmd = cmd - 5;  
+            }
+            
+                
+              if( cmd == 0 ){   //standby
+                //Serial.println("standby");
+                signed int leftV = 0;
+                signed int rightV = 0;
+                //if(abs(leftV)<=50 && abs(leftV)<=50){}
+                drive(leftV,rightV);
+              }
+              else if( cmd == 1 ){  //drive
+                signed int leftV = input1;
+                signed int rightV = input2;
+                drive(leftV,rightV);
+              }
+              else if( cmd == 2 ){ //start/stop roomba beep
+                int action = input1; //1.start 2.stop
+                int type = input2; //1.police 2.reverse 3.low freq
+                handleBeep(action,type);
+              }
+              else if( cmd == 3 ){ //dock
+                roombotSerial.write(131); // Seek dock
+              }
+              else if( cmd == 4 ){ //enter safe mode again
+                roombotSerial.write(131); // SAFE MODE
+              }
+             
         
-        
-        if( digitalRead(debugSwitch) == HIGH ){
-          Serial.print(cmd);
-          Serial.print(' ');
-          Serial.print(input1);
-          Serial.print(' ');
-          Serial.print(input2);
-        }
-        Serial.print('\n');
+            //Serial Feed
+           if( digitalRead(debugSwitch) == HIGH ){
+              Serial.print(cmd);
+              Serial.print(' ');
+              Serial.print(input1);
+              Serial.print(' ');
+              Serial.print(input2);
+              if( input4 != -1 ){// extend feedback
+                Serial.print(' ');
+                Serial.print(servoRVal);
+                Serial.print(' ');
+                Serial.print(servoPVal);
+              }
+          }
+          
+          Serial.print('\n');
         
     
     }
@@ -114,17 +158,19 @@ void loop() {
         ledDir = 0;
       }
     }
-    
-    
+     
     int ledC = int((20 + 125 * sin(ledTimer)));
     
     for(int i = ledDir;i < ledDir+2; i++){
         pixels.setPixelColor(i, pixels.Color(  145-ledC, ledC , ledC ));
     }
-      pixels.show();
-      
+    pixels.show();
+   
+    servoR.write(servoRVal);
+    servoP.write(servoPVal);   
      
-     delay(41);
+    delay(41);
+   
 }
 
 void drive(signed int leftV, signed int rightV){

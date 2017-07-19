@@ -3,78 +3,78 @@ var SerialPort = require("serialport");
 
 //-----------------Demo_SendVal----------------//
 
-var sendVal = [90,138];
+// var sendVal = [90,138];
 
-var portNameChoice = ["/dev/cu.usbmodem1411", "/dev/cu.usbmodem1421"];
-var portName = null;
+// var portNameChoice = ["/dev/cu.usbmodem1411", "/dev/cu.usbmodem1421"];
+// var portName = null;
 
-SerialPort.list(function (err, ports) {
-  ports.forEach(function(port) {
+// SerialPort.list(function (err, ports) {
+//   ports.forEach(function(port) {
 
-    for(i=0; i < portNameChoice.length ;i++){
+//     for(i=0; i < portNameChoice.length ;i++){
 
-      if(portNameChoice[i] == port.comName){
-        portName = port.comName;
+//       if(portNameChoice[i] == port.comName){
+//         portName = port.comName;
 
-      }
+//       }
 
-    }
+//     }
 
-  });
+//   });
 
-if(portName != null){
+// if(portName != null){
 
-  console.log(portName);
+//   console.log(portName);
 
-  var port = new SerialPort(portName, {
-    baudRate: 9600,
-    parser: SerialPort.parsers.readline("\n"),
-  });
-
-
-  port.on('open', function() {
-    console.log("opened");
-
-    setTimeout(function(){
-      port.write("0");
-      console.log("Hand shake say hi");
-    },2000);  
-
-  });
-
-  var serialData = null;
-
-  port.on( 'data', function(data){
-
-    serialData = data.toString();
-
-    process.stdout.clearLine();
-    process.stdout.cursorTo(0);
-    process.stdout.write('\x1b[33m'+"Serial Data>> "+serialData+'\x1b[0m');
+//   var port = new SerialPort(portName, {
+//     baudRate: 9600,
+//     parser: SerialPort.parsers.readline("\n"),
+//   });
 
 
-    var sendingMSG = sendVal.length + ","; 
+//   port.on('open', function() {
+//     console.log("opened");
 
-    for(var i = 0; i < sendVal.length; i++){
+//     setTimeout(function(){
+//       port.write("0");
+//       console.log("Hand shake say hi");
+//     },2000);  
+
+//   });
+
+//   var serialData = null;
+
+//   port.on( 'data', function(data){
+
+//     serialData = data.toString();
+
+//     process.stdout.clearLine();
+//     process.stdout.cursorTo(0);
+//     process.stdout.write('\x1b[33m'+"Serial Data>> "+serialData+'\x1b[0m');
 
 
-      //-- pack! --//
-      if( (sendVal.length > 1) && (i < sendVal.length - 1) ){
-        sendingMSG += sendVal[i] + ",";
-      }
-      else if( i == sendVal.length - 1 ){
-        sendingMSG += sendVal[i];
-      }
+//     var sendingMSG = sendVal.length + ","; 
 
-    }
+//     for(var i = 0; i < sendVal.length; i++){
 
-    port.write( sendingMSG );
 
-  });
+//       //-- pack! --//
+//       if( (sendVal.length > 1) && (i < sendVal.length - 1) ){
+//         sendingMSG += sendVal[i] + ",";
+//       }
+//       else if( i == sendVal.length - 1 ){
+//         sendingMSG += sendVal[i];
+//       }
 
-}
+//     }
 
-});
+//     port.write( sendingMSG );
+
+//   });
+
+// }
+
+// });
 
 
 //-------------logiEX_HID-------------//
@@ -139,8 +139,8 @@ logiEX.checkConnection = function(){
           }
 
           //Secondery frequent update values: throttle, trigger btn, thumb btn
-          if(controls.thro != pVal[2]){// || controls.buttons[0] != pVal[4] || controls.buttons[1] != pVal[5]
-            currentSocket.emit("AC", { th: controls.thro} ); // tr: controls.buttons[0], thb: controls.buttons[1]
+          if(controls.thro != pVal[2] || controls.buttons[0] != pVal[3]){// || controls.buttons[0] != pVal[4] || controls.buttons[1] != pVal[5]
+            currentSocket.emit("AC", { th: controls.thro} ); // tr: controls.buttons[0], tb: controls.buttons[1]
             pVal[2] = controls.thro;
           }
         }
@@ -183,6 +183,7 @@ logiEX.checkConnection();
 var pVal = [0,//roll
             0,//pitch
             0,//thro
+            0,//tr
            ];
 
 
@@ -274,8 +275,16 @@ io.on("connection",function(socket){
   setTimeout(function(){
     //if(!currentSocket){
       currentSocket = socket;
+
+      setTimeout(function(){
+        socket.emit("AC",{ th: pVal[2] });
+      },100);
     //}
   },100);
+
+  // setInterval(function(){
+  //   currentSocket.emit("DR", { r: Math.round(Math.random()*512), p: Math.round(Math.random()*512)} );
+  // },500);
   
 })
 

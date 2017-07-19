@@ -36,8 +36,8 @@
 
 	.func{
 		width: 25%;
-		height: 3.5em;
-		line-height: 3.5em;
+		height: 3.6em;
+		line-height: 3.6em;
 		background-color: rgba(255,255,255,0.1);
 		float: left;
 		font-size: 1em;
@@ -54,6 +54,11 @@
 		beep1:false,
 		beep2:false,
 	};
+
+	var camPos = {
+		r : 90,
+		p : 128
+	}
 
 	window.addEventListener("load",function(){
 
@@ -83,6 +88,9 @@
 			}
 		});
 
+		var dock = document.getElementById('dock');
+		var restart = document.getElementById('restart');
+
 		dock.addEventListener("click",function(){
 				Status.beep1 = false;
 				Status.beep2 = false;
@@ -105,7 +113,50 @@
 				sendCmd("SM", cmd);
 		});
 
+	var xpp = document.getElementById("x++");
+	var xmm = document.getElementById("x--");
+	var ypp = document.getElementById("y++");
+	var ymm = document.getElementById("y--");
+
+	xpp.addEventListener("click",function(){
+		if(camPos.r < 180){
+			camPos.r++;
+		}
+		sendCmd("FC", camPos);
 	});
+
+	xmm.addEventListener("click",function(){
+		if(camPos.r > 0){
+			camPos.r--;
+		}
+		sendCmd("FC", camPos);
+	});
+
+	ypp.addEventListener("click",function(){
+		if(camPos.p < 180){
+			camPos.p++;
+		}
+		sendCmd("FC", camPos);
+	});
+
+	ymm.addEventListener("click",function(){
+		if(camPos.p > 96){
+			camPos.p--;
+		}
+		sendCmd("FC", camPos);
+	});
+
+	});
+
+
+	// setInterval(function(){
+	// 	restart.click();
+	// },20);
+
+
+
+
+
 	</script>
 
 
@@ -119,6 +170,11 @@
 		<div class="func" id = "beep2">Beep2</div>
 		<div class="func" id = "dock">dock</div>
 		<div class="func" id = "restart">Safe Mode</div>
+
+		<div class="func" id = "x++"> X++ </div>
+		<div class="func" id = "x--"> X-- </div>
+		<div class="func" id = "y++"> Y++ </div>
+		<div class="func" id = "y--"> Y-- </div>
 	</div>
 
 </body>

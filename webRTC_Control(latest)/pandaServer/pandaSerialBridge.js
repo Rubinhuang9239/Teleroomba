@@ -113,7 +113,7 @@ app.get('/localQR', function(req, res){
 var cmd = {
   cmd : 0,
   buffer1 : 0,
-  buffer2 : 0
+  buffer2 : 0,
 };
 
 var startUpSequence = {
@@ -133,14 +133,21 @@ var startUpSequence = {
                   buffer1 : 2,
                   buffer2 : 0
                  },
+                 {//Reset camera angle
+                  cmd : 5,
+                  buffer1 : 0,
+                  buffer2 : 0,
+                  buffer3 : 90,
+                  buffer4 : 128,
+                 },
                  {//Standby
                   cmd : 0,
                   buffer1 : 0,
-                  buffer2 : 0
+                  buffer2 : 0,
                  },
                 ],
 
-    durationSequence:[100,800,100,100],
+    durationSequence:[100,800,100,100,100],
     sequenceDriver: function(step){
             cmd = startUpSequence.cmdSequence[step];
             console.log('\x1b[33m',"[startup sequence" + step + "]>> ",'\x1b[0m',cmd);
@@ -186,7 +193,7 @@ SerialPort.list(function (err, ports) {
   if(portName != null){
 
     panda_arduino_Port = new SerialPort(portName, {
-       baudRate: 9600,
+       baudRate: 38400,
        // look for return and newline at the end of each data packet:
        parser: SerialPort.parsers.readline("\n")
      });
@@ -195,6 +202,8 @@ SerialPort.list(function (err, ports) {
     panda_arduino_Port.on('open', function() {
       console.log("Serial opened on " + portName);
 
+
+          //Fire Startup_Sequence//
           setTimeout(function(){
             panda_arduino_Port.write("ready");
             startUpSequence.sequenceDriver(0);
@@ -210,8 +219,21 @@ SerialPort.list(function (err, ports) {
       //console.log(">> " + data);
       //console.log(cmd.cmd + "," + cmd.buffer1 + "," + cmd.buffer2 + "\n");
 
-      
-        panda_arduino_Port.write(cmd.cmd + "," + cmd.buffer1 + "," + cmd.buffer2);
+      var serialSend = null;
+
+      if( cmd.cmd < 5 ){
+        serialSend = (cmd.cmd + "," + cmd.buffer1 + "," + cmd.buffer2);
+      }else{
+        serialSend = (cmd.cmd + "," + cmd.buffer1 + "," + cmd.buffer2 + ","+ cmd.buffer3 + ","+ cmd.buffer4);
+        cmd.cmd -= 5;
+        cmd.buffer3 = 0;
+        cmd.buffer4 = 0;
+      }
+      //console.log(serialSend);
+
+
+      panda_arduino_Port.write(serialSend);
+
     });
 
     // open errors will be emitted as an error event
@@ -232,35 +254,54 @@ SerialPort.list(function (err, ports) {
 //var serialReady = true;
 
 io.on('connection', function (socket) {
-  console.log( " socket join " + socket.id);
+  console.log( " Teleroomba UI opened via socket " + socket.id);
 
-  socket.on("DR",function(data){//Drive
-    //console.dir(data);
-    cmd.cmd = 1;
-    cmd.buffer1 = data.lV;
-    cmd.buffer2 = data.rV;
+  patchCMD = function(raw){
+      if(cmd.cmd >= 5){
+        raw += 5;
+        return raw
+      }
+      else{
+        return raw
+      }
+  }
+
+  socket.on("DR",function(drive){//Drive
+    cmd.cmd = patchCMD(1);
+    cmd.buffer1 = drive.lV;
+    cmd.buffer2 = drive.rV;
 
   });
 
-  socket.on("BP",function(data){//Beep
-    cmd.cmd = 2;
-    cmd.buffer1 = data.act;
-    cmd.buffer2 = data.tp;
+  socket.on("BP",function(beep){//Beep
+    cmd.cmd = patchCMD(2);
+    cmd.buffer1 = beep.act;
+    cmd.buffer2 = beep.tp;
     console.log(cmd);
   });
 
   socket.on("DK",function(){//Dock
-    cmd.cmd = 3;
+    cmd.cmd = patchCMD(3);
     cmd.buffer1 = 0;
     cmd.buffer2 = 0;
     console.log("--CMD: DOCK--");
   });
 
-  socket.on("SM",function(){//Safe Mode
-    cmd.cmd = 4;
+  socket.on("SM",function(){//Safe_Mode
+    cmd.cmd = patchCMD(4);
     cmd.buffer1 = 0;
     cmd.buffer2 = 0;
-    console.log("--CMD: SAFE MODE--");
+    //console.log("--CMD: SAFE MODE--");
+    //console.log(cmd);
+  });
+
+  socket.on("FC",function(camera){//Front_Camera
+    if(cmd.cmd<5){
+      cmd.cmd += 5;
+    }
+    cmd.buffer3 = camera.r;
+    cmd.buffer4 = camera.p;
+    //console.log(cmd);
   });
 
   socket.on("reqIP",function(){
