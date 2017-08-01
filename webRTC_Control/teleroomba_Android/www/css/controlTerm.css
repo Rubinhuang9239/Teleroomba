@@ -1,0 +1,444 @@
+/*control terminal style*/
+
+html{
+	height: 100%;
+	overflow: hidden;
+}
+
+body{
+			height: 100%;
+			padding: 0px;
+			margin: 0px;
+			overflow: hidden;
+			background-color: #444;
+		}
+
+a{color: #FFF !important;}
+
+		#mainFrame{
+			/*height: 100%;
+			width: 100%;*/
+			padding: 0px;
+			margin: 0px;
+			color: #FFF;
+			transition-property: width, height, transform;
+			transition-duration: 0.6s;
+			transition-timing-function: ease-in-out;
+			transform: translateY(0%);
+		}
+
+		@media (max-width: 768px) {
+		  #mainFrame{
+		    height: 100%;
+			width: 100%;
+			transform: translateY(0%);
+		  }
+		}
+
+		@media (min-width: 768px) {
+		  #mainFrame{
+		    height: 144%;
+			width: 134%;
+			transform: translateY(0%);
+			top:0%;
+		  }
+		}
+
+		#settingPanelVertical{
+			height: 100%;
+			background-color: #333;
+			padding: 0px;
+			overflow: hidden;
+		}
+
+		#settingPanelHorizontal	{
+			width: 100%;
+			height: 30%;
+			background-color: #444;
+			padding: 0px;
+		}
+
+		.rightRole,.leftRole{
+			padding: 0px;
+			height: 100%;
+		}
+
+		#videoFrame{
+			background-color: #222;
+			height: 70%;
+			width: 100%;
+			border-right: 1px solid #999;
+			border-bottom: 1px solid #999;
+		}
+
+		/*
+		.leftRole{
+			width: 100% !important;
+			transition: width 0.8s ease-in-out;
+		}*/
+
+		#remote-video{
+			position: relative;
+			top: 0px
+			right: 0px;
+			left: 0px;
+			bottom: 0px;
+			margin: auto;
+			height: 100%;
+			width: 100%;
+		}
+
+		#local-video {
+	      cursor: move;
+	      position: absolute;
+	      max-width: 24%;
+	      height: auto;
+	      z-index: 200;
+	      background-color: rgba(180,200,230,0.25);
+	      left:auto;
+	      right:20px;
+	      top: 50%;
+	      bottom: auto;
+	      margin: auto;
+	      box-shadow: 3px 3px 8px rgba(0,0,0,0.35);
+	      transition-property: rotate, box-shadow, opacity, max-width;
+	      transition-duration: 0.25s;
+	      transition-timing-function: ease-in-out;
+	    }
+
+		.settingItem{
+			padding-top: 12px;
+			padding-left: 40px;
+			height: 45px;
+			/*border-top: 1px solid #777;*/
+			cursor: pointer;
+			background-size: 32px 32px;
+			background-position: left center;
+			background-repeat: no-repeat;
+			transition:background-color 0.15s ease-in-out;
+		}
+		.settingItem:hover{
+			background-color: rgba(255,255,255,0.25);
+		}
+
+
+		.settingToggel{
+			cursor: default;
+		}
+		.settingToggel:hover{
+			background-color: transparent;
+		}
+
+		.switchBox{
+			height: 45px;
+			padding: 0px;
+			padding-top: 12px;
+		}
+
+		#DevConsoleBox{
+			background-color: #222;
+			height: 100%;
+		}
+
+		#HardWareInfo{
+			background-color: #2A2A2A;
+			height: 100%;
+		}
+
+		.closeBnt{
+			height: 48px;
+			width: 48px;
+			cursor: pointer;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			z-index: 999;
+			background-size: 62%;
+			opacity: 0.5;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-image: url("../img/closeSigh.svg");
+			transition:opacity 0.2s ease-in-out;
+		}
+		.closeBnt:hover{
+			opacity: 1;
+		}
+
+		.panelName{
+			border-bottom: solid 1px #444;
+			height:48px;
+			padding-top: 16px;
+			margin-top: 0px;
+		}
+
+
+		#settingContent{
+			position: absolute;
+			/*height: 0px;*/
+			height: 100%;
+			width: 100%;
+			overflow-x:hidden;
+			overflow-y:scroll;
+			z-index: 8;
+		}
+
+		#settingDetail{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: 9;
+			background-color: #333;
+			box-shadow: -3px 0px 6px rgba(0,0,0,0.75);
+			transition:transform 0.6s ease-in-out;
+			transform:translateX(103%);
+		}
+
+		#settingDetailClose{
+			background-image: url("../img/backSigh.svg");
+		}
+
+		#phoneBatToggel{
+			background-image: url("../img/phone_bat_icon.svg");
+		}
+
+		#reverseViewToggel{
+			background-image: url("../img/reverse_view_icon.svg");
+		}
+
+		#videoAugToggel{
+			background-image: url("../img/video_aug_icon.svg");
+		}
+
+		#vrModeToggel{
+			background-image: url("../img/vr_mode_icon.svg");
+		}
+
+		#keyInputToggel{
+			background-image: url("../img/key_input_icon.svg");
+		}
+
+		#learningToggel{
+			background-image: url("../img/learning_icon.svg");
+		}
+
+		#cameraHeight{
+			background-image: url("../img/camera_height_icon.svg")
+		}
+
+		#autoDock{
+			background-image: url("../img/auto_dock_icon.svg");
+		}
+
+		#rebootBluno{
+			background-image: url("../img/reboot_bluno_icon.svg");
+		}
+
+		#rebootPhone{
+			background-image: url("../img/reboot_phone_icon.svg");
+		}
+
+		#aboutTeleroomba{
+			background-image: url("../img/about_teler_icon.svg");
+		}
+
+		#detailDynamic{
+			width: 100%;
+			height: 100%;
+		}
+
+		/****** HUD_Interface*****/
+
+	#credentials{
+      border-bottom: solid 1px #444;
+      color: #FFF;
+    }
+
+    .peerIdInput{
+      background-color: transparent;
+      text-align: left;
+      width: 100%;
+      font-size: 16px;
+      height: 20px;
+      margin-top: 15px;
+      padding: 6px 4% 6px 4%;
+      border: none;
+      color: #FFF;
+      border-bottom: solid 1px #666;
+    }
+
+    button{
+      margin-top:10px;
+      height: 28px;
+      width: 100%;
+      border-radius: 4px;
+      border: none;
+      background-color: #7094DC;
+      font-size: 14px;
+      color: #FFF;
+      position: relative;
+      bottom: 0px;
+    }
+	  
+
+    .bnt{
+      position: absolute;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      opacity: 0.4;
+      height: 35px;
+      width: 35px;
+      z-index: 999;
+      left: 2px;
+      top: 0px;
+    }
+
+    #BLEStatus{
+      background-image: url("../img/ble.png");
+      background-size: 85%;
+      left:0px;
+    }
+
+    #setting{
+      background-image: url("../img/setting.png");
+      background-color: #FF9900;
+      background-size: 72%;
+      left:37px;
+    }
+
+    @media (max-width: 480px) {
+
+    #BLEStatus{
+      top:0px;
+      left: 0px;
+    }
+
+    #setting{
+      top:37px;
+      left: 0px;
+    }
+
+	}
+
+
+    #messages{
+      text-align: left;
+      width: 100%;
+      height: 100%;
+      overflow: scroll;
+    }
+
+
+    .BLEOn{
+      background-color: #05D060;
+    }
+
+    .BLEOff{
+      background-color: #888;
+    }
+
+    .BLEBlinking{
+      animation-name: BLEBlink;
+      animation-duration: 1.6s;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes BLEBlink {
+    0%   {background-color: #888;}
+    50%  {background-color: #05D060;}
+    100% {background-color: #888;}
+    }
+
+    #HUD{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      height: 70%;
+      width: 100%;
+      /*background-color: rgba(255,150,20,0.5);*/
+      z-index: 59;
+      color:rgba(50,155,60,0.5);
+      overflow: hidden;
+    }
+
+    #touchLayer{
+      /*display: none;*/
+      width: 100%;
+      height: 70%;
+      position: absolute !important;
+      top: 0px;
+      left: 0px;
+      z-index: 159;
+      margin: 0px;
+      /*cursor: pointer;*/
+      /*background-color: rgba(255,150,20,0.2);*/
+    }
+
+    #HUDSpeed{
+      position: absolute;
+      left: 40px;
+      bottom: 20px;
+      width: 120px;
+      height: 120px;
+      text-align:left;
+      /*background-color: rgba(255,255,255,0.5);*/
+      font-size: 56px;
+      line-height: 0.65em;
+      text-align: right;
+    }
+
+    #HUDPers{
+      opacity: 0.7;
+      position: absolute;
+      height: 320%;
+      width: 260%;
+      /*background-color: rgba(45,55,186,0.25);*/
+      left: -80%;
+      right: 0px;
+      top:0px;
+      bottom: 0px;
+      margin: auto;
+      text-align: center;
+      background-size: 100% 70%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url("../img/range.svg");
+      transform: perspective(300px) translateY(220px) rotateX(60deg);
+    }
+
+    .dynamicContent{
+    	display: none;
+    }
+
+    #PersSettingBox{
+      margin: auto;
+      height:240px;
+      width:64px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: bottom center;
+      background-image: url("../img/PersSetBottom.svg");
+      /*display: none;*/
+    }
+
+
+    #persSlider{
+      cursor: move;
+      width:64px;
+      height:64px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: top center;
+      background-image: url("../img/PersSetTop.svg");
+      opacity: 0.65;
+    }
+
+    #persMono{
+      width:100%;
+      height:100%;
+      background-repeat: no-repeat;
+      background-size: 100% 156px;
+      background-position: bottom 22px center;
+      background-image: url("../img/PersMono.png");
+      opacity: 0.5;
+    }

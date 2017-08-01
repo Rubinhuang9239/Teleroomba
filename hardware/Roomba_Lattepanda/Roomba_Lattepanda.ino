@@ -58,7 +58,7 @@ void setup() {
   
   delay(50);
   //Init software serial port to Roomba
-  roombotSerial.begin(115200); 
+  roombotSerial.begin(38400); 
   delay(50);
   roombotSerial.write(128);  // START
   delay(50);
