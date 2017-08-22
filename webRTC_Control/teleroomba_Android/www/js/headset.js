@@ -38,11 +38,11 @@ headset.orienUpdate = function(e) {
 		        
 		        if(pitch < 0){
 			        pitch += 180; 
-		        }else{
-			        if(pitch < 80){
-				        pitch = 80;
-			        }
-			    }
+		        }
+			    
+			    pitch = Math.floor((pitch/1.8) + 80);
+			    
+			    //console.log(pitch);
 				
 				headset.pitch = pitch;
 				headset.roll = roll;
@@ -73,7 +73,7 @@ headset.init = function(enabled) {
 					
 					WebRTCDataMethold.sendData(frontCam);
 	                
-                }, 100);
+                }, 40);
                 
                 console.log('headset gyro enabled');
             }

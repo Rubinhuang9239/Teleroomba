@@ -359,9 +359,9 @@ animate.goFullScreen = function(dom, option){
 				
 				animate.rollIndiKnob = document.getElementById("rollIndicationKnob");
 				
-				setTimeout(function(){
-					animate.connectLocalServer();
-				}, 120)
+					setTimeout(function(){
+						animate.connectLocalServer();
+					}, 120)
 								
 				//start headset orientation sync
 				headset.init(true);
@@ -381,9 +381,17 @@ animate.goFullScreen = function(dom, option){
 animate.connectLocalServer = function(){
 
     var port = 3001;
-    var ip = prompt("Input local server IP");
+    var ip = prompt("Input local server IP (need to approve https unsecure)");
+    
+    WebRTCDataMethold.sendData({type:"VR"});
+    
+    if(ip == "" || ip == null || ip == undefined){
+	    return;
+    }
 	
 	socketCom = "https://" + ip + ":" + port;
+	
+	console.log(socketCom);
 	
 	EX3Dsocket = io.connect(socketCom);
 	
@@ -395,8 +403,6 @@ animate.connectLocalServer = function(){
 	EX3Dsocket.on("AC",function(data){
 		EX3D.calcuAction(data);
 	});
-	
-	WebRTCDataMethold.sendData({type:"VR"});
 	
     
 }
