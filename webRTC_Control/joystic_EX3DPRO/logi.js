@@ -107,6 +107,13 @@ logiEX.checkConnection = function(){
           pitch: ((ch[2] & 0x0f) << 6) + ((ch[1] & 0xfc) >> 2), // up_down 0 << 512 >> 1023
           yaw: ch[3], //left_right 0 << 128 >> 256
           view: (ch[2] & 0xf0) >> 4, // clockwise 0 >> 7 // 8 for none
+
+          //[
+
+
+
+          //]
+
           thro: -ch[5] + 255, // up_down 255 >> 0
           buttons: [
             (ch[4] & 0x01) >> 0, // trigger btn

@@ -8,6 +8,11 @@ keyBoard.keydownList = {
 						"39":false,
 						"40":false,
 					   };
+					   
+keyBoard.rollPitchVal = {
+	roll : 90,
+	pitch : 128,
+}
 
 window.addEventListener("load",function(){keyBoard.init()});
 
@@ -17,9 +22,17 @@ keyBoard.init = function(){
 }
 
 keyBoard.Input = function(event) {
-    var key = event.which;
-    keyBoard.keydownList[key] = true;
-    keyBoard.drive();
+	
+	if( Number(event.which) > 40 ){
+		
+		//control the top camera//
+		keyBoard.rollPitch(event.which);
+			
+	}else{
+    	var key = event.which;
+    	keyBoard.keydownList[key] = true;
+    	keyBoard.drive();
+    }
 }
 
 keyBoard.InputFinish = function(event) {
@@ -44,6 +57,59 @@ keyBoard.checkEmpty = function(){
 	// 	keyBoard.drive(0);
 	// }
 
+}
+
+keyBoard.rollPitch = function(keycode){
+	
+	var frontCam = {
+						type:"FC",
+						r : keyBoard.rollPitchVal.roll,
+						p : keyBoard.rollPitchVal.pitch
+					}
+	
+	function changePitch(delta){
+		if( keyBoard.rollPitchVal.pitch <= 180 && keyBoard.rollPitchVal.pitch >= 80 ){
+			keyBoard.rollPitchVal.pitch += delta; 
+		}
+		
+		if(keyBoard.rollPitchVal.pitch > 180){
+			keyBoard.rollPitchVal.pitch = 180;
+		}else if(keyBoard.rollPitchVal.pitch < 80){
+			keyBoard.rollPitchVal.pitch = 80;
+		}
+		frontCam.p = keyBoard.rollPitchVal.pitch;
+		
+		WebRTCDataMethold.sendData(frontCam);
+	}
+	
+	function changeRoll(delta){
+		if( keyBoard.rollPitchVal.roll >= 0 && keyBoard.rollPitchVal.roll <= 180 ){
+			keyBoard.rollPitchVal.roll += delta; 
+		}
+		
+		if(keyBoard.rollPitchVal.roll > 180){
+			keyBoard.rollPitchVal.roll = 180;
+		}else if(keyBoard.rollPitchVal.roll < 0){
+			keyBoard.rollPitchVal.roll = 0;
+		}
+		frontCam.r = keyBoard.rollPitchVal.roll;
+		
+		WebRTCDataMethold.sendData(frontCam);
+	}
+	
+	if(keycode == 87){ //w
+		changePitch(1);
+	}
+	else if(keycode == 83){ //s
+		changePitch(-1);
+	}
+	else if(keycode == 65){ //a
+		changeRoll(-1);
+	}
+	else if(keycode == 68){ //d
+		changeRoll(1);
+	}
+	
 }
 
 keyBoard.drive = function(empty){

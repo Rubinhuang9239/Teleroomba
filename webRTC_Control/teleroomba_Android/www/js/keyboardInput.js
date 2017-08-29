@@ -23,6 +23,7 @@ keyBoard.Input = function(event) {
 }
 
 keyBoard.InputFinish = function(event) {
+	
     var key = event.which;
     keyBoard.keydownList[key] = false;
 

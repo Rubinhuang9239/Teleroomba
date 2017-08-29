@@ -1,0 +1,15 @@
+{
+  "name": "logitech-teleroomba",
+  "version": "1.0.0",
+  "description": "joystick controllor",
+  "main": "logi.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rubin Huang",
+  "license": "ISC",
+  "dependencies": {
+    "node-hid": "^0.5.7",
+    "serialport": "^5.0.0"
+  }
+}
