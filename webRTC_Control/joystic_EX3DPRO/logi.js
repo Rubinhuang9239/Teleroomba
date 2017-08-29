@@ -108,12 +108,6 @@ logiEX.checkConnection = function(){
           yaw: ch[3], //left_right 0 << 128 >> 256
           view: (ch[2] & 0xf0) >> 4, // clockwise 0 >> 7 // 8 for none
 
-          //[
-
-
-
-          //]
-
           thro: -ch[5] + 255, // up_down 255 >> 0
           buttons: [
             (ch[4] & 0x01) >> 0, // trigger btn
@@ -132,12 +126,14 @@ logiEX.checkConnection = function(){
           ]
         };
 
+        //console.log(controls);
+
         // var servoVal = map.mapServo(controls.roll, controls.pitch);
         // sendVal[0] = servoVal.horiVal;
         // sendVal[1] = servoVal.vertiVal;
 
         if(currentSocket){
-          //Most frequent update values: roll, pitch
+          //Most frequent update values: roll, pitch,
           if( controls.roll != pVal[0] || controls.pitch != pVal[1]){
             currentSocket.emit("DR", { r: controls.roll, p: controls.pitch } );
             pVal[0] = controls.roll;
@@ -145,10 +141,47 @@ logiEX.checkConnection = function(){
             //console.log("send");
           }
 
-          //Secondery frequent update values: throttle, trigger btn, thumb btn
-          if(controls.thro != pVal[2] || controls.buttons[0] != pVal[3]){// || controls.buttons[0] != pVal[4] || controls.buttons[1] != pVal[5]
-            currentSocket.emit("AC", { th: controls.thro} ); // tr: controls.buttons[0], tb: controls.buttons[1]
+          //Secondery frequent update values: throttle.
+          if(controls.thro != pVal[2]){
+            currentSocket.emit("AC", { th: controls.thro} );
             pVal[2] = controls.thro;
+          }
+
+          //Thred frequent update values: view for front camera move.
+
+          if(controls.view != pVal[5]){
+
+            //w//s//a//d
+
+            var cmd = [null, null];
+
+            if(controls.view == 0 || controls.view == 1 || controls.view == 7 ){
+              cmd[0] = "w";
+            }
+            else if(controls.view == 3 || controls.view == 4 || controls.view == 5 ){
+              cmd[0] = "s";
+            }
+
+            if(controls.view == 1 || controls.view == 2 || controls.view == 3 ){
+              cmd[1] = "d"
+            }
+            else if(controls.view == 5 || controls.view == 6 || controls.view == 7 ){
+              cmd[1] = "a"
+            }
+
+            for(i=0; i < cmd.length; i++){
+              if(cmd[i] != null){
+                currentSocket.emit("FCHID", cmd[i]);
+                //console.log(cmd[i]);
+              }
+            }
+
+            if( controls.view == 8 ){
+              currentSocket.emit("FCHID", "x");
+              //console.log("x");
+            }
+
+            pVal[5] = controls.view;
           }
         }
 
@@ -191,6 +224,7 @@ var pVal = [0,//roll
             0,//pitch
             0,//thro
             0,//tr
+            8,//view
            ];
 
 
