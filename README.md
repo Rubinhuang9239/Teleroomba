@@ -7,6 +7,11 @@
 A telepresence researching project that build for NYU NYC/Abu Dhabi/Shanghai campus.<br />
 Thanks to Open Source Hardware Community, we hacked iRobot-Create roomba with Arduino(DFRobot Bluno), and created a telepresence robot.
 
+<br/><br/>
+This repo coontains the source code of the original project.
+<br/>
+For more about the project's documentation, please visit: www.rubinhuang.com/#teleroomba
+
 <h2>History + Future Development</h2>
 
 <b>Teleroomba 1.x</b>
