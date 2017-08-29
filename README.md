@@ -10,7 +10,7 @@ Thanks to Open Source Hardware Community, we hacked iRobot-Create roomba with Ar
 <br/><br/>
 This repo coontains the source code of the original project.
 <br/>
-For more documentation of the project's, please visit: www.rubinhuang.com/#teleroomba
+For more documentation of this project, please visit: www.rubinhuang.com/#teleroomba
 
 <h2>History + Future Development</h2>
 
