@@ -88,6 +88,15 @@ var logiEX = {};
 
 logiEX.logiEX_HID = null;
 
+var pVal = [0,//roll
+            0,//pitch
+            0,//thro
+            0,//tr
+            8,
+           ];
+
+var dropCounts = 0;
+
 logiEX.checkConnection = function(){
 
   var hidDeviceList = hid.devices();
@@ -149,9 +158,22 @@ logiEX.checkConnection = function(){
 
           //Thred frequent update values: view for front camera move.
 
-          if(controls.view != pVal[5]){
+          if(controls.view != 8){
 
             //w//s//a//d
+
+            //HID loops too fast, slow it down
+
+            if(controls.view == pVal[5]){
+
+              if(dropCounts <= 2){
+                dropCounts++;
+                return;
+              }
+              else{
+                dropCounts = 0;
+              }
+            }
 
             var cmd = [null, null];
 
@@ -176,13 +198,13 @@ logiEX.checkConnection = function(){
               }
             }
 
-            if( controls.view == 8 ){
-              currentSocket.emit("FCHID", "x");
-              //console.log("x");
-            }
-
             pVal[5] = controls.view;
           }
+          else if(pVal[5] != 8){
+            currentSocket.emit("FCHID", "x");
+            pVal[5] = 8;
+          }
+
         }
 
       });
@@ -218,14 +240,6 @@ logiEX.checkConnection = function(){
 }
 
 logiEX.checkConnection();
-
-
-var pVal = [0,//roll
-            0,//pitch
-            0,//thro
-            0,//tr
-            8,//view
-           ];
 
 
 var map = {};

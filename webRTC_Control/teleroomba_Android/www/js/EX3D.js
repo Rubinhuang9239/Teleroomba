@@ -179,13 +179,24 @@ EX3D.initSocket = function(){
 		EX3Dsocket.on("AC",function(data){
 			EX3D.calcuAction(data);
 		});
+		
+		EX3Dsocket.on("FCHID",function(data){
+			//using function from keyboardInput.js
+			if(data == "w"){
+				keyBoard.rollPitch(87);
+			}
+			else if(data == "s"){
+				keyBoard.rollPitch(83);
+			}
+			else if(data == "a"){
+				keyBoard.rollPitch(65);
+			}
+			else if(data == "d"){
+				keyBoard.rollPitch(68);
+			}
+		});
 
 	}
 	
 }
-
-
-
-
-
 
