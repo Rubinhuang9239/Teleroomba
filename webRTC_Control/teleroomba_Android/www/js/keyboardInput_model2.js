@@ -12,6 +12,8 @@ keyBoard.keydownList = {
 keyBoard.rollPitchVal = {
 	roll : 90,
 	pitch : 128,
+	rollSlider : null,
+	pitchSlider : null,
 }
 
 window.addEventListener("load",function(){keyBoard.init()});
@@ -19,6 +21,32 @@ window.addEventListener("load",function(){keyBoard.init()});
 keyBoard.init = function(){
 	window.addEventListener("keydown",keyBoard.Input);
 	window.addEventListener("keyup",keyBoard.InputFinish);
+	keyBoard.initRPSlider();
+}
+
+keyBoard.initRPSlider = function(){
+	keyBoard.rollPitchVal.rollSlider = document.getElementById("FCRollSlider");
+	keyBoard.rollPitchVal.pitchSlider = document.getElementById("FCPitchSlider");
+	
+	keyBoard.rollPitchVal.rollSlider.addEventListener("input", function(){
+		keyBoard.rollPitchVal.roll = Number(keyBoard.rollPitchVal.rollSlider.value);
+		var frontCam = {
+						type:"FC",
+						r : keyBoard.rollPitchVal.roll,
+						p : keyBoard.rollPitchVal.pitch
+					}
+		WebRTCDataMethold.sendData(frontCam);
+	});
+	
+	keyBoard.rollPitchVal.pitchSlider.addEventListener("input", function(){
+		keyBoard.rollPitchVal.pitch = Number(keyBoard.rollPitchVal.pitchSlider.value);
+		var frontCam = {
+						type:"FC",
+						r : keyBoard.rollPitchVal.roll,
+						p : keyBoard.rollPitchVal.pitch
+					}
+		WebRTCDataMethold.sendData(frontCam);
+	});
 }
 
 keyBoard.Input = function(event) {
@@ -79,6 +107,8 @@ keyBoard.rollPitch = function(keycode){
 		}
 		frontCam.p = keyBoard.rollPitchVal.pitch;
 		
+		keyBoard.rollPitchVal.pitchSlider.value = keyBoard.rollPitchVal.pitch;
+
 		WebRTCDataMethold.sendData(frontCam);
 	}
 	
@@ -93,6 +123,8 @@ keyBoard.rollPitch = function(keycode){
 			keyBoard.rollPitchVal.roll = 0;
 		}
 		frontCam.r = keyBoard.rollPitchVal.roll;
+		
+		keyBoard.rollPitchVal.rollSlider.value = keyBoard.rollPitchVal.roll;
 		
 		WebRTCDataMethold.sendData(frontCam);
 	}

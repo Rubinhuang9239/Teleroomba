@@ -440,6 +440,43 @@ a{color: #FFF !important;}
 				background-image: url("../img/range.svg");
 				transform: perspective(300px) translateY(220px) rotateX(60deg);
 			}
+			
+			#FCameraIndi_Roll{
+				position: absolute;
+				width: 220px;
+				left: 0px;
+				right:0px;
+				top:0px;
+				margin: auto;
+				z-index: 199;
+				height: 40px;
+				background-color: rgba(0,0,0,0.5);
+				border-radius: 0px 0px 5px 5px;
+			}
+			#FCameraIndi_Roll input{
+				margin: auto;
+				height: 100%;
+				width: 180px;
+			}
+			
+			#FCameraIndi_Pitch{
+				position: absolute;
+				width: 220px;
+				left: 0px;
+				right:auto;
+				top:28%;
+				margin: auto;
+				z-index: 199;
+				height: 40px;
+				background-color: rgba(0,0,0,0.5);
+				border-radius: 0px 0px 5px 5px;
+				transform: rotate(-90deg) translateY(-90px);
+			}
+			#FCameraIndi_Pitch input{
+				margin: auto;
+				height: 100%;
+				width: 100px;
+			}
 
 			.dynamicContent{
 				display: none;

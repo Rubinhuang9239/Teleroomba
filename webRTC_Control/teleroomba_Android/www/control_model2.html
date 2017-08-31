@@ -36,7 +36,18 @@
 	<div id = "mainFrame" class = "container">
 
 		<div class = "leftRole col-xs-12 col-sm-9 col-md-9">
-			<div id = "touchLayer"></div>
+			
+			<div id="FCameraIndi_Roll">
+				<input id="FCRollSlider" type="range"  value="90" min="0" max="180"/>
+			</div>
+			
+			<div id="FCameraIndi_Pitch">
+				<input id="FCPitchSlider" type="range"  value="128" min="80" max="180"/>
+			</div>
+			
+			<div id = "touchLayer">
+				
+			</div>
 
 			<div id = "videoFrame" >
 				<video id = "remote-video" loop="loop" src="img/placeHolderVideo.mp4" autoplay ></video>
@@ -50,7 +61,7 @@
 
 				<div id="HUD">
 					<div id="HUDSpeed"><span id = "speedVal">0.00</span><br /><span style="font-size:20px">MPH</span></div>
-					<div id="HUDPers"><div id="HUDPath"></div></div>
+<!-- 					<div id="HUDPers"><div id="HUDPath"></div></div> -->
 
 					<div class = "EX3DShow" id = "EX3DShow_range">
 						<div class = "EX3DShow" id = "EX3DShow_RawRange"></div>
