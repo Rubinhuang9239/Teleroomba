@@ -213,18 +213,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if(WebRTCDataMethold.connected){ 
       connection.send(data);
+/*
       if(data.type == "DR"){
           animate.speedCalcu(data.lV,data.rV);
       }
+*/
     }
     else{
+/*
       if(data.type == "DR"){
         animate.speedCalcu(0,0,1);
       }
       else{
+*/
         console.warn( "Data did not send, no WebRTC connection: ", data );
         webConsole.logMessage("Peer", "Data did not send, no WebRTC connection: <span style='color:#FFF'>" + data.type + "</span>")
-      }
+//       }
     }
 
   }

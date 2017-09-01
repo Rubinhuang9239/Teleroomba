@@ -24,6 +24,11 @@ animate.init = function(){
 	stitchHelpClose.addEventListener("click",function(){
 		animate.stitchHelpStatus("close");
 	});
+	
+	var resetCamBtn = document.getElementById("resetCam");
+	resetCamBtn.addEventListener("click", function(){
+		stitchHelper.resetCameraAngle();
+	})
 
 }
 
@@ -110,6 +115,7 @@ animate.removeSettingDetail = function(){
 	settingDetail.style.transform = "translateX(103%)";
 }
 
+/*
 animate.speedCalcu = function(speedInputL,speedInputR,offLine){
 
 	if( offLine > 0 ){
@@ -126,6 +132,7 @@ animate.speedCalcu = function(speedInputL,speedInputR,offLine){
 	speedInput = (speedInputL+speedInputR) * 0.5;
 	animate.speedDisplay.innerHTML = ((speedInput / 50) * 1.125).toPrecision(3);
 }
+*/
 
 animate.loadPlayList = function(mediaList){
 

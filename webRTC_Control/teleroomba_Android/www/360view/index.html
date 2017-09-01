@@ -34,10 +34,13 @@
 
 
 		<script src="360view/js/peer.js"></script>
-		<script src="360view/js/main.js"></script>
+		<script src="360view/js/main_360.js"></script>
 		<script src="360view/js/webRTCDataMethold_model2.js"></script>
 		<script src="360view/js/identity_360.js"></script>
 		<script src="360view/js/animate_360.js"></script>
+		<script src="360view/js/keyboardInput_360.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="../js/EX3D.js"></script>
 		<script src="js/switchery/switchery.min.js"></script>
 
 
@@ -101,6 +104,12 @@
 	</div>
 
 	<div id="threeContainer"></div>
+	
+	<div class = "EX3DShow" id = "EX3DShow_range">
+		<div class = "EX3DShow" id = "EX3DShow_RawRange"></div>
+		<div class = "EX3DShow" id = "EX3DShow_map"></div>
+		<div class = "EX3DShow" id = "EX3DShow_knob"></div>
+	</div>
 
 	<div id="stitchHelper">
 		<div id="stitchHelpClose" class="closeBnt"></div>
