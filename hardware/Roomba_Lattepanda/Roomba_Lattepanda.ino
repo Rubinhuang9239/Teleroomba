@@ -14,7 +14,7 @@ SoftwareSerial roombotSerial(10, 11);//RX/TX
 #define LEDNUM 12
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(LEDNUM, LED, NEO_GRB + NEO_KHZ800);
 float ledTimer = 0;
-int ledDir = 0;
+int ledDir = 9;
 
 //Beep
 int beepType[] = {0,0};
@@ -24,16 +24,13 @@ boolean beeping = false;
 #define debugSwitch 12
 
 //Servo
-#define SERVO_PIN_R    10
+#define SERVO_PIN_R    5
 #define SERVO_PIN_P    9
 
 Adafruit_TiCoServo servoR;
 Adafruit_TiCoServo servoP;
 
-//Servo servoR;
-//Servo servoP;
-//int servoRpin = 3; //Roll//Pitch
-//int servoPpin = 6;
+
 int servoRVal = 90;
 int servoPVal = 128;
 
@@ -58,7 +55,7 @@ void setup() {
   
   delay(50);
   //Init software serial port to Roomba
-  roombotSerial.begin(38400); 
+  roombotSerial.begin(115200); 
   delay(50);
   roombotSerial.write(128);  // START
   delay(50);
@@ -141,30 +138,11 @@ void loop() {
           
           Serial.print('\n');
         
-    
     }
     
     if(beeping == true){
        beep();
-    }
-
-    ledTimer += 0.05;
-    if( ledTimer > PI ){
-      ledTimer = 0;
-      pixels.setPixelColor(ledDir, pixels.Color( 0, 0 , 0 ));
-      pixels.show();
-      ledDir++;
-      if(ledDir >= 12){
-        ledDir = 0;
-      }
-    }
-     
-    int ledC = int((20 + 125 * sin(ledTimer)));
-    
-    for(int i = ledDir;i < ledDir+2; i++){
-        pixels.setPixelColor(i, pixels.Color(  145-ledC, ledC , ledC ));
-    }
-    pixels.show();
+    }    
    
     servoR.write(servoRVal);
     servoP.write(servoPVal);   
@@ -174,6 +152,74 @@ void loop() {
 }
 
 void drive(signed int leftV, signed int rightV){
+
+  for(int i = 0;i < 12; i++){
+      pixels.setPixelColor(i, pixels.Color(  0, 0, 0 ));
+  }
+
+  ledTimer += 0.05;
+  if( ledTimer > PI ){
+    ledTimer = 0;
+  }
+  
+  int ledC = int((20 + 125 * sin(ledTimer)));
+
+  //calculate the difference on speed
+  int VDiff = leftV-rightV;
+
+  if( VDiff >= 50 ){
+    //left
+     pixels.setPixelColor(ledDir, pixels.Color(  145-ledC, ledC , ledC ));
+     ledDir++;
+     if(ledDir > 11){
+        ledDir = 0;
+     }
+  }
+  else if( VDiff>= 40 && VDiff < 50 ){
+      //10,11,0
+      pixels.setPixelColor(0, pixels.Color(  145-ledC, ledC , ledC  ));
+      pixels.setPixelColor(10, pixels.Color(  145-ledC, ledC , ledC  ));
+      pixels.setPixelColor(11, pixels.Color(  145-ledC, ledC , ledC  ));
+  }
+  else if( VDiff>= 30 && VDiff < 40 ){
+      //10,11
+      pixels.setPixelColor(10, pixels.Color(  145-ledC, ledC , ledC  ));
+      pixels.setPixelColor(11, pixels.Color(  145-ledC, ledC , ledC  ));
+  }
+  else if( VDiff>= 10 && VDiff < 30 ){
+      //9,10
+      pixels.setPixelColor(9, pixels.Color(  145-ledC, ledC , ledC  ));
+      pixels.setPixelColor(10, pixels.Color(  145-ledC, ledC , ledC  ));
+  }
+  else if( abs(VDiff) < 10 ){
+    //direct
+    //8,9
+    pixels.setPixelColor(8, pixels.Color(  145-ledC, ledC , ledC  ));
+    pixels.setPixelColor(9, pixels.Color(  145-ledC, ledC , ledC  ));
+  }
+  else if( VDiff<= -10 && VDiff > -30 ){
+     pixels.setPixelColor(7, pixels.Color(  145-ledC, ledC , ledC  ));
+     pixels.setPixelColor(8, pixels.Color(  145-ledC, ledC , ledC  ));
+  }
+  else if( VDiff<= -30 && VDiff > -40 ){
+     pixels.setPixelColor(6, pixels.Color(  145-ledC, ledC , ledC  ));
+     pixels.setPixelColor(7, pixels.Color(  145-ledC, ledC , ledC  ));
+  }
+  else if( VDiff<= -40 && VDiff > -50 ){
+     pixels.setPixelColor(5, pixels.Color(  145-ledC, ledC , ledC  ));
+     pixels.setPixelColor(6, pixels.Color(  145-ledC, ledC , ledC  ));
+     pixels.setPixelColor(7, pixels.Color(  145-ledC, ledC , ledC  ));
+  }
+  else if( VDiff <= -50 ){
+    //right
+    pixels.setPixelColor(ledDir, pixels.Color(  145-ledC, ledC , ledC ));
+    ledDir--;
+    if(ledDir < 0){
+       ledDir = 11;
+    }
+  }
+
+  pixels.show();
   
   leftV = leftV*10;
   rightV = rightV*10;
